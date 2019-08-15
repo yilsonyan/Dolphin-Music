@@ -19,7 +19,7 @@ public class Person implements Serializable {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "DataStructure.Person{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
                 '}';

@@ -31,8 +31,8 @@ public class 集合性能测试 {
     /**
      * 性能测试：ArrayList
      * 结果：
-     *  添加：1557s
-     *  遍历：87
+     *  添加：835s
+     *  遍历：82s
      */
     @Test
     public void testArrayList() {
@@ -69,8 +69,8 @@ public class 集合性能测试 {
     /**
      * 性能测试：ArrayList使用迭代器循环
      * 结果：Iterator跟for循环差不多
-     *  添加：1557s
-     *  遍历：87
+     *  添加：772s
+     *  遍历：98s
      */
     @Test
     public void testArrayListWithIter() {
@@ -98,7 +98,6 @@ public class 集合性能测试 {
         start = System.currentTimeMillis();
         for (Iterator<Person> iter = list.iterator(); iter.hasNext(); ) {
             Person p = iter.next();
-
         }
         end = System.currentTimeMillis();
         System.out.println("循环一亿次用时"+(end-start));
@@ -108,8 +107,8 @@ public class 集合性能测试 {
     /**
      * 性能测试：LinkedList
      * 结果：
-     *  添加：？？？？？
-     *  遍历：？？？？？ 太久
+     *  添加：？？？？？ 31秒
+     *  遍历：？？？？？ 356毫秒
      */
     @Test
     public void testLinkedList() {
@@ -136,12 +135,12 @@ public class 集合性能测试 {
         System.out.println("添加一亿条数据用时"+(end-start));
 
 
-        /*start = System.currentTimeMillis();
+        start = System.currentTimeMillis();
         for (Person p : list) {
-
+            p.getAge();
         }
         end = System.currentTimeMillis();
-        System.out.println("循环一亿次用时"+(end-start));*/
+        System.out.println("循环一亿次用时"+(end-start));
     }
 
 
@@ -149,7 +148,7 @@ public class 集合性能测试 {
     /**
      * 性能测试：HashSet
      * 结果：
-     *  添加：1277s
+     *  添加：979s
      *  遍历：0s
      */
     @Test

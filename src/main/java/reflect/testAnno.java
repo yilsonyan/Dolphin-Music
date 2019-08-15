@@ -1,4 +1,4 @@
-package 反射;
+package reflect;
 
 import org.junit.Test;
 

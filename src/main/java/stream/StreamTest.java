@@ -1,6 +1,7 @@
 package stream;
 
 import in_output_stream.Person;
+import org.apache.tomcat.jni.User;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -36,9 +37,15 @@ public class StreamTest {
         //list.stream().filter(s ->  s.startsWith("张")).filter(s -> s.length() == 3).forEach(System.out::println);
 
         //list.stream().sorted().forEach(s-> System.out.println(s));
-
-
     }
+
+    @Test
+    public void whenEmptyStream_thenReturnDefaultOptional() {
+        List<User> users = new ArrayList<>();
+        User user = users.stream().findFirst().orElse(new User());
+        System.out.println(user);
+    }
+
 
 
     @Test

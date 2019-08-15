@@ -72,7 +72,7 @@ public class TestIterator {
         list.add(person2);
 
 
-        //ListIterator<Person> iterator = list.listIterator();
+        //ListIterator<DataStructure.Person> iterator = list.listIterator();
         Iterator<Person> iterator = list.iterator();
 
         while (iterator.hasNext()) {

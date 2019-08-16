@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.util.Date;
 
-@RunWith(SpringRunner.class)
 //@SpringBootTest(classes =  Application.class,properties = "redis-sentinel/applicationContext-redis.xml")
 @SpringBootTest(classes =  Application.class)
+@RunWith(SpringRunner.class)
 @RestController
 public class TestRedis {
 

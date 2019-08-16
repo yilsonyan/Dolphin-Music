@@ -1,12 +1,6 @@
 package Thread.cas_atomic;
 
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -43,7 +37,7 @@ public class SpinLock {
         //让owner不为空
         owner.set(Thread.currentThread());
 
-        //预期为空，实际不为空，陷入循环等待
+        //预期为空，实际不为空，陷入循环等待，即被上锁
         lock();
     }
 

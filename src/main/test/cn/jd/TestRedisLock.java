@@ -65,7 +65,8 @@ public class TestRedisLock {
                 for (int n = 0; n < 100; n++) {
 
                     //上锁
-                    while (redisTemplate.opsForValue().get("k1") != null){
+                    while (redisTemplate.hasKey("k1")){
+
                     }
 
                     redisTemplate.opsForValue().set("k1","v1");

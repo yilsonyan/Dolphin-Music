@@ -6,7 +6,7 @@ import org.junit.Test;
 //@RunWith(SpringRunner.class)
 //@EnableWebSocket
 //@EnableAutoConfiguration
-public class SpringBootTest {
+public class MySpringBootTest {
 
 
     @Test

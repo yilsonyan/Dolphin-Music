@@ -10,6 +10,6 @@ public class UserEntity implements Serializable {
     private Long id;
     private String guid;
     private String name;
-    private String age;
+    private Integer age;
     private Date createTime;
 }

@@ -1,10 +1,11 @@
 package cn.jd;
 
 import cn.jd.Redis.RedisUtil;
-import cn.jd.Redis.redis_lock.DistributedLockHandler;
 import cn.jd.Redis.redis_lock.Lock;
+import cn.jd.Redis.redis_lock.MyRedisLockHandler;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -19,18 +20,20 @@ import java.util.concurrent.atomic.AtomicInteger;
 @RunWith(SpringRunner.class)
 public class TestRedisLock {
 
+    @Autowired
+    MyRedisLockHandler myRedisLockHandler;
 
     /**
      * 测试Redis锁
      */
     @Test
     public void testRedisLockUtil() {
-        DistributedLockHandler distributedLockHandler = new DistributedLockHandler();
+
         Lock lock = new Lock("lock1", "value1");
 
-        if (distributedLockHandler.tryLock(lock)) {
+        if (myRedisLockHandler.tryLock(lock)) {
             System.out.println("-------------------------------------");
-            distributedLockHandler.releaseLock(lock);
+            myRedisLockHandler.releaseLock(lock);
         }
     }
 
@@ -48,6 +51,7 @@ public class TestRedisLock {
     @Resource
     private RedisTemplate<String, Object> redisTemplate;
 
+
     /**
      * 测试自定义Redis锁
      */
@@ -64,20 +68,17 @@ public class TestRedisLock {
                 // 每个线程循环多次，频繁上锁，解锁。
                 for (int n = 0; n < 100; n++) {
 
-                    //上锁
-                    synchronized ("") {
-                        while (redisTemplate.opsForValue().setIfAbsent("k1","v1")){
+                    //上锁,注意，分布式锁的 redisTemplate 对象，存在与不同机器的JVM中
+                    //此处模拟分布式锁，需为每个线程创建新的 redisTemplate
+                    while (redisTemplate.opsForValue().setIfAbsent("k1","v1")){
 
-                        }
                     }
-
 
                     x++;
 
-                    //synchronized ("") {
-                        //解锁
-                        redisTemplate.delete("k1");
-                    //}
+
+                    //解锁
+                    redisTemplate.delete("k1");
 
                 }
                 latch.countDown();    // 子线程通知主线程，工作完毕。
@@ -89,6 +90,7 @@ public class TestRedisLock {
 
         System.out.println(x);    // 最终打印结果：20000 ，未出现线程不安全的异常。
     }
+
 
 
 

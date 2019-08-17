@@ -45,8 +45,6 @@ public class TestRedis {
 //        Object k1 = redisUtil.get("k1");
         UserEntity k1 = (UserEntity)redisUtil.get("k1");
         System.out.println(k1);
-
-
     }
 
 

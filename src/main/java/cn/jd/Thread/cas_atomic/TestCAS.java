@@ -47,7 +47,7 @@ public class TestCAS {
 
         //JDK自带的锁
         ReentrantLock lock = new ReentrantLock();
-        lock.tryLock();
+        //lock.tryLock();
 
         for (int i = 0; i < THREAD_NUM; i++) {
             // 启动子线程

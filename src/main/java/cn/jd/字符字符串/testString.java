@@ -24,7 +24,7 @@ public class testString {
     public static void main(String[] args) {
 
         StringBuilder sb = new StringBuilder("1=1");
-        sb.append(" and mallid ="+1);
+        sb.append(" and mallid =" + 1);
         System.out.println(sb);
     }
 }

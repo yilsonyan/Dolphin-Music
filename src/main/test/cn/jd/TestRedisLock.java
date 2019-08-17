@@ -65,16 +65,19 @@ public class TestRedisLock {
                 for (int n = 0; n < 100; n++) {
 
                     //上锁
-                    while (redisTemplate.hasKey("k1")){
+                    synchronized ("") {
+                        while (redisTemplate.opsForValue().setIfAbsent("k1","v1")){
 
+                        }
                     }
 
-                    redisTemplate.opsForValue().set("k1","v1");
 
                     x++;
 
-                    //解锁
-                    redisTemplate.delete("k1");
+                    //synchronized ("") {
+                        //解锁
+                        redisTemplate.delete("k1");
+                    //}
 
                 }
                 latch.countDown();    // 子线程通知主线程，工作完毕。

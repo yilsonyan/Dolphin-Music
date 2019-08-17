@@ -21,7 +21,7 @@ public class TestFileLock {
 
 
     /**
-     * 测试文件锁锁
+     * 测试文件分布式锁
      */
     @Test
     public void testMyFileLock() throws Exception {

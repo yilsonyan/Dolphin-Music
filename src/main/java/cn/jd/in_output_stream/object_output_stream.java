@@ -13,6 +13,23 @@ public class object_output_stream {
         objectOutputStream.writeObject(person);
     }
 
+    /**
+     * 测试文件只读锁
+     */
+    @Test
+    public void testMyFileLock() throws Exception {
+        File lockFile = new File("/Users/beyond/Desktop/lock.txt");
+        lockFile.createNewFile();
+
+        //lockFile.setReadOnly();
+        //lockFile.setReadable(false);
+        lockFile.setWritable(false);
+
+        File newFile = new File("/Users/beyond/Desktop/lock2.txt");
+        lockFile.renameTo(newFile);
+    }
+
+
     @Test
     public void read() throws IOException, ClassNotFoundException {
         ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("/Users/vincent/Desktop/obj.txt"));
@@ -44,6 +61,8 @@ public class object_output_stream {
         System.out.println(sc);
 
     }
+
+
 
 
 

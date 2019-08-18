@@ -1,4 +1,4 @@
-package cn.jd.字符字符串;
+package cn.jd.char_string;
 
 /*
 # 　　　 ┏┓　      ┏┓

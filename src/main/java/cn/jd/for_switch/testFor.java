@@ -1,4 +1,4 @@
-package cn.jd.流程控制;
+package cn.jd.for_switch;
 
 /**
  * // 　　　 ┏━┓     ┏━┓
@@ -19,20 +19,19 @@ package cn.jd.流程控制;
  * //          ┃ ┫ ┫   ┃ ┫ ┫
  * //          ┗━┻━┛   ┗━┻━┛
  */
-public class testSwitch {
+public class testFor {
 
 
     public static void main(String[] args) {
-        switch (2){
-            case 1:
-                System.out.println(1);
-                break;
-            case 2:
-                System.out.println(2);
-                break;
-            case 3:
-                System.out.println(3);
-                break;
+        wc: for (int i = 0; i <5; i++) {
+            nc: for (int i1 = 0; i1 < 5; i1++) {
+                    if (i1 == 3){
+                        break nc;
+                    }
+                System.out.println(i+""+i1);
+            }
+
+
         }
     }
 }

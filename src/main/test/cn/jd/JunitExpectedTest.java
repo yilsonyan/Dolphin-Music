@@ -13,7 +13,7 @@ import static org.junit.Assert.fail;
 
 //注意：这是java中的静态引入
 
-public class Test_Junit_expected {
+public class JunitExpectedTest {
 
 
     /**

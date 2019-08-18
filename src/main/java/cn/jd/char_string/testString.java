@@ -1,4 +1,4 @@
-package cn.jd.流程控制;
+package cn.jd.char_string;
 
 /**
  * // 　　　 ┏━┓     ┏━┓
@@ -9,7 +9,7 @@ package cn.jd.流程控制;
  * //      ┃　　　　　　 ┃               Codes are far away from bugs with the animal protecting.
  * //      ┃　　　┻　　　┃
  * //      ┃　　　　　　 ┃               * @Author：yilson
- * //      ┗━┓　　　┏━━━┛               * @Date:：2019-06-22 10:09
+ * //      ┗━┓　　　┏━━━┛               * @Date:：2019-06-22 17:56
  * //        ┃　　　┃                   * @Description：
  * //        ┃　　　┃
  * //        ┃　　　┗━━━━━━━━━┓
@@ -19,19 +19,12 @@ package cn.jd.流程控制;
  * //          ┃ ┫ ┫   ┃ ┫ ┫
  * //          ┗━┻━┛   ┗━┻━┛
  */
-public class testFor {
-
+public class testString {
 
     public static void main(String[] args) {
-        wc: for (int i = 0; i <5; i++) {
-            nc: for (int i1 = 0; i1 < 5; i1++) {
-                    if (i1 == 3){
-                        break nc;
-                    }
-                System.out.println(i+""+i1);
-            }
 
-
-        }
+        StringBuilder sb = new StringBuilder("1=1");
+        sb.append(" and mallid =" + 1);
+        System.out.println(sb);
     }
 }

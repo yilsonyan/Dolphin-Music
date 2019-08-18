@@ -36,7 +36,7 @@ is divided into following sections:
             -->
     <target name="-pre-init">
         <!-- Empty placeholder for easier customization. -->
-        <!-- You can override this target in the ../build.xml file. -->
+        <!-- You can overload_override this target in the ../build.xml file. -->
     </target>
     <target depends="-pre-init" name="-init-private">
         <property file="nbproject/private/config.properties"/>
@@ -249,7 +249,7 @@ is divided into following sections:
     </target>
     <target name="-post-init">
         <!-- Empty placeholder for easier customization. -->
-        <!-- You can override this target in the ../build.xml file. -->
+        <!-- You can overload_override this target in the ../build.xml file. -->
     </target>
     <target depends="-pre-init,-init-private,-init-user,-init-project,-do-init" name="-init-check">
         <fail unless="src.dir">Must set src.dir</fail>
@@ -691,11 +691,11 @@ is divided into following sections:
     <target depends="-profile-pre-init, init, -profile-post-init, -profile-init-macrodef-profile, -profile-init-check" if="profiler.info.jvmargs.agent" name="profile-init"/>
     <target if="profiler.info.jvmargs.agent" name="-profile-pre-init">
         <!-- Empty placeholder for easier customization. -->
-        <!-- You can override this target in the ../build.xml file. -->
+        <!-- You can overload_override this target in the ../build.xml file. -->
     </target>
     <target if="profiler.info.jvmargs.agent" name="-profile-post-init">
         <!-- Empty placeholder for easier customization. -->
-        <!-- You can override this target in the ../build.xml file. -->
+        <!-- You can overload_override this target in the ../build.xml file. -->
     </target>
     <target if="profiler.info.jvmargs.agent" name="-profile-init-macrodef-profile">
         <macrodef name="resolve">
@@ -932,7 +932,7 @@ is divided into following sections:
     </target>
     <target name="-pre-compile">
         <!-- Empty placeholder for easier customization. -->
-        <!-- You can override this target in the ../build.xml file. -->
+        <!-- You can overload_override this target in the ../build.xml file. -->
     </target>
     <target if="do.depend.true" name="-compile-depend">
         <pathconvert property="build.generated.subdirs">
@@ -956,12 +956,12 @@ is divided into following sections:
     </target>
     <target name="-post-compile">
         <!-- Empty placeholder for easier customization. -->
-        <!-- You can override this target in the ../build.xml file. -->
+        <!-- You can overload_override this target in the ../build.xml file. -->
     </target>
     <target depends="init,deps-jar,-verify-automatic-build,-pre-pre-compile,-pre-compile,-do-compile,-post-compile" description="Compile project." name="compile"/>
     <target name="-pre-compile-single">
         <!-- Empty placeholder for easier customization. -->
-        <!-- You can override this target in the ../build.xml file. -->
+        <!-- You can overload_override this target in the ../build.xml file. -->
     </target>
     <target depends="init,deps-jar,-pre-pre-compile" name="-do-compile-single">
         <fail unless="javac.includes">Must select some files in the IDE or set javac.includes</fail>
@@ -970,7 +970,7 @@ is divided into following sections:
     </target>
     <target name="-post-compile-single">
         <!-- Empty placeholder for easier customization. -->
-        <!-- You can override this target in the ../build.xml file. -->
+        <!-- You can overload_override this target in the ../build.xml file. -->
     </target>
     <target depends="init,deps-jar,-verify-automatic-build,-pre-pre-compile,-pre-compile-single,-do-compile-single,-post-compile-single" name="compile-single"/>
     <!--
@@ -984,7 +984,7 @@ is divided into following sections:
     </target>
     <target name="-pre-jar">
         <!-- Empty placeholder for easier customization. -->
-        <!-- You can override this target in the ../build.xml file. -->
+        <!-- You can overload_override this target in the ../build.xml file. -->
     </target>
     <target depends="init" if="do.archive" name="-do-jar-create-manifest" unless="manifest.available">
         <tempfile deleteonexit="true" destdir="${build.dir}" property="tmp.manifest.file"/>
@@ -1043,7 +1043,7 @@ is divided into following sections:
     <target depends="init,compile,-pre-pre-jar,-pre-jar,-do-jar-create-manifest,-do-jar-copy-manifest,-do-jar-set-mainclass,-do-jar-set-profile,-do-jar-set-splashscreen,-do-jar-copylibs,-do-jar-delete-manifest" name="-do-jar-with-libraries"/>
     <target depends="-jfx-copylibs,-rebase-libs,jfx-deployment" name="-post-jar">
         <!-- Empty placeholder for easier customization. -->
-        <!-- You can override this target in the ../build.xml file. -->
+        <!-- You can overload_override this target in the ../build.xml file. -->
     </target>
     <target depends="init,compile,-pre-jar,-do-jar-without-libraries,-do-jar-with-libraries,-post-jar" name="-do-jar"/>
     <target depends="init,compile,-pre-jar,-do-jar,-post-jar" description="Build JAR." name="jar"/>
@@ -1261,7 +1261,7 @@ is divided into following sections:
     </target>
     <target name="-pre-compile-test">
         <!-- Empty placeholder for easier customization. -->
-        <!-- You can override this target in the ../build.xml file. -->
+        <!-- You can overload_override this target in the ../build.xml file. -->
     </target>
     <target if="do.depend.true" name="-compile-test-depend">
         <j2seproject3:depend classpath="${javac.test.classpath}" destdir="${build.test.classes.dir}" srcdir=""/>
@@ -1272,12 +1272,12 @@ is divided into following sections:
     </target>
     <target name="-post-compile-test">
         <!-- Empty placeholder for easier customization. -->
-        <!-- You can override this target in the ../build.xml file. -->
+        <!-- You can overload_override this target in the ../build.xml file. -->
     </target>
     <target depends="init,compile,-pre-pre-compile-test,-pre-compile-test,-do-compile-test,-post-compile-test" name="compile-test"/>
     <target name="-pre-compile-test-single">
         <!-- Empty placeholder for easier customization. -->
-        <!-- You can override this target in the ../build.xml file. -->
+        <!-- You can overload_override this target in the ../build.xml file. -->
     </target>
     <target depends="init,deps-jar,compile,-pre-pre-compile-test,-pre-compile-test-single" if="have.tests" name="-do-compile-test-single">
         <fail unless="javac.includes">Must select some files in the IDE or set javac.includes</fail>
@@ -1287,7 +1287,7 @@ is divided into following sections:
     </target>
     <target name="-post-compile-test-single">
         <!-- Empty placeholder for easier customization. -->
-        <!-- You can override this target in the ../build.xml file. -->
+        <!-- You can overload_override this target in the ../build.xml file. -->
     </target>
     <target depends="init,compile,-pre-pre-compile-test,-pre-compile-test-single,-do-compile-test-single,-post-compile-test-single" name="compile-test-single"/>
     <!--
@@ -1404,7 +1404,7 @@ is divided into following sections:
     </target>
     <target name="-post-clean">
         <!-- Empty placeholder for easier customization. -->
-        <!-- You can override this target in the ../build.xml file. -->
+        <!-- You can overload_override this target in the ../build.xml file. -->
     </target>
     <target depends="init,deps-clean,-do-clean,-post-clean" description="Clean build products." name="clean"/>
     <target name="-check-call-dep">

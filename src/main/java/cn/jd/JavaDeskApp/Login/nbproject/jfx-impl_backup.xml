@@ -12,19 +12,19 @@
     <!-- Empty placeholders for easier customization in ../build.xml -->
     
     <target name="-pre-jfx-jar">
-        <!-- Called right before <fx:jar> task. You can override this target in the ../build.xml file. -->
+        <!-- Called right before <fx:jar> task. You can overload_override this target in the ../build.xml file. -->
     </target>
 
     <target name="-post-jfx-jar">
-        <!-- Called right after <fx:jar> task. You can override this target in the ../build.xml file. -->
+        <!-- Called right after <fx:jar> task. You can overload_override this target in the ../build.xml file. -->
     </target>
 
     <target name="-pre-jfx-deploy">
-        <!-- Called right before <fx:deploy> task. You can override this target in the ../build.xml file. -->
+        <!-- Called right before <fx:deploy> task. You can overload_override this target in the ../build.xml file. -->
     </target>
 
     <target name="-post-jfx-deploy">
-        <!-- Called right after <fx:deploy> task. You can override this target in the ../build.xml file. -->
+        <!-- Called right after <fx:deploy> task. You can overload_override this target in the ../build.xml file. -->
     </target>
     
     

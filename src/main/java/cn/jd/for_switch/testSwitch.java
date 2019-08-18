@@ -1,4 +1,4 @@
-package cn.jd.字符字符串;
+package cn.jd.for_switch;
 
 /**
  * // 　　　 ┏━┓     ┏━┓
@@ -9,7 +9,7 @@ package cn.jd.字符字符串;
  * //      ┃　　　　　　 ┃               Codes are far away from bugs with the animal protecting.
  * //      ┃　　　┻　　　┃
  * //      ┃　　　　　　 ┃               * @Author：yilson
- * //      ┗━┓　　　┏━━━┛               * @Date:：2019-06-22 17:56
+ * //      ┗━┓　　　┏━━━┛               * @Date:：2019-06-22 10:09
  * //        ┃　　　┃                   * @Description：
  * //        ┃　　　┃
  * //        ┃　　　┗━━━━━━━━━┓
@@ -19,12 +19,20 @@ package cn.jd.字符字符串;
  * //          ┃ ┫ ┫   ┃ ┫ ┫
  * //          ┗━┻━┛   ┗━┻━┛
  */
-public class testString {
+public class testSwitch {
+
 
     public static void main(String[] args) {
-
-        StringBuilder sb = new StringBuilder("1=1");
-        sb.append(" and mallid =" + 1);
-        System.out.println(sb);
+        switch (2){
+            case 1:
+                System.out.println(1);
+                break;
+            case 2:
+                System.out.println(2);
+                break;
+            case 3:
+                System.out.println(3);
+                break;
+        }
     }
 }

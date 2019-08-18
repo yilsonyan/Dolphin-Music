@@ -1,4 +1,4 @@
-package cn.jd.精度;
+package cn.jd.BigDecimal;
 
 import java.math.BigDecimal;
 

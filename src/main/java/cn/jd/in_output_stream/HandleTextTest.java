@@ -1,4 +1,4 @@
-package cn.jd;
+package cn.jd.in_output_stream;
 
 import org.junit.Test;
 

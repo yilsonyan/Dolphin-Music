@@ -1,18 +1,11 @@
-package cn.jd;
+package cn.jd.Thread.cas_atomic;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
-
-//@SpringBootTest(classes =  Application.class,properties = "redis-sentinel/applicationContext-redis.xml")
-@SpringBootTest(classes = Application.class)
-@RunWith(SpringRunner.class)
 public class TestFileLock {
 
 

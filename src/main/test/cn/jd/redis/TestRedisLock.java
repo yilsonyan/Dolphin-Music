@@ -1,5 +1,6 @@
-package cn.jd;
+package cn.jd.redis;
 
+import cn.jd.Application;
 import cn.jd.Redis.RedisUtil;
 import cn.jd.Redis.redis_lock.Lock;
 import cn.jd.Redis.redis_lock.MyRedisLockHandler;
@@ -41,9 +42,9 @@ public class TestRedisLock {
     /**
      * 测试自定义的自旋锁（利用原子变量的CAS实现）
      */
-    final static int THREAD_NUM = 200;
-    static int x = 0;
-    AtomicInteger xAtomic = new AtomicInteger(0);
+    final private static int THREAD_NUM = 200;
+    private static int x = 0;
+    private AtomicInteger xAtomic = new AtomicInteger(0);
 
     @Resource
     private RedisUtil redisUtil;
@@ -71,7 +72,7 @@ public class TestRedisLock {
                     //上锁,注意，分布式锁的 redisTemplate 对象，存在与不同机器的JVM中
                     //此处模拟分布式锁，需为每个线程创建新的 redisTemplate
                     while (redisTemplate.opsForValue().setIfAbsent("k1","v1")){
-
+                        System.out.print("");
                     }
 
                     x++;

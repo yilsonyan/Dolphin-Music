@@ -1,5 +1,6 @@
 package cn.jd.Redis.redis_lock;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
@@ -7,6 +8,7 @@ import lombok.Data;
  * Created by yanbinyuan on 2019/5/15
  */
 @Data
+@AllArgsConstructor
 public class Lock {
 
     private String name;

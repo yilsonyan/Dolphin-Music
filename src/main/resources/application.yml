@@ -6,8 +6,26 @@ spring:
     port: 6379
     timeout: 3s
     database: 0
-    pool:
-      max-active: 10
-      max-idle: 8
-      min-idle: 2
-      max-wait: 500
+
+    #哨兵
+    sentinel:
+      host1: 172.20.1.230
+      port1: 26379
+
+      host2: 172.20.1.231
+      port2: 26379
+
+      host3: 172.20.1.232
+      port3: 26379
+
+    #集群
+    cluster:
+      host1: 172.20.1.230
+      port1: 26379
+
+      host2: 172.20.1.231
+      port2: 26379
+
+      host3: 172.20.1.232
+      port3: 26379
+

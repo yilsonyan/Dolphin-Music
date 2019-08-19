@@ -7,6 +7,7 @@
     <groupId>cn.jd</groupId>
     <artifactId>Resume_Point</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -18,6 +19,25 @@
         <java.version>1.8</java.version>
     </properties>
 
+    <!--创建Profiles-->
+    <profiles>
+        <!--公司环境-->
+        <profile>
+            <id>Company</id>
+            <properties>
+                <port>9105</port>
+            </properties>
+
+        </profile>
+        <!--家庭环境-->
+        <profile>
+            <id>Home</id>
+            <properties>
+                <port>9105</port>
+            </properties>
+
+        </profile>
+    </profiles>
 
     <dependencies>
         <dependency>
@@ -40,6 +60,11 @@
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
 
 

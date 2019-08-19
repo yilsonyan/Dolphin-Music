@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.annotation.Resource;
 import java.util.Date;
 
-//@SpringBootTest(classes =  Application.class,properties = "redis-sentinel/applicationContext-redis.xml")
+//@SpringBootTest(classes =  Application.class,properties = "classpath:application.yml")
 @SpringBootTest(classes =  Application.class)
 @RunWith(SpringRunner.class)
 public class TestRedisUtil {

@@ -9,10 +9,10 @@ public class DateTypeParameter {
         //2.注册驱动
         Class.forName("com.mysql.jdbc.Driver");
         //3.获取数据库连接对象
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/PracticeDB", "root", "root");
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/practicedb", "root", "123456");
         //4.定义sql语句
         Date date = new Date();
-        String sql = "select * from staff where birthday <= "+date;
+        String sql = "select * from student";
         //5.获取执行sql的对象 Statement
         Statement stmt = conn.createStatement();
         //6.执行sql

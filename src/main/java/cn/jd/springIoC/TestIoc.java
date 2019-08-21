@@ -2,7 +2,7 @@ package cn.jd.springIoC;
 
 public class TestIoc {
 
-    @Autowired
+    @MyAutowired
     StudyService studyService;
 
     public void testIoC(){

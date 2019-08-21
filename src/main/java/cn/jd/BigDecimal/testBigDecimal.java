@@ -1,5 +1,7 @@
 package cn.jd.BigDecimal;
 
+import org.junit.Test;
+
 import java.math.BigDecimal;
 
 public class testBigDecimal {
@@ -13,4 +15,16 @@ public class testBigDecimal {
         BigDecimal bigDecimal = rateMoney.setScale(2, BigDecimal.ROUND_HALF_UP);
         System.out.println(bigDecimal);
     }
+
+
+
+    @Test
+    public void testFail() {
+        BigDecimal one = new BigDecimal(1.997);
+        BigDecimal bigDecimal = one.setScale(2, BigDecimal.ROUND_HALF_UP);
+        System.out.println(bigDecimal);
+    }
+
+
+
 }

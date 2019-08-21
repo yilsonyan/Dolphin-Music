@@ -63,9 +63,9 @@ public class IoC {
                 Object newInstance = new Object();
 
                 //如果有service注解
-                boolean serviceAnnotationPresent = aClass.isAnnotationPresent(Service.class);
+                boolean serviceAnnotationPresent = aClass.isAnnotationPresent(MyService.class);
                 if (serviceAnnotationPresent) {
-                    Service service = aClass.getAnnotation(Service.class);
+                    MyService service = aClass.getAnnotation(MyService.class);
                     beanId = service.value();
                     if (beanId == null || "".equals(beanId)) {
                         String simpleName = aClass.getSimpleName();

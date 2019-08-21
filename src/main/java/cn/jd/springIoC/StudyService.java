@@ -1,6 +1,6 @@
 package cn.jd.springIoC;
 
-@Service
+@MyService
 public class StudyService {
 
     public void study(){

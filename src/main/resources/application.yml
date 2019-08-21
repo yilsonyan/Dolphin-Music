@@ -28,3 +28,10 @@ spring:
 
       host3: 172.20.1.232
       port3: 26379
+  # 只需配置 datasource 就可在程序中注入 JdbcTemplate
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    #type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:8066/TESTDB?characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
+    username: test
+    password: test

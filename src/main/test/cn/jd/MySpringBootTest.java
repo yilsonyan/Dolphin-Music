@@ -9,9 +9,10 @@ import org.junit.Test;
 public class MySpringBootTest {
 
 
-    @Test
-    public void test1(){
+	@Test
+	public void test() throws Exception {
 
-    }
+	}
+
 
 }

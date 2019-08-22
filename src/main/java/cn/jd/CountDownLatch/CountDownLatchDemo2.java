@@ -11,7 +11,7 @@ public class CountDownLatchDemo2 {
 
 
     /**
-     * 测试3000个线程同时开始处理
+     * 测试缓存击穿，3000个线程同时开始处理
      *
      * @param args
      * @throws InterruptedException

@@ -4,11 +4,11 @@ import org.junit.Test;
 
 import java.util.Objects;
 
-public class Integer常量池 {
+public class Integer常量池_byte {
 
 
     @Test
-    public void main() {
+    public void Interger() {
         Person p1 = new Person();
         p1.setName("段智兴");
         p1.setAge(40);
@@ -37,6 +37,13 @@ public class Integer常量池 {
         System.out.println(c == d);
     }
 
+
+
+    @Test
+    public void byte130() {
+        byte i = (byte) 130;
+        System.out.println(i);
+    }
 
 
 }

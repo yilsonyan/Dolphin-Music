@@ -34,12 +34,18 @@ public class JdbcTemplateAndDivideDBTest {
 
     /**
      * 测试 jdbcTemplate操作数据库分片
-     * 测试结果发现：分片的多个数据库中都创建了此表
+     * 测试结果发现：分片的多个数据库中都创建了此表；插入数据根据 id 的大小区间插入到了不同的数据库
      */
     @Test
     public void testDivideDB() throws Exception{
-        String sql = "CREATE TABLE `tb_item` (`id` bigint(20) , `price` bigint(20), PRIMARY KEY (`id`))";
-        jdbcTemplate.execute(sql);
+        String drop = "DROP TABLE IF EXISTS `tb_item`;";
+        String create = "CREATE TABLE `tb_item` (`id` bigint(20) , `price` bigint(20), PRIMARY KEY (`id`))";
+        String insert1 = "INSERT INTO `tb_item` (id,price)VALUES (1,998)";
+        String insert2 = "INSERT INTO `tb_item` (id,price)VALUES (10000000,998)";
+        jdbcTemplate.execute(drop);
+        jdbcTemplate.execute(create);
+        jdbcTemplate.execute(insert1);
+        jdbcTemplate.execute(insert2);
     }
 
 }

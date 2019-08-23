@@ -51,11 +51,18 @@ public class RuntimeAndSystemTest {
 
 	@Test
 	public void testOS() throws Exception {
+		Properties properties = System.getProperties();
+
 		String property = System.getProperty("os.name");
 		boolean windows = property.toLowerCase().contains("windows");
 		if (windows){
+			String cmd = "notepad.exe";
+			Process process = Runtime.getRuntime().exec(cmd);
 
+			//Dll instance = (Dll) Native.loadLibrary("Dll1", Dll.class);
 		}
+
+
 	}
 
 

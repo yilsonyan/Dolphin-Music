@@ -28,6 +28,18 @@
             <scope>test</scope>
         </dependency>
 
+        <!--JNA-3.5.1 Java Native Access-->
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna</artifactId>
+            <version>5.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna-platform</artifactId>
+            <version>5.4.0</version>
+        </dependency>
+
         <!-- 开启web-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

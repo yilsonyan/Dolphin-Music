@@ -15,6 +15,7 @@ import java.util.Properties;
 public class RuntimeAndSystemTest {
 
 
+
 	@Test
 	public void testIfconfig() throws Exception {
 
@@ -37,6 +38,7 @@ public class RuntimeAndSystemTest {
 	}
 
 
+
 	@Test
 	public void testOpenFile() throws Exception {
 		Properties properties = System.getProperties();
@@ -47,6 +49,8 @@ public class RuntimeAndSystemTest {
 		String s = "open "+ dir.toString();
 		Process p = Runtime.getRuntime().exec(s);
 	}
+
+
 
 	@Test
 	public void testOSCommand() throws Exception {

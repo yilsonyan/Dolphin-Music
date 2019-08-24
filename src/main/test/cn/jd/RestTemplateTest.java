@@ -24,6 +24,8 @@ public class RestTemplateTest {
         ResponseEntity<Map> forEntity = restTemplate.getForEntity(url, Map.class);
         Map body = forEntity.getBody();
         System.out.println(body);
+
+
     }
 
 

@@ -17,18 +17,17 @@ public class RuntimeAndSystemTest {
 
 	@Test
 	public void testIfconfig() throws Exception {
-		Runtime runtime = Runtime.getRuntime();
 
-		//String commands = "ifconfig";
-		String commands = "os info";
-		Process proc = runtime.exec(commands);
+		String commands = "ifconfig";
+		Process proc = Runtime.getRuntime().exec(commands);
 
+		//获取流
 		InputStream in = proc.getInputStream();
 		InputStreamReader isr = new InputStreamReader(in);
 		BufferedReader br = new BufferedReader(isr);
 
+		//输出命令结果
 		String line = null;
-
 		while ((line = br.readLine()) != null){
 			System.out.println(line);
 		}
@@ -50,16 +49,26 @@ public class RuntimeAndSystemTest {
 	}
 
 	@Test
-	public void testOS() throws Exception {
+	public void testOSCommand() throws Exception {
 		Properties properties = System.getProperties();
 
 		String property = System.getProperty("os.name");
-		boolean windows = property.toLowerCase().contains("windows");
-		if (windows){
+		String lowerCase = property.toLowerCase();
+
+		if (lowerCase.contains("windows")){
 			String cmd = "notepad.exe";
 			Process process = Runtime.getRuntime().exec(cmd);
-
 			//Dll instance = (Dll) Native.loadLibrary("Dll1", Dll.class);
+
+
+		}else if (lowerCase.contains("mac")){
+			String cmd = "open /Applications/iTunes.app";
+			Process process = Runtime.getRuntime().exec(cmd);
+
+
+		}else if (lowerCase.contains("linux")){
+			String cmd = "open /Applications/iTunes.app";
+			Process process = Runtime.getRuntime().exec(cmd);
 		}
 
 
@@ -67,21 +76,5 @@ public class RuntimeAndSystemTest {
 
 
 
-	/*final static Logger log = Logger.getGlobal();
-
-	static {
-		try {
-			//此处即为本地方法所在链接库名
-			System.load("/libsysutil.so");
-
-			log.info("加载libsysutil.so：成功!");
-		} catch (UnsatisfiedLinkError e) {
-
-			log.severe("无法加载库：" + e.toString());
-		}
-	}
-
-
-	public static native String ExcuteCmd(String strCmd);*/
 
 }

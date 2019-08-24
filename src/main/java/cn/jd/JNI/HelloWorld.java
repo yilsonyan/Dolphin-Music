@@ -1,5 +1,10 @@
 package cn.jd.JNI;
 
+
+/**
+ * JNI java中调用c语言方法（Mac下）
+ * 本文链接：https://blog.csdn.net/kxwinxp/article/details/80057263
+ */
 public class HelloWorld {
     static {
         //导入 HelloWorld c语言库（即导入libHelloWorldNative.jnilib文件）

@@ -132,7 +132,7 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
-            <!--解决打包时META-INF/的MANIFEST.MF文件，未定义Main-Class入口类-->
+            <!--解决打包时META-INF/的MANIFEST.MF文件，未定义Main-Class入口类、类路径-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

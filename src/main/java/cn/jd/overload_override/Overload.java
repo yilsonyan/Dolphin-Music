@@ -18,7 +18,8 @@ import org.junit.Test;
 # 　　　　  ┃┫┫　┃┫┫
 # 　　　　 ┗┻┛   ┗┻┛
 */
-public class 重载 {
+//重载
+public class Overload {
 
 
     @Test
@@ -38,6 +39,13 @@ public class 重载 {
     public void show(String msg){
         System.out.println(msg);
     }
+
+    /**
+     * 重载与返回值类型、形参名无关，编译报错
+     */
+    //public String show(String sth){
+
+    //}
 
     public void show(String name,String msg){
         System.out.println(name+msg);

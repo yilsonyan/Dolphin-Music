@@ -67,7 +67,7 @@ public class CascadeTest {
 
 	    	//市级单位
 	    	if (area.getTopID() == id){
-	    		//【重点】递归获取县级列表
+	    		//TODO 【重点】递归获取县级列表
 			    List<Area> downList = getDownList(areas, area.getID());
 			    area.setDownList(downList);
 

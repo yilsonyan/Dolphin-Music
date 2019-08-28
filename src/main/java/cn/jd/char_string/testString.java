@@ -26,5 +26,12 @@ public class testString {
         StringBuilder sb = new StringBuilder("1=1");
         sb.append(" and mallid =" + 1);
         System.out.println(sb);
+
+
+
+        String a="";
+        String b="";
+        System.out.println(a == b);  //true
+        System.out.println(a.equals(b));  //true
     }
 }

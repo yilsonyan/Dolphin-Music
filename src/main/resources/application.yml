@@ -1,3 +1,7 @@
+# 服务端口
+server:
+  port: 8080
+
 spring:
   redis:
 #    host: 192.168.1.73
@@ -7,7 +11,7 @@ spring:
 #    timeout: 3s
 #    database: 0
 
-    #哨兵
+    # 哨兵
     sentinel:
       host1: 172.20.1.230
       port1: 26379
@@ -18,7 +22,7 @@ spring:
       host3: 172.20.1.232
       port3: 26379
 
-    #集群
+    # 集群
     cluster:
       host1: 172.20.1.230
       port1: 26379

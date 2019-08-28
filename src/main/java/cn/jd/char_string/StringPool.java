@@ -1,5 +1,7 @@
 package cn.jd.char_string;
 
+import org.junit.Test;
+
 /*
 # 　　　 ┏┓　      ┏┓
 # 　　┏┛┻━━━┛┻┓
@@ -37,6 +39,16 @@ public class StringPool {
         char c = '中';
         System.out.println(c);
 
-
     }
+
+
+    @Test
+    public void test1(){
+        String s1 = "hello";
+        String s2 = "HELLO".toLowerCase();
+        System.out.println(s1 == s2);
+        System.out.println(s1.equals(s2));
+    }
+
+
 }

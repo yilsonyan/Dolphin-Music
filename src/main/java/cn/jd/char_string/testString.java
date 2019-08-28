@@ -1,5 +1,7 @@
 package cn.jd.char_string;
 
+import org.junit.Test;
+
 /**
  * // 　　　 ┏━┓     ┏━┓
  * //      ┏┛ ┻━━━━━┛ ┻┓
@@ -34,4 +36,20 @@ public class testString {
         System.out.println(a == b);  //true
         System.out.println(a.equals(b));  //true
     }
+
+	/**
+	 * 拼接字符串
+	 * 拼接字符串使用静态方法join()，它用指定的字符串连接字符串数组：
+	 */
+	@Test
+	public void test1(){
+		String[] arr = {"A", "B", "C"};
+		String s = String.join("***", arr); // "A***B***C"
+		System.out.println(s);
+	}
+
+
+
+
+
 }

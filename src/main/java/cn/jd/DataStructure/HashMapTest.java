@@ -3,6 +3,7 @@ package cn.jd.DataStructure;
 import org.junit.Test;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 /**
  * // 　　　 ┏━┓     ┏━┓
@@ -44,8 +45,22 @@ public class HashMapTest {
 
 
 
+    String name;
+    Integer age;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HashMapTest that = (HashMapTest) o;
+        return Objects.equals(name, that.name) &&
+                Objects.equals(age, that.age);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age);
+    }
 
 
 

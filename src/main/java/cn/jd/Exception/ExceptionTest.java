@@ -69,7 +69,7 @@ public class ExceptionTest {
      * 要执行assert语句，必须给Java虚拟机传递-enableassertions（可简写为-ea）参数启用断言。
      */
     @Test
-    public void ea() throws Exception {
+    public void assertTest() throws Exception {
         int x = -1;
         assert x > 0 : "x must gt 0";
         System.out.println(x);

@@ -33,10 +33,9 @@ public class ExceptionLog {
      * SLF4J类似于Commons Logging，也是一个日志接口，而Logback类似于Log4j，是一个日志的实现。
      * 使用SLF4J接口和Logback实现：
      */
+    private static Logger logger = LoggerFactory.getLogger(ExceptionLog.class);
     @Test
-    public void ea() throws Exception {
-        Logger logger = LoggerFactory.getLogger(getClass());
-
-        logger.error("nihao");
+    public void logSlF4J() throws Exception {
+        logger.error("practice");
     }
 }

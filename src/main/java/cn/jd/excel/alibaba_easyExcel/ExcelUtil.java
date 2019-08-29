@@ -379,7 +379,7 @@ public class ExcelUtil {
                         }
                     }
                     //bigDecimal
-                    else if(className.equalsIgnoreCase("BigDecimal")){
+                    else if(className.equalsIgnoreCase("math")){
                         try{
                             BigDecimal val=new BigDecimal(cellVal);
                             System.out.println(cellVal+"te");

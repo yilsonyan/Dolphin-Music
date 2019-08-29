@@ -3,6 +3,7 @@ package cn.jd.char_string;
 import org.junit.Test;
 
 import java.nio.charset.StandardCharsets;
+import java.util.StringJoiner;
 
 /**
  * // 　　　 ┏━┓     ┏━┓
@@ -37,9 +38,8 @@ public class testString {
     }
 
 
-
 	/**
-	 * 拼接字符串
+	 * Join拼接字符串
 	 * 拼接字符串使用静态方法join()，它用指定的字符串连接字符串数组：
 	 */
 	@Test
@@ -47,6 +47,29 @@ public class testString {
 		String[] arr = {"A", "B", "C"};
 		String s = String.join("***", arr); // "A***B***C"
 		System.out.println(s);
+	}
+
+
+
+	/**
+	 * 测试StringJoiner
+	 */
+	@Test
+	public void test4(){
+		String[] names = {"Bob", "Alice", "Grace"};
+		StringJoiner sj = new StringJoiner(",");
+		for (String name : names) {
+			sj.add(name);
+		}
+		System.out.println(sj.toString());
+
+
+		String[] names2 = {"Bob", "Alice", "Grace"};
+		StringJoiner sj2 = new StringJoiner(",", "Hello!", "!");//TODO 指定前缀后缀
+		for (String name : names2) {
+			sj2.add(name);
+		}
+		System.out.println(sj2.toString());
 	}
 
 
@@ -69,6 +92,7 @@ public class testString {
 		String str2;
 		System.out.println(); //没有new时，创建的字符串为null
 	}
+
 
 
 

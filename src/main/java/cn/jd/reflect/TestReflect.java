@@ -2,6 +2,9 @@ package cn.jd.reflect;
 
 import org.junit.Test;
 
+import java.beans.BeanInfo;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -66,6 +69,20 @@ public class TestReflect {
         System.out.println(invoke);
     }
 
+
+    //JAVA内省
+    @Test
+    public void testIntrospector() throws Exception {
+        BeanInfo info = Introspector.getBeanInfo(Person.class);
+        for (PropertyDescriptor pd : info.getPropertyDescriptors()) {
+            String name = pd.getName();
+            Method readMethod = pd.getReadMethod();
+            Method writeMethod = pd.getWriteMethod();
+
+            Object invoke = readMethod.invoke(new Person());
+            System.out.println(invoke);
+        }
+    }
 
 
 

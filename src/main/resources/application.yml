@@ -2,7 +2,6 @@
 server:
   port: 8080
 
-spring:
   redis:
 #    host: 192.168.1.73
 #    password: admin@123
@@ -38,6 +37,10 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     #type: com.alibaba.druid.pool.DruidDataSource
     #mycat分片数据库端口默认为8066
-    url: jdbc:mysql://127.0.0.1:8066/TESTDB?characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
-    username: test
-    password: test
+    #url: jdbc:mysql://127.0.0.1:8066/TESTDB?characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
+    #username: test
+    #password: test
+
+    url: jdbc:mysql://10.211.55.4:3306/TESTDB?characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
+    username: root
+    password: 123456

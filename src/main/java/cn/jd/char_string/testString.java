@@ -2,6 +2,8 @@ package cn.jd.char_string;
 
 import org.junit.Test;
 
+import java.nio.charset.StandardCharsets;
+
 /**
  * // 　　　 ┏━┓     ┏━┓
  * //      ┏┛ ┻━━━━━┛ ┻┓
@@ -24,18 +26,17 @@ import org.junit.Test;
 public class testString {
 
     public static void main(String[] args) {
-
         StringBuilder sb = new StringBuilder("1=1");
         sb.append(" and mallid =" + 1);
         System.out.println(sb);
-
-
 
         String a="";
         String b="";
         System.out.println(a == b);  //true
         System.out.println(a.equals(b));  //true
     }
+
+
 
 	/**
 	 * 拼接字符串
@@ -49,6 +50,25 @@ public class testString {
 	}
 
 
+
+	/**
+	 * 转换编码
+	 */
+	@Test
+	public void test3(){
+		String tang = "tang";
+		byte[] utf8s = tang.getBytes(StandardCharsets.UTF_8);
+		String string = new String(utf8s);
+		System.out.println(string);
+
+
+
+		String str = new String();
+		System.out.println(str);// String的默认值为""
+
+		String str2;
+		System.out.println(); //没有new时，创建的字符串为null
+	}
 
 
 

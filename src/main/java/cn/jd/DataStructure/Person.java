@@ -1,17 +1,20 @@
 package cn.jd.DataStructure;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 //@Data
 @Getter
 @Setter
 @EqualsAndHashCode
-public class Person {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Person implements Cloneable{
 
     private String name;
-
     private int age;
 
+    @Override
+    public Person clone() throws CloneNotSupportedException {
+        return (Person)super.clone();
+    }
 }

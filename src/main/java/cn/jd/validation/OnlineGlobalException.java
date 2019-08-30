@@ -13,7 +13,6 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +30,8 @@ import java.util.stream.Collectors;
  * BindException （参数绑定异常）
  * 原文链接：https://blog.csdn.net/weixin_43549578/article/details/90242559
  */
-@RestControllerAdvice(annotations = RestController.class)
+//@RestControllerAdvice(annotations = RestController.class)
+@RestControllerAdvice(basePackages = "cn.jd")
 @Component
 public class OnlineGlobalException {
 
@@ -79,6 +79,8 @@ public class OnlineGlobalException {
         }
         return restResultWrapper;
     }
+
+
 
     /**
      * 绑定异常
@@ -155,6 +157,8 @@ public class OnlineGlobalException {
         restResultWrapper.setMessage(getExceptionDetail(pe));
         return restResultWrapper;
     }
+
+
 
     /**
      * 异常详情

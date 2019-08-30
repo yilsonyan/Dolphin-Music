@@ -50,6 +50,7 @@ public class FooController {
      */
     @RequestMapping("/foo") // http://localhost:8080/foo?name=xujingfeng&email=000&age=17
     public String foo(@Valid Foo foo, BindingResult bindingResult) {
+        //不在此处验证了，有统一异常处理
         /*if (bindingResult.hasErrors()) {
             StringBuilder sb = new StringBuilder();
             for (FieldError fieldError : bindingResult.getFieldErrors()) {

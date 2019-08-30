@@ -48,6 +48,9 @@ public class HashMapTest {
     String name;
     Integer age;
 
+    /**
+     * 用于比较key是否相同
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -57,6 +60,9 @@ public class HashMapTest {
                 Objects.equals(age, that.age);
     }
 
+    /**
+     * 用于计算索引
+     */
     @Override
     public int hashCode() {
         return Objects.hash(name, age);

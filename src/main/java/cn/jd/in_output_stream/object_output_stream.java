@@ -52,7 +52,7 @@ public class object_output_stream {
 
     @Test
     public void read3() throws IOException, ClassNotFoundException {
-        Scanner sc = new Scanner(new FileInputStream("/Users/yilson/Documents/travel.cn.jd.sql"));
+        Scanner sc = new Scanner(new FileInputStream("/Users/yilson/Documents/travel.cn.jd.db"));
         while (sc.hasNext()){
             String s = sc.nextLine();
             System.out.println(s);

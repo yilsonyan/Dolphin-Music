@@ -17,8 +17,8 @@ public class HandleTextTest {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(new File("C:\\Users\\Administrator\\Desktop\\alpos1.cn.jd.sql")));
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(new File("C:\\Users\\Administrator\\Desktop\\alpos2.cn.jd.sql")));
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(new File("C:\\Users\\Administrator\\Desktop\\alpos1.cn.jd.db")));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(new File("C:\\Users\\Administrator\\Desktop\\alpos2.cn.jd.db")));
 
         List<String> newList = new ArrayList<>();
         String line;

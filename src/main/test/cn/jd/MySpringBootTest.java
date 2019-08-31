@@ -24,7 +24,7 @@ public class MySpringBootTest {
 
 
 
-	// TODO finally must appear whith catch ？ NO
+	// TODO finally must appear with catch ？ NO
 	@Test
 	public void test2() throws Exception {
 
@@ -53,21 +53,21 @@ public class MySpringBootTest {
 	// print the Current JVM Heap Size, Maximum JVM Heap Size, and Free JVM Heap Size?
 	@Test
 	public void test4() throws Exception {
-		/*System.out.println("Current JVM Heap Size:"+Runtime.getMax());
-		System.out.println("Maximum JVM Heap Size:"+Runtime.getUsed());
-		System.out.println("Free JVM Heap Size:"+Runtime.getInit());
-		System.out.println("Current JVM Heap Size:"+Runtime.getRuntime().getCurrentSize());
-		System.out.println("Maximum JVM Heap Size:"+Runtime.getRuntime().getMaxSize());
-		System.out.println("Free JVM Heap Size:"+Runtime.getRuntime().getFreeSize());
-		System.out.println("Current JVM Heap Size:" + Runtime.getRuntime().getTotalHeapMemory(););
-		System.out.println("Maximum JVM Heap Size:" + Runtime.getRuntime().getMaxHeapMemory());
-		System.out.println("Free JVM Heap Size:" + Runtime.getRuntime().getFreeHeapMemory());
+//		System.out.println("Current JVM Heap Size:"+Runtime.getMax());
+//		System.out.println("Maximum JVM Heap Size:"+Runtime.getUsed());
+//		System.out.println("Free JVM Heap Size:"+Runtime.getInit());
+//		System.out.println("Current JVM Heap Size:"+Runtime.getRuntime().getCurrentSize());
+//		System.out.println("Maximum JVM Heap Size:"+Runtime.getRuntime().getMaxSize());
+//		System.out.println("Free JVM Heap Size:"+Runtime.getRuntime().getFreeSize());
+//		System.out.println("Current JVM Heap Size:" + Runtime.getRuntime().getTotalHeapMemory(););
+//		System.out.println("Maximum JVM Heap Size:" + Runtime.getRuntime().getMaxHeapMemory());
+//		System.out.println("Free JVM Heap Size:" + Runtime.getRuntime().getFreeHeapMemory());
 		System.out.println("Current JVM Heap Size:" + Runtime.getRuntime().totalMemory());
 		System.out.println("Maximum JVM Heap Size:" + Runtime.getRuntime().maxMemory());
 		System.out.println("Free JVM Heap Size:" + Runtime.getRuntime().freeMemory());
-		System.out.println("Current JVM Heap Size:"+Runtime.totalMemory());
-		System.out.println("Maximum JVM Heap Size:"+Runtime.maxMemory());
-		System.out.println("Free JVM Heap Size:"+Runtime.freeMemory());*/
+//		System.out.println("Current JVM Heap Size:"+Runtime.totalMemory());
+//		System.out.println("Maximum JVM Heap Size:"+Runtime.maxMemory());
+//		System.out.println("Free JVM Heap Size:"+Runtime.freeMemory());
 	}
 
 
@@ -86,17 +86,14 @@ class Indices {
 			indices.add(i);
 		}
 	}
-
-
 }
-
 
 class TestIndices {
 	public static void main(String[] args){
 		Stream.of(new Indices("Mercury"),new Indices("Venus"),new Indices("Earth"))
-				.flatMap( i -> i.indices.stream())
-				.mapToInt(j -> j)
-				.max()
-				.ifPresent(s -> System.out.println(s));
+			.flatMap( i -> i.indices.stream())
+			.mapToInt(j -> j)
+			.max()
+			.ifPresent(System.out::println);
 	}
 }

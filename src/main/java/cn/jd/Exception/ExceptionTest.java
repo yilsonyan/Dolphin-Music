@@ -38,6 +38,32 @@ public class ExceptionTest {
         }
     }
 
+    // TODO finally must appear with catch ？ NO     try、catch、finally出现任意两种或以上都可以
+    @Test
+    public void test2() throws Exception {
+        try {
+            int i = 5/0;
+        } finally {
+            System.out.println(111);
+        }
+    }
+
+
+
+    // TODO 发生错误try中得语句永不再执行
+    @Test
+    public void test22() throws Exception {
+        try {
+            int i = 5/0;
+            System.out.println("after exception...");
+        } catch (Exception e){
+            System.out.println("catch...");
+        }finally {
+            System.out.println("finalize");
+        }
+    }
+
+
     /**
      * 异常屏蔽
      * finally语句时抛出异常，原来在catch中准备抛出的异常就“消失”了，因为只能抛出一个异常。

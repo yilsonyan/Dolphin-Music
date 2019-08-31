@@ -17,20 +17,22 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.function.Consumer;
 
+
+/**
+ * 泛型的使用
+ */
 class MyCollection<T> {
 	private Set<T> set;
+
 	public Set<T> getCollection() {
 		return this.set;
 	}
-
-
-
 
 	/*public void TestCollection1(MyCollection<?> collection) {
 		Set<> set = collection.getCollection();
 	}
 
-	public void TestCollection1(MyCollection<?> collection) {
+	public void TestCollection2(MyCollection<?> collection) {
 		Set<?> set = collection.getCollection();
 	}
 
@@ -45,23 +47,25 @@ class MyCollection<T> {
 	public void TestCollection5(MyCollection<?> collection) {
 		Set<T> set = collection.getCollection();
 	}*/
-
-
-
 }
 
 
-class A{
+class testThis{
 	static int total = 10;
 	public void call() {
 		int total = 5;
-		System.out.println(this.total);//?
+		System.out.println(this.total);// TODO this表示从成员属性找，绝对不是此方法中，尽管是静态的也只能是它
 	}
+
 	public static void main (String args []) {
-		A a1 = new A();
+		testThis a1 = new testThis();
 		a1.call();
+	}
+}
 
 
+class test类型和地址值{
+	public static void main (String args []) {
 		boolean b = false;
 		System.out.println((b = true) ? "true" : "false");
 
@@ -79,8 +83,14 @@ class A{
 	}
 }
 
-class IkmTest {
 
+
+
+class Test静态内部类 {
+	/**
+	 * 静态内部类：不用创建外部类的对象就可以直接创建static class的对象。
+	 * static class可以引用外部类的static变量与static的方法，非静态不能引用。
+	 */
 	static class Helper {
 		private int data = 5;
 		public void bump(int inc) {
@@ -94,9 +104,14 @@ class IkmTest {
 		int data = 2;
 		h.bump(data);
 		System.out.println(h.data + " " + data);
+	}
+}
 
 
 
+
+class TestBreak {
+	public static void main(String []args) {
 		int i = 10, j = 12;
 		for (;;) {
 			if (i++ < j--)
@@ -109,7 +124,6 @@ class IkmTest {
 }
 
 
-
 class CalendarTest {
 	public static void main(String args[]) {
 		Date aDate = null;
@@ -117,27 +131,32 @@ class CalendarTest {
 			aDate = new SimpleDateFormat("yyyy-mm-dd").parse("2012-01-15");
 			Calendar aCalendar = Calendar.getInstance();
 			aCalendar.setTime(aDate);
-			System.out.print(aCalendar.get(aCalendar.DAY_OF_MONTH)+"," +  aCalendar.get(aCalendar.MONTH));
+			System.out.print(aCalendar.get(aCalendar.DAY_OF_MONTH) + "," + aCalendar.get(aCalendar.MONTH));
 
+
+			//TODO Date的月份从0-11、LocalDate按当地算（中国是1-12）
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 			LocalDate bDate = LocalDate.parse("2012-01-15", formatter);
-			System.out.print(" " + bDate.getDayOfMonth()+"," +  bDate.getMonthValue());
-
-		} catch (ParseException ex) {System.out.println("ParseException " + ex);
-		} catch (DateTimeParseException ex) {System.out.println(" DateTimeParseException " + ex);
+			System.out.print(" " + bDate.getDayOfMonth() + "," + bDate.getMonthValue());
+		} catch (ParseException ex) {
+			System.out.println("ParseException " + ex);
+		} catch (DateTimeParseException ex) {
+			System.out.println("DateTimeParseException " + ex);
 		}
-
-		Integer iiii = new Integer("iiii");
-
 	}
 }
 
 
-class IkmTest2 {
-	public IkmTest2() {
+
+
+
+class Heap {
+	private int data;
+
+	public Heap() {
 		this(10);
 	}
-	public IkmTest2(int data) {
+	public Heap(int data) {
 		this.data = data;
 	}
 	public void display() {
@@ -151,25 +170,28 @@ class IkmTest2 {
 		System.out.println("data = " + data);
 	}
 
-	private int data;
 
 	public static void main (String [] args) {
 		int data = 0;
-		IkmTest2 t = new IkmTest2();
-		t.display();
-		System.out.println("data = " + data);
+		Heap h = new Heap();
+		h.display();
+		System.out.println("data = " + data);//堆栈变量位置不一样
 	}
 }
 
 
 
+
+
+
+//测试修饰符和方法体
 interface MyInterface2 {
 	void method1();
 	static void method2() {}
 }
 
 abstract class Parent implements MyInterface2 {
-	//abstract void method1();//Parent is attempting to reduce the visibility of method1.
+	//abstract void method1();  //Parent is attempting to reduce the visibility of method1.
 }
 
 abstract class Child extends Parent implements MyInterface2 {
@@ -178,6 +200,7 @@ abstract class Child extends Parent implements MyInterface2 {
 	}
 	//public static void method2();
 }
+
 
 
 
@@ -206,12 +229,14 @@ class H2 {
 	public static void main(String[] args) {
 		System.out.println(mapme(new Y<>("HELLO"),e -> e.toString()));
 		System.out.println(mapme(new Y<>(3),e -> {return e.toString().equals("3")? "hello":"HELLO";}));
-		System.out.println(mapme(new X("HELLO"),
-				e -> {if (e.s.charAt(0)=='H') return e.toString();return e.toLowerCase();}));
+		System.out.println(mapme(new X("HELLO"), e -> {if (e.s.charAt(0)=='H') return e.toString();return e.toLowerCase();}));
 		System.out.println(mapme(new Y<>(3),e -> e.toString()));
 		System.out.println(mapme(new Y<>(new X("HELLO")),  e -> { return e.toString();}));
 	}
 }
+
+
+
 
 
 

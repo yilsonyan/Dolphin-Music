@@ -8,6 +8,17 @@ import java.util.Properties;
 public class file_in_output_stream {
 
 
+    // Which of the following correctly define a Java object that can read lines of text from file input.dat?
+    @Test
+    public void test3() throws Exception {
+		/*BufferedReader inputStream1 = new BufferedReader("input.dat");
+		BufferedReader inputStream2 = new BufferedReader(new FileReader("input.dat"));inputStream2.readLine();
+		BufferedReader inputStream3 = new BufferedReader(new File("input.dat"));
+		FileReader inputStream4 = new FileReader("input.dat");
+		BufferedReader inputStream5 = new BufferedReader(new InputStreamReader("input.dat"));*/
+    }
+
+
 
     @Test
     public void read() throws IOException, ClassNotFoundException {

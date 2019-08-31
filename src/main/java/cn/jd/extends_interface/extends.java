@@ -1,4 +1,4 @@
-package cn.jd;
+package cn.jd.extends_interface;
 
 
 class Parent {
@@ -6,12 +6,10 @@ class Parent {
 	public Parent() { count++; }
 	static int getCount() { return count; }
 }
-
-public class Child extends Parent {
-
-	public Child() { count++; }
-
-
+class Child extends Parent {
+	public Child() {
+		count++;
+	}
 	/**
 	 * The file will compile and run and the output will be:
 	 * Count = 0
@@ -19,10 +17,8 @@ public class Child extends Parent {
 	 */
 	public static void main(String [] args) {
 		System.out.println("Count = " + getCount());
-		Child obj = new Child();
+		//开始创建对象
+		new Child();
 		System.out.println("Count = " + getCount());
 	}
-
-
-
 }

@@ -37,20 +37,23 @@ public class RestTemplateTest {
 
 	        }
 
+	        //get some response,then play sound
+	        if (forEntity != null){
+		        Runtime.getRuntime().exec("open /Users/beyond/Downloads/YouNeedToCalmDown.mp3");
+		        return;
+	        }
+
 	        //until the deadline witch is specified
 	        Date now = new Date();
 	        if (now.compareTo(endTime) < 0){
-		        break;
+		        return;
 	        }
 
 	        Thread.sleep(30 * 1000);
 
         }while (forEntity == null );
 
-        //get some response,then play sound
-	    if (forEntity != null){
-		    Runtime.getRuntime().exec("open /Users/beyond/Downloads/YouNeedToCalmDown.mp3");
-	    }
+
     }
 
 

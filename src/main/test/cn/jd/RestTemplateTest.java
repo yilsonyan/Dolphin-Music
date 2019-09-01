@@ -31,21 +31,19 @@ public class RestTemplateTest {
 	    Date endTime = simpleDateFormat.parse(endTimeStr);
 
         do {
-
         	try {
 		        forEntity = restTemplate.getForEntity(url, Map.class);
 	        }catch (Exception e){
 
 	        }
 
-
-            Thread.sleep(30 * 1000);
-
-            //until the deadline witch is specified
+	        //until the deadline witch is specified
 	        Date now = new Date();
 	        if (now.compareTo(endTime) < 0){
-	        	break;
+		        break;
 	        }
+
+	        Thread.sleep(30 * 1000);
 
         }while (forEntity == null );
 

@@ -45,7 +45,7 @@ public class RestTemplateTest {
 
 	        //until the deadline witch is specified
 	        Date now = new Date();
-	        if (now.compareTo(endTime) < 0){
+	        if (now.after(endTime)){
 		        return;
 	        }
 

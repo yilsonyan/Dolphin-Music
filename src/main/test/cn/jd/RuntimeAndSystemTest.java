@@ -80,5 +80,12 @@ public class RuntimeAndSystemTest {
 
 
 
+	@Test
+	public void testCommand() throws Exception {
+		Runtime.getRuntime().exec("open /Users/beyond/Downloads/YouNeedToCalmDown.mp3");
+	}
+
+
+
 
 }

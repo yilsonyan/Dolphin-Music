@@ -94,6 +94,19 @@ public class testString {
 	}
 
 
+	/**
+	 * String.matches
+	 * @throws Exception
+	 */
+	@Test
+	public void test() throws Exception {
+		String str1 = "My String";
+		String str2 = new String ("My String");
+
+		System.out.println(str1.matches(str2));  //不是正则表达式，则直接equals
+		System.out.println(str1.hashCode() == str2.hashCode());;
+	}
+
 
 
 }

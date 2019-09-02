@@ -162,7 +162,12 @@
                         </goals>
                     </execution>
                 </executions>
+                <!--会自动匹配，一般不用特殊指定-->
+                <!--<configuration>
+                    <mainClass>cn.jd.Application</mainClass>
+                </configuration>-->
             </plugin>
+
             <!--打包时，跳过测试代码-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

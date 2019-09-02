@@ -1,4 +1,4 @@
-package cn.jd.sql;
+package cn.jd.db;
 
 import java.sql.*;
 import java.util.Date;

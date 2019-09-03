@@ -13,7 +13,7 @@ public class Sleep_Wait_Test {
                 try {
                     Thread.sleep(200);
                     System.out.println("thread a do a wait method");
-                    lock.wait(1000);//等待
+                    lock.wait(1000);//等待，前后是不连续的，说明wait释放了锁
                     System.out.println("thread a wait is done");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -28,9 +28,8 @@ public class Sleep_Wait_Test {
             synchronized (lock){
                 System.out.println("thread b get a lock");
                 try {
-                    Thread.sleep(200);
-                    System.out.println("thread b do a wait method");
-                    lock.wait(1000);//睡
+                    System.out.println("thread b do a sleep method");
+                    Thread.sleep(200);  //sleep前后是连续的，说明sleep没有释放锁
                     System.out.println("thread b wait is done");
                 } catch (InterruptedException e) {
                     e.printStackTrace();

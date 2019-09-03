@@ -2,8 +2,7 @@ package cn.jd.Thread.thread_return;
 
 import org.junit.Test;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.FutureTask;
+import java.util.concurrent.*;
 
 public class ThreadReturnTest {
 
@@ -74,7 +73,32 @@ public class ThreadReturnTest {
     }
 
 
+    /**
+     * 第四种：线程池中获取
+     */
+    @Test
+    public void test4() throws Exception{
+        class MyCallable implements Callable{
+            @Override
+            public String call() throws Exception {
+                return "some data.";
+            }
+        }
 
+
+        ExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(20);
+        Future<String> future = scheduledThreadPool.submit(new MyCallable());
+        System.out.println(future.get());
+        //关闭线程池
+        scheduledThreadPool.shutdown();
+
+        /*ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(20);
+        ScheduledFuture schedule = scheduledThreadPool.schedule(new MyCallable(), 0L, TimeUnit.HOURS);
+        System.out.println(schedule.get());
+        //关闭线程池
+        scheduledThreadPool.shutdown();*/
+
+    }
 
 
 

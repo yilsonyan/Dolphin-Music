@@ -29,7 +29,8 @@ public class TestFileLock {
                 // 每个线程循环多次，频繁上锁，解锁。
                 for (int n = 0; n < 100; n++) {
 
-                    File lockFile = new File("/Users/beyond/Desktop/lock.txt");
+                    //File lockFile = new File("/Users/beyond/Desktop/lock.txt");
+                    File lockFile = new File("C:\\Users\\Administrator\\Desktop\\lock.txt");
 
                     synchronized ("") {
                         //检查锁

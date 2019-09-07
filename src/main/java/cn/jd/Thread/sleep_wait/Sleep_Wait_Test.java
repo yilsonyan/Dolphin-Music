@@ -2,7 +2,7 @@ package cn.jd.Thread.sleep_wait;
 
 public class Sleep_Wait_Test {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Object lock = new Object();
 
 
@@ -21,7 +21,6 @@ public class Sleep_Wait_Test {
             }
         });
         threadA.start();
-
 
         Thread threadB = new Thread( () -> {
             System.out.println("thread b try to get lock");

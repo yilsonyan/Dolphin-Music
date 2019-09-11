@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UserLoginTest {
+
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
@@ -16,12 +17,11 @@ public class UserLoginTest {
     Object hash() throws Exception {
         //用时统计
         long start = System.currentTimeMillis();
-        redisTemplate.boundHashOps("hash_k1").put("hash_k2","hash_value");
+        redisTemplate.boundHashOps("hash_k1").put("hash_k2", "hash_value");
         Object hv1 = redisTemplate.boundHashOps("hash_k1").get("hash_k2");
         long end = System.currentTimeMillis();
         return end - start + hv1.toString();
     }
-
 
 
     //存入2000万个用户登录信息
@@ -31,7 +31,7 @@ public class UserLoginTest {
         //用时统计
         long start = System.currentTimeMillis();
         for (int i = 0; i < 20000000; i++) {
-            redisTemplate.boundHashOps("userLogin").put("username_"+i,"password_"+i);
+            redisTemplate.boundHashOps("userLogin").put("username_" + i, "password_" + i);
         }
         long end = System.currentTimeMillis();
         return end - start;
@@ -41,13 +41,12 @@ public class UserLoginTest {
     //   http://localhost:8080/login
     @GetMapping("login")
     Object userLogin() throws Exception {
-
         //用时统计
         long start = System.currentTimeMillis();
         Object userLogin = redisTemplate.boundHashOps("userLogin").get("username_5000000");
 
         long end = System.currentTimeMillis();
-        return end - start +"("+userLogin+")";//2毫秒
+        return end - start + "(" + userLogin + ")";//2毫秒
     }
 
 

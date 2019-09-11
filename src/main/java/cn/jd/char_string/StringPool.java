@@ -43,12 +43,30 @@ public class StringPool {
 
 
     @Test
-    public void test1(){
+    public void test1() {
         String s1 = "hello";
         String s2 = "HELLO".toLowerCase();
         System.out.println(s1 == s2);
         System.out.println(s1.equals(s2));
     }
+
+    /**
+     * 手动放入常量池
+     */
+    @Test
+    public void test3() {
+        String s1 = "hello";
+        String s2 = new String("hello");
+
+        System.out.println(s1 == s2);
+        System.out.println(s1.equals(s2));
+
+        s2 = s2.intern();//s2放入常量池，放之前查找常量池，如果已存在，直接引用
+        System.out.println(s1 == s2);
+        System.out.println(s1.equals(s2));
+    }
+
+
 
 
 }

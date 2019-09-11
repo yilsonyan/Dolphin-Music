@@ -3,7 +3,7 @@ package cn.jd.jvm;
 public class MainMethodTest {
 
 
-	//然后，执行：java MainMethodTest -version
+	//然后到cn.jd.jvm的上层目录，执行：java cn.jd.jvm.MainMethodTest -version
 	public static void main(String[] args) {
 		for (String arg : args) {
 			if ("-version".equals(arg)) {

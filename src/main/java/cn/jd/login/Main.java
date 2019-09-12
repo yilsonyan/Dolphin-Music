@@ -26,31 +26,38 @@ import static javafx.geometry.HPos.RIGHT;
 
 public class Main extends Application {
 
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     /**
      * 初始化构建主界面
      */
     //@Override
-    public void start0(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception{
         //URL url = getClass().getResource("sample.fxml");
         URL url = getClass().getClassLoader().getResource("sample.fxml");
         Parent root = FXMLLoader.load(url);
         primaryStage.setTitle("单向走丝线切割数据库");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root, 400, 500));
+        primaryStage.setFullScreen(true);
         primaryStage.show();
     }
+
+
+
+
 
     /**
      * 纯代码方式构建主界面
      */
     //@Override
-    public void start(Stage primaryStage) {
-
+    public void start1(Stage primaryStage) {
         /**
          * 舞台
          */
         primaryStage.setFullScreen(true);
         primaryStage.setTitle("单向走丝线切割数据库");
-
 
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
@@ -95,17 +102,33 @@ public class Main extends Application {
             public void handle(ActionEvent e) {
                 actiontarget.setFill(Color.FIREBRICK);
 
-                actiontarget.setText("Sign in button pressed");
+                //登录验证
+                CharSequence userName = userNameText.getCharacters();
+                CharSequence password = passwordBox.getCharacters();
+
+                if (userName.length() == 0){
+                    actiontarget.setText("用户名不能为空!");
+                }
+                if (password.length() == 0){
+                    actiontarget.setText("密码不能为空!");
+                }
+                if ("111".equals(userName) && "111".equals(password)){
+                    System.exit(0);
+                }else {
+                    actiontarget.setText("登录验证失败!");
+                }
+
+                //actiontarget.setText("Sign in button pressed");
             }
         });
 
         Scene scene = new Scene(grid, 300, 275);
+
+        //舞台大小
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+
 }

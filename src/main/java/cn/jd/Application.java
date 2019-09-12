@@ -1,5 +1,6 @@
 package cn.jd;
 
+import cn.jd.login.Main;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -23,6 +24,8 @@ public class Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class);
 		logger.info("启动成功!");
+
+		Main.main(new String[]{"123"});
 	}
 
 

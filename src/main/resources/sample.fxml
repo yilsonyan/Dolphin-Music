@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="338.0" prefWidth="633.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <children>
+        <Pane layoutX="14.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="216.0" prefWidth="480.0">
+            <children>
+                <Button fx:id="btn1" layoutX="30.0" layoutY="17.0" mnemonicParsing="false" onAction="#onButtonClick" prefHeight="72.0" prefWidth="71.0" rotate="16.7" text="Button1" />
+                <Label fx:id="lab1" layoutX="250.0" layoutY="43.0" prefHeight="55.0" prefWidth="168.0" text="Label" />
+            <Button fx:id="dianwo" layoutX="159.0" layoutY="139.0" mnemonicParsing="false" text="点我啊！" />
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>

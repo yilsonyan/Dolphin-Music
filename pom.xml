@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.jd</groupId>
-    <artifactId>Resume_Point</artifactId>
+    <artifactId>CraftDatabaseSystem</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <parent>

@@ -1,24 +1,24 @@
-package cn.jd.login;
+package cn.jd;
 
+import cn.jd.login.controller.LoginController;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.net.URL;
 
@@ -35,15 +35,44 @@ public class Main extends Application {
      */
     //@Override
     public void start(Stage primaryStage) throws Exception{
-        //URL url = getClass().getResource("sample.fxml");
-        URL url = getClass().getClassLoader().getResource("sample.fxml");
-        Parent root = FXMLLoader.load(url);
-        primaryStage.setTitle("单向走丝线切割数据库");
-        primaryStage.setScene(new Scene(root, 400, 500));
-        primaryStage.setFullScreen(true);
-        primaryStage.show();
-    }
+        URL url = getClass().getClassLoader().getResource("fxml/login.fxml");
+        //Parent root = FXMLLoader.load(url);
+	    AnchorPane root = FXMLLoader.load(url);
+	    Scene scene = new Scene(root, 400, 500);
 
+	    primaryStage.setTitle("单向走丝线切割数据库");
+	    //loginStage.setFullScreen(true);
+	    primaryStage.setScene(scene);
+	    //设置窗口的图标.
+	    primaryStage.getIcons().add(new Image("static/icon.png"));
+
+	    primaryStage.show();
+
+	    //关闭事件
+	    primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+		    @Override
+		    public void handle(WindowEvent event) {
+
+			    //对话框 Alert Alert.AlertType.CONFIRMATION：反问对话框
+			    /*Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+			    //设置对话框标题
+			    alert.setTitle("Exit");
+			    //设置内容
+			    alert.setHeaderText("Are you sure to exit");
+			    //显示对话框
+			    Optional<ButtonType> result = alert.showAndWait();
+			    //如果点击OK
+			    if (result.get() == ButtonType.OK){
+				    // ... user chose OK
+				    loginStage.close();
+				    //否则
+			    } else {
+				    event.consume();
+			    }*/
+		    }
+	    });
+	    LoginController.loginStage = primaryStage;
+    }
 
 
 
@@ -54,7 +83,7 @@ public class Main extends Application {
     //@Override
     public void start1(Stage primaryStage) {
         /**
-         * 舞台
+         * 舞台,是应用程序窗口
          */
         primaryStage.setFullScreen(true);
         primaryStage.setTitle("单向走丝线切割数据库");
@@ -122,6 +151,7 @@ public class Main extends Application {
             }
         });
 
+        //Scene包含界面的组件
         Scene scene = new Scene(grid, 300, 275);
 
         //舞台大小

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/8.0.65" fx:controller="FXMLDocumentController">
+    <children>
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69"/>
+        <ProgressBar fx:id="process1" layoutX="37.0" layoutY="35.0" prefHeight="23.0" prefWidth="393.0" progress="0.0"/>
+        <ProgressIndicator fx:id="process2" layoutX="37.0" layoutY="84.0" prefHeight="72.0" prefWidth="88.0"
+                           progress="0.0"/>
+        <Text fx:id="process3" layoutX="37.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text"
+              wrappingWidth="401.6513671875"/>
+        <Button fx:id="bt1" layoutX="226.0" layoutY="264.0" mnemonicParsing="false" text="Button"/>
+    </children>
+</AnchorPane>

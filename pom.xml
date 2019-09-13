@@ -182,7 +182,7 @@
 
         <!-- 如果不添加此节点mybatis的mapper.xml文件都会被漏掉。 -->
         <!--<resources>
-            <resource>
+            <testResource>
                 <directory>src/main/java</directory>
                 <includes>
                     <include>**/*.yml</include>
@@ -190,8 +190,8 @@
                     <include>**/*.xml</include>
                 </includes>
                 <filtering>false</filtering>
-            </resource>
-            <resource>
+            </testResource>
+            <testResource>
                 <directory>src/main/resources</directory>
                 <includes>
                     <include>**/*.yml</include>
@@ -199,7 +199,7 @@
                     <include>**/*.xml</include>
                 </includes>
                 <filtering>false</filtering>
-            </resource>
+            </testResource>
         </resources>-->
 
     </build>

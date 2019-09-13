@@ -11,10 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -34,10 +31,12 @@ public class RegisterController implements Initializable {
     private TextField usernameTextField;
     @FXML
     private TextField passwordTextField;
+
+	//验证码
 	@FXML
 	private TextField inputCodeTextField;
 
-	//验证码
+	//验证码图片
 	@FXML
 	public ImageView codeImage;
 
@@ -69,14 +68,14 @@ public class RegisterController implements Initializable {
 		Service<Image> service=new Service<Image>() {
 			@Override
 			protected Task<Image> createTask() {
-				return new Task<Image>() {
-					@Override
-					protected Image call() throws Exception {
-						//生成验证码图片，并返回fx包下的ImageView对象
-						Image image = VerifyCodeUtil.generateImageCode();
-						return image;
-					}
-				};
+			return new Task<Image>() {
+				@Override
+				protected Image call() throws Exception {
+					//生成验证码图片，并返回fx包下的ImageView对象
+					Image image = VerifyCodeUtil.generateImageCode();
+					return image;
+				}
+			};
 			}
 		};
 
@@ -93,8 +92,6 @@ public class RegisterController implements Initializable {
 
 
 
-
-
 	@FXML
 	public void backBtn(ActionEvent event) throws IOException {
 		registerStage.close();
@@ -105,7 +102,31 @@ public class RegisterController implements Initializable {
 	@FXML
 	public void registerBtn(ActionEvent event) throws IOException {
 		msg.setFill(Color.FIREBRICK);
-		msg.setText("请稍候");
+
+		//验证码校验
+		String text = VerifyCodeUtil.getText();
+		//与用户输入的做对比
+		String inputCode = inputCodeTextField.getCharacters().toString();
+		if (!text.equalsIgnoreCase(inputCode)){
+			msg.setText("验证码输入错误");
+			return;
+		}
+		//用户名重复校验
+
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		alert.setTitle("信息");
+		alert.setHeaderText("注册成功");
+
+		//注册成功
+		//用户点击确定后，关闭注册窗口，进入登录窗口
+		alert.setOnCloseRequest(new EventHandler<DialogEvent>() {
+			@Override
+			public void handle(DialogEvent event) {
+				registerStage.close();
+				primaryStage.show();
+			}
+		});
+		alert.show();
 	}
 
 

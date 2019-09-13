@@ -10,8 +10,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -19,14 +17,14 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-
 import java.net.URL;
-
 import static javafx.geometry.HPos.RIGHT;
 
-public class Main extends Application {
+
+public class FxMain extends Application {
 
     public static void main(String[] args) {
+	    //SpringBootApp.main(new String[]{"123"});
         launch(args);
     }
 

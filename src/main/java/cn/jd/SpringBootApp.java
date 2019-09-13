@@ -16,15 +16,15 @@ import org.springframework.web.client.RestTemplate;
 @EnableTransactionManagement
 @EnableScheduling
 @EnableAsync
-public class Application {
+public class SpringBootApp {
 
-	static Logger logger = LoggerFactory.getLogger(Application.class);
+	static Logger logger = LoggerFactory.getLogger(SpringBootApp.class);
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class);
+		SpringApplication.run(SpringBootApp.class);
 		logger.info("启动成功!");
 
-		Main.main(new String[]{"123"});
+		FxMain.main(new String[]{"123"});
 	}
 
 

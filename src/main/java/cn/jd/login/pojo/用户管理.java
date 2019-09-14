@@ -20,10 +20,7 @@ public class 用户管理 {
 	public 用户管理() {
 		userName = new ReadOnlyStringWrapper(this, USERNAME_PROP_NAME, "");
 		password = new SimpleStringProperty(this, PASSWORD_PROP_NAME, "");
-	}
 
-
-	{
 		// 属性更改事件 Adding a change listener with anonymous inner class
 		password.addListener(new ChangeListener<String>() {
 			@Override
@@ -55,5 +52,15 @@ public class 用户管理 {
 
 	public StringProperty passwordProperty() {
 		return password;
+	}
+
+
+	//测试属性更改事件
+	public static void main(String[] args) {
+		用户管理 用户管理 = new 用户管理();
+		用户管理.setPassword("123");
+
+		用户管理.setPassword("456");
+
 	}
 }

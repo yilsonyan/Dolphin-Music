@@ -1,21 +1,18 @@
 package cn.jd.login.controller;
 
+import cn.jd.login.stage.LoginStage;
+import cn.jd.login.stage.MainStage;
+import cn.jd.login.stage.RegisterStage;
 import de.felixroske.jfxsupport.AbstractFxmlView;
 import de.felixroske.jfxsupport.FXMLView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,9 +31,9 @@ public class LoginController extends AbstractFxmlView implements Initializable {
     private Text msg;
 
     //登录界面
-	public static Stage loginStage;
+	public static LoginStage loginStage;
 	//注册界面
-	public static Stage registerStage;
+	public static RegisterStage registerStage;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -68,16 +65,9 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 
 	        loginStage.close();
 
-	        URL url = getClass().getClassLoader().getResource("fxml/main.fxml");
-	        AnchorPane root = FXMLLoader.load(url);
-	        Scene scene = new Scene(root, 400, 500);
-	        Stage mainStage = new Stage();
-	        mainStage.setTitle("单向走丝线切割数据库");
-	        //primaryStage.setFullScreen(true);
-	        mainStage.setScene(scene);
-	        //设置窗口的图标.
-	        mainStage.getIcons().add(new Image("static/icon.png"));
-	        mainStage.show();
+	        MainStage mainStage = new MainStage();
+	        //mainStage.getStage();
+
         }else {
             msg.setText("登录验证失败!");
         }
@@ -88,16 +78,8 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 	@FXML
 	public void registerBtn(ActionEvent event) throws IOException {
 		loginStage.hide();
-
-		registerStage = new Stage();
-		URL url = getClass().getClassLoader().getResource("fxml/register.fxml");
-		Parent root = FXMLLoader.load(url);
-		Scene scene = new Scene(root, 400, 500);
-		registerStage.setTitle("注册新用户");
-		//loginStage.setFullScreen(true);
-		registerStage.setScene(scene);
-		registerStage.getIcons().add(new Image("static/icon.png"));
-		registerStage.show();
+		registerStage = new RegisterStage();
+		//registerStage.getStage();
 
 		//对下一个页面赋值
 		RegisterController.primaryStage = loginStage;

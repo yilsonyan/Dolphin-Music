@@ -4,6 +4,7 @@ import cn.jd.login.stage.LoginStage;
 import cn.jd.login.stage.MainStage;
 import cn.jd.login.stage.RegisterStage;
 import de.felixroske.jfxsupport.AbstractFxmlView;
+import de.felixroske.jfxsupport.FXMLController;
 import de.felixroske.jfxsupport.FXMLView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+@FXMLController
 @FXMLView//(value = "fxml/login.fxml")
 public class LoginController extends AbstractFxmlView implements Initializable {
 

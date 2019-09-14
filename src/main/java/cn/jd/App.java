@@ -35,7 +35,7 @@ public class App extends AbstractJavaFxApplicationSupport {
 	 * 初始化构建主界面
 	 */
 	@Override
-	public void start(Stage primaryStage) throws Exception{
+	public void start(Stage primaryStage) {
 		LoginStage loginStage = new LoginStage();
 		LoginController.loginStage = loginStage;
 	}

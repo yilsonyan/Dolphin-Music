@@ -1,15 +1,18 @@
 package cn.jd.login.controller;
 
-import javafx.event.*;
+import de.felixroske.jfxsupport.AbstractFxmlView;
+import de.felixroske.jfxsupport.FXMLView;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -18,7 +21,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoginController implements Initializable {
+@FXMLView//(value = "fxml/login.fxml")
+public class LoginController extends AbstractFxmlView implements Initializable {
 
     @FXML
     private TextField usernameTextField;
@@ -42,7 +46,7 @@ public class LoginController implements Initializable {
 
 
     @FXML
-    public void loginInBtn(ActionEvent event) {
+    public void loginInBtn(ActionEvent event) throws IOException {
         //登录验证
         CharSequence userName = usernameTextField.getCharacters();
         CharSequence password = passwordTextField.getCharacters();
@@ -56,11 +60,24 @@ public class LoginController implements Initializable {
 	        return;
         }
         if ("admin".equals(userName.toString()) && "admin".equals(password.toString())){
-	        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+	        /*Alert alert = new Alert(Alert.AlertType.INFORMATION);
 	        alert.setTitle("信息");
 	        alert.setHeaderText("登录成功");
 	        alert.setContentText("帐号密码验证通过");
-	        alert.show();
+	        alert.show();*/
+
+	        loginStage.close();
+
+	        URL url = getClass().getClassLoader().getResource("fxml/main.fxml");
+	        AnchorPane root = FXMLLoader.load(url);
+	        Scene scene = new Scene(root, 400, 500);
+	        Stage mainStage = new Stage();
+	        mainStage.setTitle("单向走丝线切割数据库");
+	        //primaryStage.setFullScreen(true);
+	        mainStage.setScene(scene);
+	        //设置窗口的图标.
+	        mainStage.getIcons().add(new Image("static/icon.png"));
+	        mainStage.show();
         }else {
             msg.setText("登录验证失败!");
         }

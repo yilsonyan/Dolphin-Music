@@ -17,18 +17,18 @@
     <children>
         <Pane layoutX="15.0" layoutY="36.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="283.0" prefWidth="340.0" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="36.0">
          <children>
-            <Text layoutX="76.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wellcome">
+            <Text layoutX="76.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wellcome" textAlignment="CENTER">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font>
             </Text>
-            <Label layoutX="76.0" layoutY="119.0" text="User Name" />
-            <Label layoutX="76.0" layoutY="164.0" text="Password" />
+            <Label layoutX="76.0" layoutY="119.0" text="User Name" textAlignment="CENTER" />
+            <Label layoutX="76.0" layoutY="164.0" text="Password" textAlignment="CENTER" />
             <TextField fx:id="usernameTextField" layoutX="150.0" layoutY="115.0" text="admin" />
             <TextField fx:id="passwordTextField" layoutX="150.0" layoutY="159.0" text="admin" />
-            <Button fx:id="signInBtn" layoutX="150.0" layoutY="209.0" mnemonicParsing="false" onAction="#loginInBtn" text="Sign in" />
+            <Button fx:id="signInBtn" alignment="CENTER" layoutX="150.0" layoutY="209.0" mnemonicParsing="false" onAction="#loginInBtn" text="Sign in" />
             <Text fx:id="msg" layoutX="150.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="131.12109375" />
-            <Button fx:id="registerBtn" layoutX="247.0" layoutY="209.0" mnemonicParsing="false" onAction="#registerBtn" text="Register" />
+            <Button fx:id="registerBtn" alignment="CENTER" layoutX="247.0" layoutY="209.0" mnemonicParsing="false" onAction="#registerBtn" text="Register" />
          </children>
         </Pane>
     </children>

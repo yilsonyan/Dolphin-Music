@@ -1,31 +1,47 @@
 package cn.jd.login.controller;
 
 import cn.jd.util.VerifyCodeUtil;
+import de.felixroske.jfxsupport.AbstractFxmlView;
+import de.felixroske.jfxsupport.FXMLController;
+import de.felixroske.jfxsupport.FXMLView;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.DialogEvent;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class RegisterController implements Initializable {
+@FXMLController
+@FXMLView(value = "fxml/register.fxml",title = "index")
+public class RegisterController extends AbstractFxmlView implements Initializable {
+
+	//主面板
+    @FXML
+    private AnchorPane anchorPane;
+
+	//注册按钮
+	@FXML
+	private Button registerBtn;
+
+	//返回按钮
+	@FXML
+	private Button backBtn;
 
     @FXML
     private TextField usernameTextField;
@@ -56,6 +72,11 @@ public class RegisterController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		generateImageCode();
+		//主面板回车事件
+		anchorPane.setOnKeyPressed(e->enterEvent(e));
+		registerBtn.setOnAction(e->registerBtn(e));
+		backBtn.setOnAction(e->backBtn(e));
+		codeImage.setOnMouseClicked(e->generateImageCode());
 	}
 
 
@@ -93,14 +114,14 @@ public class RegisterController implements Initializable {
 
 
 	@FXML
-	public void backBtn(ActionEvent event) throws IOException {
+	public void backBtn(ActionEvent event) {
 		registerStage.close();
 		primaryStage.show();
 	}
 
 
 	@FXML
-	public void registerBtn(ActionEvent event) throws IOException {
+	public void registerBtn(ActionEvent event){
 		msg.setFill(Color.FIREBRICK);
 
 		//验证码校验
@@ -132,7 +153,7 @@ public class RegisterController implements Initializable {
 
 	//监听键盘回车事件：登录
 	@FXML
-	public void enterEvent(KeyEvent event) throws IOException {
+	public void enterEvent(KeyEvent event){
 		if(event.getCode() == KeyCode.ENTER){
 			// do something
 			registerBtn(null);

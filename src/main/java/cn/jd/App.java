@@ -1,57 +1,92 @@
 package cn.jd;
 
 import cn.jd.login.controller.LoginController;
-import javafx.application.Application;
+import cn.jd.login.controller.Splash;
+import de.felixroske.jfxsupport.AbstractJavaFxApplicationSupport;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.client.OkHttp3ClientHttpRequestFactory;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.client.RestTemplate;
+
 import java.net.URL;
+
 import static javafx.geometry.HPos.RIGHT;
 
 
-public class FxMain extends Application {
+//public class FxMain extends Application {
+@SpringBootApplication
+@EnableTransactionManagement
+@EnableScheduling
+@EnableAsync
+public class App extends AbstractJavaFxApplicationSupport {
+
+	static Logger logger = LoggerFactory.getLogger(App.class);
+
 
     public static void main(String[] args) {
+    	//springboot启动方式
 	    //SpringBootApp.main(new String[]{"123"});
-        launch(args);
+	    //Fx Application启动方式
+        //launch(args);
+	    //springboot-javafx-support启动方式
+	    launch(App.class,LoginController.class,new Splash(),args);
+	    //App.showView(RegisterController.class);
     }
 
-    /**
-     * 初始化构建主界面
-     */
-    //@Override
-    public void start(Stage primaryStage) throws Exception{
-        URL url = getClass().getClassLoader().getResource("fxml/login.fxml");
-        //Parent root = FXMLLoader.load(url);
-	    AnchorPane root = FXMLLoader.load(url);
-	    Scene scene = new Scene(root, 400, 500);
+	@Bean
+	public RestTemplate restTemplate(){
+		return new RestTemplate(new OkHttp3ClientHttpRequestFactory());
+	}
 
-	    primaryStage.setTitle("单向走丝线切割数据库");
-	    //loginStage.setFullScreen(true);
-	    primaryStage.setScene(scene);
-	    //设置窗口的图标.
-	    primaryStage.getIcons().add(new Image("static/icon.png"));
 
-	    primaryStage.show();
 
-	    //关闭事件
-	    primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-		    @Override
-		    public void handle(WindowEvent event) {
+	/**
+	 * 初始化构建主界面
+	 */
+	//@Override
+	public void start(Stage primaryStage) throws Exception{
+		URL url = getClass().getClassLoader().getResource("fxml/login.fxml");
+		//Parent root = FXMLLoader.load(url);
+		AnchorPane root = FXMLLoader.load(url);
+		Scene scene = new Scene(root, 400, 500);
+		primaryStage.setTitle("单向走丝线切割数据库");
+		//primaryStage.setFullScreen(true);
+		primaryStage.setScene(scene);
+		//设置窗口的图标.
+		primaryStage.getIcons().add(new Image("static/icon.png"));
+		primaryStage.show();
 
-			    //对话框 Alert Alert.AlertType.CONFIRMATION：反问对话框
+		//关闭事件
+		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+			@Override
+			public void handle(WindowEvent event) {
+
+				//对话框 Alert Alert.AlertType.CONFIRMATION：反问对话框
 			    /*Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 			    //设置对话框标题
 			    alert.setTitle("Exit");
@@ -67,12 +102,10 @@ public class FxMain extends Application {
 			    } else {
 				    event.consume();
 			    }*/
-		    }
-	    });
-	    LoginController.loginStage = primaryStage;
-    }
-
-
+			}
+		});
+		LoginController.loginStage = primaryStage;
+	}
 
 
     /**

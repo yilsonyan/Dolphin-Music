@@ -1,19 +1,16 @@
 package cn.jd.util;
 
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import org.junit.Test;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.*;
-import java.net.URL;
-import java.util.Random;
-
 import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Random;
 
 public class VerifyCodeUtil {
 
@@ -106,6 +103,7 @@ public class VerifyCodeUtil {
 	// 保存图片到指定的输出流
 	public static Image generateImageCode () {
 		Image image = null;
+		FileOutputStream fileOutputStream = null;
 		try {
 			BufferedImage bufferedImage = VerifyCodeUtil.getImage();
 			String classpath = VerifyCodeUtil.class.getClassLoader().getResource("").getPath();
@@ -119,7 +117,7 @@ public class VerifyCodeUtil {
 
 				file.createNewFile();
 			}
-			FileOutputStream fileOutputStream = new FileOutputStream(file);
+			fileOutputStream = new FileOutputStream(file);
 
 			ImageIO.write(bufferedImage, "JPEG", fileOutputStream);
 
@@ -128,6 +126,12 @@ public class VerifyCodeUtil {
 			//imageView.setImage(image);
 		} catch (IOException e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				fileOutputStream.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		return image;
 	}

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane fx:id="anchorPane" fx:controller="cn.jd.login.controller.RegisterController" prefHeight="355.0" prefWidth="370.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane" prefHeight="355.0" prefWidth="370.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.jd.login.controller.RegisterController">
     <children>
         <Pane layoutX="15.0" layoutY="8.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0" prefWidth="340.0" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="8.0">
          <children>
@@ -29,7 +29,11 @@
             <Button fx:id="registerBtn" layoutX="128.0" layoutY="256.0" mnemonicParsing="false" text="立即注册" />
             <Label layoutX="76.0" layoutY="204.0" text="验证码" />
             <ImageView fitHeight="27.0" fitWidth="105.0" layoutX="150.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true" />
-            <Button fx:id="backBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="&lt;" />
+             <Button fx:id="backBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="&lt;">
+                 <tooltip>
+                     <Tooltip text="Click this button to return login page." />
+                 </tooltip>
+             </Button>
             <TextField fx:id="inputCodeTextField" layoutX="128.0" layoutY="199.0" prefHeight="27.0" prefWidth="70.0" />
             <ImageView fx:id="codeImage" fitHeight="37.0" fitWidth="111.0" layoutX="211.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
                <!--<image>

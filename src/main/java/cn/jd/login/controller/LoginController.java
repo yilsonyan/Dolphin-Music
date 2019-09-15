@@ -9,6 +9,7 @@ import de.felixroske.jfxsupport.FXMLView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -26,7 +27,7 @@ public class LoginController extends AbstractFxmlView implements Initializable {
     @FXML
     private TextField usernameTextField;
     @FXML
-    private TextField passwordTextField;
+    private PasswordField passwordTextField;
 
     //登录提示信息
     @FXML

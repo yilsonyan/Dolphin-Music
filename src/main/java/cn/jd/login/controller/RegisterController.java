@@ -77,6 +77,8 @@ public class RegisterController extends AbstractFxmlView implements Initializabl
 		registerBtn.setOnAction(e->registerBtn(e));
 		backBtn.setOnAction(e->backBtn(e));
 		codeImage.setOnMouseClicked(e->generateImageCode());
+
+
 	}
 
 

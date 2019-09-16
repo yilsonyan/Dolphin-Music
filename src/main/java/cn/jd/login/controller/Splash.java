@@ -14,7 +14,7 @@ public class Splash extends SplashScreen {
 
     @Override
     public String getImagePath() {
-        return "/static/icon.png";
+        return "/static/splash.png";
     }
 
     @Override
@@ -24,7 +24,7 @@ public class Splash extends SplashScreen {
 	    /*String path = this.getClass().getClassLoader().getResource(this.getImagePath()).getPath();
 	    ImageView imageView = new ImageView(path);*/
 
-	    Image image = new Image("static/icon.png");
+	    Image image = new Image(this.getImagePath());
 	    ImageView imageView = new ImageView(image);
 
 	    gp.getChildren().add(imageView);

@@ -8,12 +8,9 @@ import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.client.OkHttp3ClientHttpRequestFactory;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.client.RestTemplate;
 
 
 @SpringBootApplication
@@ -24,10 +21,10 @@ public class App extends AbstractJavaFxApplicationSupport {
 
 	static Logger logger = LoggerFactory.getLogger(App.class);
 
-
     public static void main(String[] args) {
-	    launch(App.class,LoginController.class,new Splash(),args);//springboot-javafx-support启动方式
-	    logger.info("initial success!");
+		//showSplash();
+		Splash splash = new Splash();
+		launch(App.class,LoginController.class,args);//springboot-javafx-support启动方式
 	    //App.showView(RegisterController.class);
     }
 
@@ -40,11 +37,23 @@ public class App extends AbstractJavaFxApplicationSupport {
 		LoginController.loginStage = loginStage;
 	}
 
+	/**
+	 * 启动动画
+	 */
+	public static void showSplash() {
+		//用于运行SplashScreen的线程
+		new Thread(()->{
+			try{
 
-	@Bean
-	public RestTemplate restTemplate(){
-		return new RestTemplate(new OkHttp3ClientHttpRequestFactory());
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}).start();
 	}
 
+	/*@Bean
+	public RestTemplate restTemplate(){
+		return new RestTemplate(new OkHttp3ClientHttpRequestFactory());
+	}*/
 
 }

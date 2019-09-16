@@ -1,8 +1,8 @@
 package cn.jd.login.controller;
 
 import cn.jd.login.stage.LoginStage;
-import cn.jd.login.stage.MainStage;
 import cn.jd.login.stage.RegisterStage;
+import cn.jd.util.DialogBuilder;
 import de.felixroske.jfxsupport.AbstractFxmlView;
 import de.felixroske.jfxsupport.FXMLController;
 import de.felixroske.jfxsupport.FXMLView;
@@ -13,7 +13,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -48,7 +47,7 @@ public class LoginController extends AbstractFxmlView implements Initializable {
     @FXML
     public void loginInBtn(ActionEvent event) throws IOException {
         //登录验证
-        CharSequence userName = usernameTextField.getCharacters();
+        /*CharSequence userName = usernameTextField.getCharacters();
         CharSequence password = passwordTextField.getCharacters();
 	    msg.setFill(Color.FIREBRICK);
         if (userName.length() == 0){
@@ -60,11 +59,11 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 	        return;
         }
         if ("admin".equals(userName.toString()) && "admin".equals(password.toString())){
-	        /*Alert alert = new Alert(Alert.AlertType.INFORMATION);
+	        *//*Alert alert = new Alert(Alert.AlertType.INFORMATION);
 	        alert.setTitle("信息");
 	        alert.setHeaderText("登录成功");
 	        alert.setContentText("帐号密码验证通过");
-	        alert.show();*/
+	        alert.show();*//*
 
 	        loginStage.close();
 
@@ -73,7 +72,11 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 
         }else {
             msg.setText("登录验证失败!");
-        }
+        }*/
+
+        new DialogBuilder(usernameTextField).setTitle("提示").setMessage("hello world").setPositiveBtn("确定", "#ff3333").setNegativeBtn("取消", "#00ff00").create();
+
+
     }
 
 

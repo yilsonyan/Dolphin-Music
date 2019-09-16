@@ -1,5 +1,6 @@
 package cn.jd.login.stage;
 
+import cn.jd.login.config.LonginStageConfig;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -27,13 +28,13 @@ public class LoginStage extends Stage {
 		}
 		//添加css
 		root.getStylesheets().add(this.getClass().getClassLoader().getResource("css/Login.css").toExternalForm());
-		Scene scene = new Scene(root, 400, 500);
+		Scene scene = new Scene(root, LonginStageConfig.width, LonginStageConfig.height);
 
 
 		this.setTitle("单向走丝线切割数据库");
-//		this.setFullScreen(true);
+		//this.setFullScreen(true);
 		this.setScene(scene);
-		this.setResizable(false);
+		//this.setResizable(false);//设置不可调整大小
 		//设置窗口的图标.
 		this.getIcons().add(new Image("/static/icon.png"));
 		this.show();

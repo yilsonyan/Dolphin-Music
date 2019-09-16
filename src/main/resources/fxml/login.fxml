@@ -13,22 +13,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane onKeyPressed="#enterEvent" prefHeight="355.0" prefWidth="370.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.jd.login.controller.LoginController">
+<AnchorPane onKeyPressed="#enterEvent" prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.jd.login.controller.LoginController">
     <children>
-        <Pane layoutX="15.0" layoutY="36.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="283.0" prefWidth="340.0" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="36.0">
+        <Pane layoutX="80.0" layoutY="36.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="283.0" prefWidth="340.0" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="36.0">
          <children>
-            <Text layoutX="76.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wellcome" textAlignment="CENTER">
+            <Text layoutX="42.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wellcome" textAlignment="CENTER">
                <font>
-                  <Font name="Tahoma Bold" size="20.0" />
+                  <Font name="Tahoma Bold" size="24.0" />
                </font>
             </Text>
-            <Label layoutX="76.0" layoutY="119.0" text="User Name" textAlignment="CENTER" />
-            <Label layoutX="76.0" layoutY="164.0" text="Password" textAlignment="CENTER" />
-            <TextField fx:id="usernameTextField" layoutX="150.0" layoutY="115.0" text="admin" />
-            <PasswordField fx:id="passwordTextField" layoutX="150.0" layoutY="159.0" text="admin" />
-            <Button fx:id="signInBtn" alignment="CENTER" layoutX="150.0" layoutY="209.0" mnemonicParsing="false" onAction="#loginInBtn" text="Sign in" />
+            <Label layoutX="42.0" layoutY="120.0" text="User Name" textAlignment="CENTER" />
+            <Label layoutX="42.0" layoutY="178.0" text="Password" textAlignment="CENTER" />
+            <TextField fx:id="usernameTextField" layoutX="132.0" layoutY="115.0" text="admin" />
+            <PasswordField fx:id="passwordTextField" layoutX="132.0" layoutY="173.0" text="admin" />
+            <Button fx:id="signInBtn" alignment="CENTER" layoutX="132.0" layoutY="236.0" mnemonicParsing="false" onAction="#loginInBtn" text="Sign in" />
             <Text fx:id="msg" layoutX="150.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="131.12109375" />
-            <Button fx:id="registerBtn" alignment="CENTER" layoutX="247.0" layoutY="209.0" mnemonicParsing="false" onAction="#registerBtn" text="Register" />
+            <Button fx:id="registerBtn" alignment="CENTER" layoutX="230.0" layoutY="236.0" mnemonicParsing="false" onAction="#registerBtn" text="Register" />
          </children>
         </Pane>
     </children>

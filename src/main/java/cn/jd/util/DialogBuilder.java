@@ -113,6 +113,16 @@ public class DialogBuilder {
     }
 
     /**
+     * 设置按钮文字
+     *
+     * @param positiveBtnText 文字
+     * @return
+     */
+    public DialogBuilder setPositiveBtn(String positiveBtnText) {
+        return setPositiveBtn(positiveBtnText, null, positiveBtnPaint.toString());
+    }
+
+    /**
      * 设置按钮文字和颜色
      *
      * @param positiveBtnText 文字
@@ -210,10 +220,13 @@ public class DialogBuilder {
         alert.setContent(layout);
         alert.showAndWait();
 
+
         return alert;
     }
 
     public interface OnClickListener {
         void onClick();
     }
+
+
 }

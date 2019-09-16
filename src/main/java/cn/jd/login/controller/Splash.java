@@ -30,4 +30,14 @@ public class Splash extends SplashScreen {
 	    gp.getChildren().add(imageView);
         return gp;
     }
+
+	/**
+	 * Customize if the splash screen should be visible at all
+	 *
+	 * @return true by default
+	 */
+	@Override
+	public boolean visible() {
+		return super.visible();
+	}
 }

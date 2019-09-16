@@ -1,5 +1,6 @@
 package cn.jd.login.stage;
 
+import cn.jd.login.config.LonginStageConfig;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -19,7 +20,7 @@ public class RegisterStage extends Stage{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		Scene scene = new Scene(root, 400, 500);
+		Scene scene = new Scene(root, LonginStageConfig.width, LonginStageConfig.height);
 		this.setTitle("注册新用户");
 		//loginStage.setFullScreen(true);
 		this.setScene(scene);

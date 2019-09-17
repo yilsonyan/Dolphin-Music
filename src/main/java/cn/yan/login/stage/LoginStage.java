@@ -1,6 +1,6 @@
-package cn.jd.login.stage;
+package cn.yan.login.stage;
 
-import cn.jd.login.config.LonginStageConfig;
+import cn.yan.login.config.LonginStageConfig;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

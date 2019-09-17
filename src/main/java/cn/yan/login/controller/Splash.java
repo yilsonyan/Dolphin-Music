@@ -1,4 +1,4 @@
-package cn.jd.login.controller;
+package cn.yan.login.controller;
 
 import de.felixroske.jfxsupport.SplashScreen;
 import javafx.scene.Group;

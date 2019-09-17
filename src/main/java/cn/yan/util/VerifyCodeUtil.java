@@ -1,4 +1,4 @@
-package cn.jd.util;
+package cn.yan.util;
 
 import javafx.scene.image.Image;
 import org.junit.Test;

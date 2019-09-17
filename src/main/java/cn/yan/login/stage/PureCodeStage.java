@@ -1,4 +1,4 @@
-package cn.jd.login.stage;
+package cn.yan.login.stage;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>cn.jd</groupId>
-    <artifactId>CraftDatabaseSystem</artifactId>
+    <groupId>cn.yan</groupId>
+    <artifactId>Dolphin Music</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <parent>
@@ -189,7 +189,7 @@
                 </executions>
                 <!--会自动匹配，一般不用特殊指定-->
                 <!--<configuration>
-                    <mainClass>cn.jd.Application</mainClass>
+                    <mainClass>cn.yann.Application</mainClass>
                 </configuration>-->
             </plugin>
 
@@ -213,7 +213,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>8.8.3</version>
                 <configuration>
-                    <mainClass>cn.jd.App</mainClass>
+                    <mainClass>cn.yan.App</mainClass>
                     <vendor>yan</vendor>
                 </configuration>
             </plugin>

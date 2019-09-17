@@ -1,4 +1,4 @@
-package cn.jd.login.config;
+package cn.yan.login.config;
 
 /**
  * 登录和注册舞台配置类

@@ -1,8 +1,8 @@
-package cn.jd;
+package cn.yan;
 
-import cn.jd.login.controller.LoginController;
-import cn.jd.login.controller.Splash;
-import cn.jd.login.stage.LoginStage;
+import cn.yan.login.controller.LoginController;
+import cn.yan.login.controller.Splash;
+import cn.yan.login.stage.LoginStage;
 import de.felixroske.jfxsupport.AbstractJavaFxApplicationSupport;
 import javafx.stage.Stage;
 import org.slf4j.Logger;

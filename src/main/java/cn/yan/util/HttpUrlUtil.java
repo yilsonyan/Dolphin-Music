@@ -1,4 +1,4 @@
-package cn.jd.util;
+package cn.yan.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,6 +1,6 @@
-package cn.jd.login.controller;
+package cn.yan.login.controller;
 
-import cn.jd.util.VerifyCodeUtil;
+import cn.yan.util.VerifyCodeUtil;
 import de.felixroske.jfxsupport.AbstractFxmlView;
 import de.felixroske.jfxsupport.FXMLController;
 import de.felixroske.jfxsupport.FXMLView;

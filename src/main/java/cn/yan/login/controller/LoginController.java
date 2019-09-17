@@ -1,9 +1,9 @@
-package cn.jd.login.controller;
+package cn.yan.login.controller;
 
-import cn.jd.login.stage.LoginStage;
-import cn.jd.login.stage.MainStage;
-import cn.jd.login.stage.RegisterStage;
-import cn.jd.util.DialogBuilder;
+import cn.yan.login.stage.LoginStage;
+import cn.yan.login.stage.MainStage;
+import cn.yan.login.stage.RegisterStage;
+import cn.yan.util.DialogBuilder;
 import de.felixroske.jfxsupport.AbstractFxmlView;
 import de.felixroske.jfxsupport.FXMLController;
 import de.felixroske.jfxsupport.FXMLView;

@@ -1,4 +1,4 @@
-package cn.jd.util;
+package cn.yan.util;
 
 
 import com.jfoenix.controls.JFXAlert;

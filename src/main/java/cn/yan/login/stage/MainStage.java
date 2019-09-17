@@ -1,6 +1,6 @@
-package cn.jd.login.stage;
+package cn.yan.login.stage;
 
-import cn.jd.util.DialogBuilder;
+import cn.yan.util.DialogBuilder;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;

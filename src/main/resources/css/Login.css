@@ -1,7 +1,12 @@
 
-/*.root {
-     -fx-background-image: url("/static/background.png")
-}*/
+.root {
+     -fx-background-image: url("/static/entrance_bg1.jpg");
+     /*-fx-background-width: 500px;
+     -fx-background-height: 600px;*/
+     -fx-background-size: 500px;
+     /*-fx-background-insets: 30;
+     -fx-background-radius: 10;*/
+}
 
 
 /*

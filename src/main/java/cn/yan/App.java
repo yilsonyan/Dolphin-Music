@@ -24,7 +24,8 @@ public class App extends AbstractJavaFxApplicationSupport {
     public static void main(String[] args) {
 		//showSplash();
 		Splash splash = new Splash();
-		launch(App.class,LoginController.class,args);//springboot-javafx-support启动方式
+		//launch(App.class,LoginController.class,args);//springboot-javafx-support启动方式
+		launch(App.class, LoginController.class, splash, args);//springboot-javafx-support启动方式
 	    //App.showView(RegisterController.class);
     }
 

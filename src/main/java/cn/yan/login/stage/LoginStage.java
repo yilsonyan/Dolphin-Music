@@ -9,6 +9,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 
 import java.io.IOException;
@@ -27,17 +28,21 @@ public class LoginStage extends Stage {
 			e.printStackTrace();
 		}
 		//添加css
-		root.getStylesheets().add(this.getClass().getClassLoader().getResource("css/Login.css").toExternalForm());
+		/*String externalForm = this.getClass().getClassLoader().getResource("css/Login.css").toExternalForm();\
+		root.getStylesheets().add(externalForm);*/
+		//root.getStylesheets().add("css/Login.css");
+
 		Scene scene = new Scene(root, LonginStageConfig.width, LonginStageConfig.height);
+		scene.getStylesheets().add("css/Login.css");
 
-
-		this.setTitle("单向走丝线切割数据库");
+		this.setTitle("Dolphin Music");
 		//this.setFullScreen(true);
 		this.setScene(scene);
 		//this.setResizable(false);//设置不可调整大小
 		//设置窗口的图标.
 		this.getIcons().add(new Image("/static/icon.png"));
 		this.show();
+
 
 		//关闭事件
 		this.setOnCloseRequest(new EventHandler<WindowEvent>() {

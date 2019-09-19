@@ -20,8 +20,7 @@ public class App extends AbstractJavaFxApplicationSupport {
 	static Logger logger = LoggerFactory.getLogger(App.class);
 
     public static void main(String[] args) {
-		Splash splash = new Splash();
-		launch(App.class, LoginController.class, splash, args);//springboot-javafx-support启动方式
+		launch(App.class, LoginController.class, new Splash(), args);//springboot-javafx-support启动方式
 	    logger.info("启动成功");
     }
 

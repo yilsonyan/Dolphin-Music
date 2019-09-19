@@ -10,6 +10,7 @@ import de.felixroske.jfxsupport.FXMLView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -17,6 +18,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
+import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -45,8 +47,14 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 	}
 
 
+	@PostConstruct
+	public void init(){
+		Parent parent = getView();
 
-    @FXML
+	}
+
+
+	@FXML
     public void loginInBtn(ActionEvent event) throws IOException {
         //登录验证
         CharSequence userName = usernameTextField.getCharacters();
@@ -77,9 +85,6 @@ public class LoginController extends AbstractFxmlView implements Initializable {
         }else {
 	        msg.setText("登录验证失败!");
         }
-
-
-
     }
 
 

@@ -18,8 +18,8 @@
         <java.version>1.8</java.version>
     </properties>
 
-
     <dependencies>
+        <!--JavaFX相关——————————————————————————————————————————————————————————————————————-->
         <!--springboot整合fx-->
         <dependency>
             <groupId>de.roskenet</groupId>
@@ -45,6 +45,10 @@
         </dependency>
 
 
+
+
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -52,7 +56,7 @@
         </dependency>
 
         <!--JNA-3.5.1 Java Native Access-->
-        <dependency>
+        <!--<dependency>
             <groupId>net.java.dev.jna</groupId>
             <artifactId>jna</artifactId>
             <version>5.4.0</version>
@@ -61,19 +65,12 @@
             <groupId>net.java.dev.jna</groupId>
             <artifactId>jna-platform</artifactId>
             <version>5.4.0</version>
-        </dependency>
+        </dependency>-->
 
         <!-- 开启web-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <!-- RestTemplate使用的底层 OkHttp-->
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>3.9.1</version>
         </dependency>
 
         <!--Http工具-->
@@ -82,6 +79,13 @@
             <artifactId>httpclient</artifactId>
             <version>4.5.1</version>
         </dependency>
+        <!-- RestTemplate使用的底层 OkHttp-->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>3.9.1</version>
+        </dependency>
+
 
         <!-- redis-->
         <dependency>
@@ -93,20 +97,21 @@
             <artifactId>jedis</artifactId>
         </dependency>
 
+        <!--mybatis-->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>2.0.0</version>
         </dependency>
         <!--连接池-->
-        <dependency>
+        <!--<dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>1.1.10</version>
-        </dependency>
+        </dependency>-->
 
         <!--CGlib方式动态代理-->
-        <dependency>
+        <!--<dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
             <version>3.2.4</version>
@@ -115,13 +120,13 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>RELEASE</version>
-        </dependency>
+        </dependency>-->
         <!--POI-EXCEL-->
-        <dependency>
+        <!--<dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>3.5-FINAL</version>
-        </dependency>
+        </dependency>-->
         <!--mysql-->
         <dependency>
             <groupId>mysql</groupId>
@@ -141,7 +146,7 @@
             <version>1.16.16</version>
         </dependency>
 
-        <!--日志-->
+        <!--日志相关————————————————————————————————————————————————————————————————————————-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -156,6 +161,13 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
             <version>1.2.3</version>
+        </dependency>
+
+        <!-- jsoup HTML parser library @ https://jsoup.org/ -->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.12.1</version>
         </dependency>
 
 

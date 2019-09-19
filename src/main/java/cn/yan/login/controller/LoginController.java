@@ -22,7 +22,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 @FXMLController
-@FXMLView//(value = "fxml/login.fxml")
+@FXMLView(value = "/fxml/login.fxml")
 public class LoginController extends AbstractFxmlView implements Initializable {
 
     @FXML

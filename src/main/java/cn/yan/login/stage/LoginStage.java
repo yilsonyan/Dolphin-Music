@@ -4,17 +4,13 @@ import cn.yan.login.config.LonginStageConfig;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Optional;
 
 
 public class LoginStage extends Stage {
@@ -28,18 +24,18 @@ public class LoginStage extends Stage {
 			e.printStackTrace();
 		}
 		//添加css
-		/*String externalForm = this.getClass().getClassLoader().getResource("css/Login.css").toExternalForm();\
-		root.getStylesheets().add(externalForm);*/
-		//root.getStylesheets().add("css/Login.css");
 
 		Scene scene = new Scene(root, LonginStageConfig.width, LonginStageConfig.height);
+		//scene.getStylesheets().add(this.getClass().getClassLoader().getResource("css/Login.css").toExternalForm());
 		scene.getStylesheets().add("css/Login.css");
 
+
+
+		this.setScene(scene);
 		this.setTitle("Dolphin Music");
 		//this.setFullScreen(true);
-		this.setScene(scene);
-		//this.setResizable(false);//设置不可调整大小
-		//设置窗口的图标.
+		this.setResizable(false);//设置不可调整大小
+		//设置窗口的图标
 		this.getIcons().add(new Image("/static/icon.png"));
 		this.show();
 
@@ -50,6 +46,7 @@ public class LoginStage extends Stage {
 			public void handle(WindowEvent event) {
 
 				//对话框 Alert Alert.AlertType.CONFIRMATION：反问对话框
+				/*
 			    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 			    //设置对话框标题
 			    alert.setTitle("Exit");
@@ -65,7 +62,7 @@ public class LoginStage extends Stage {
 			    } else {
 				    event.consume();
 			    }
-
+				*/
 			}
 		});
 	}

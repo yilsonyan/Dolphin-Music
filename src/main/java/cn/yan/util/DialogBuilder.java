@@ -157,7 +157,7 @@ public class DialogBuilder {
         positiveBtn = new JFXButton(positiveBtnText);
         positiveBtn.setDefaultButton(true);
         positiveBtn.setTextFill(positiveBtnPaint);
-        System.out.println("执行setPostiveBtn");
+        //System.out.println("执行setPostiveBtn");
         positiveBtn.setOnAction(closeEvent -> {
             alert.hideWithAnimation();
             if (positiveBtnOnclickListener != null) {

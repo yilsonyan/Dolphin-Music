@@ -1,6 +1,7 @@
 package cn.yan.login.stage;
 
 import cn.yan.login.config.LonginStageConfig;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,9 +9,11 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import org.springframework.boot.SpringApplication;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.concurrent.CompletableFuture;
 
 
 public class LoginStage extends Stage {

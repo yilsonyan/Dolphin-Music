@@ -13,8 +13,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane onKeyPressed="#enterEvent" prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.yan.login.controller.LoginController">
-    <children>
+<AnchorPane stylesheets="/css/Login.css" id="root" onKeyPressed="#enterEvent" prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.yan.login.controller.LoginController">
+    <!--<children>-->
         <Pane layoutX="80.0" layoutY="36.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="283.0" prefWidth="340.0" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="36.0">
          <children>
             <Text layoutX="42.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wellcome" textAlignment="CENTER">
@@ -31,5 +31,5 @@
             <Button fx:id="registerBtn" alignment="CENTER" layoutX="230.0" layoutY="236.0" mnemonicParsing="false" onAction="#registerBtn" text="Register" />
          </children>
         </Pane>
-    </children>
+    <!--</children>-->
 </AnchorPane>

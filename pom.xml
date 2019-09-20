@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.yan</groupId>
-    <artifactId>Dolphin Music</artifactId>
+    <artifactId>DolphinMusic</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <parent>
@@ -19,7 +19,7 @@
     </properties>
 
     <dependencies>
-        <!--JavaFX相关——————————————————————————————————————————————————————————————————————-->
+        <!--JavaFX相关-->
         <!--springboot整合fx-->
         <dependency>
             <groupId>de.roskenet</groupId>

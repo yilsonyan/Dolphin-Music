@@ -40,7 +40,7 @@ public class Splash extends SplashScreen {
 
     //透明不带进度条
     //@Override
-    public Parent getParent() {
+    public Parent getParent1() {
         Group gp = new Group();
 	    Image image = new Image(this.getImagePath());
 	    ImageView imageView = new ImageView(image);

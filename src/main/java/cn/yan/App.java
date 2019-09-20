@@ -1,20 +1,17 @@
 package cn.yan;
 
+import cn.yan.login.config.Splash;
 import cn.yan.login.controller.LoginController;
-import cn.yan.login.controller.Splash;
 import de.felixroske.jfxsupport.AbstractJavaFxApplicationSupport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
 @SpringBootApplication
-@EnableTransactionManagement
-@EnableScheduling
-@EnableAsync
+//@EnableTransactionManagement
+//@EnableScheduling
+//@EnableAsync
 public class App extends AbstractJavaFxApplicationSupport {
 
 	static Logger logger = LoggerFactory.getLogger(App.class);

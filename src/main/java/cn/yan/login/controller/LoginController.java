@@ -12,12 +12,12 @@ import de.felixroske.jfxsupport.AbstractFxmlView;
 import de.felixroske.jfxsupport.FXMLController;
 import de.felixroske.jfxsupport.FXMLView;
 import de.felixroske.jfxsupport.GUIState;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -121,7 +121,6 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 		});
 
 		//密码输入框验证
-		//passwordField.setPromptText("Password");
 		validator = new LoginValidator();
 		validator.setMessage("Can't be empty");
 		warnIcon = new FontIcon(FontAwesomeSolid.EXCLAMATION_TRIANGLE);
@@ -133,48 +132,52 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 			}
 		});
 
+		//登录按钮事件
+		signIn.setOnMouseClicked(event -> signInBtn(event));
+
 		//注册按钮事件
-		signIn.setOnMouseClicked(event -> {
-			//校验
-			boolean usernameValidate = usernameField.validate();
-			boolean passwordValidate = passwordField.validate();
-			if (usernameValidate && passwordValidate){
-				//登录验证
-				String userName = usernameField.getCharacters().toString();
-				String password = passwordField.getCharacters().toString();
-				if ("admin".equals(userName) && "admin".equals(password)) {
-					//弹框提示
-					new DialogBuilder(usernameField).
-							setTitle("Message").
-							setMessage("Login success! Waiting to initial...").
-							create();
+		register.setOnMouseClicked(event -> registerBtn(event));
 
-					//判断是否勾选记住帐号和密码
-					boolean selected = rememberMe.isSelected();
-					if (selected){
-						saveLoginInfo(userName,password);
-					}
-
-					loginStage.close();
-					new MainStage();
-				} else {
-					msg.setFill(Color.FIREBRICK);
-					msg.setText("Authentication failed!");
-				}
-			}
-
-		});
+		//监听键盘回车事件：登录
+		root.setOnKeyPressed(event -> enterKeyEvent(event));
 
 	}
 
+	//登录按钮事件
+	private void signInBtn(MouseEvent event) {
+		//校验
+		boolean usernameValidate = usernameField.validate();
+		boolean passwordValidate = passwordField.validate();
+		if (usernameValidate && passwordValidate){
+			//登录验证
+			String userName = usernameField.getCharacters().toString();
+			String password = passwordField.getCharacters().toString();
+			if ("admin".equals(userName) && "admin".equals(password)) {
+				//弹框提示
+				new DialogBuilder(usernameField).
+						setTitle("Message").
+						setMessage("Login success! Waiting to initial...").
+						create();
 
+				//判断是否勾选记住帐号和密码
+				boolean selected = rememberMe.isSelected();
+				if (selected){
+					saveLoginInfo(userName,password);
+				}
 
+				loginStage.close();
+				new MainStage();
+			} else {
+				msg.setFill(Color.FIREBRICK);
+				msg.setText("Authentication failed!");
+			}
+		}
+	}
 
-	@FXML
-	public void registerBtn(ActionEvent event) throws IOException {
+	//注册按钮事件
+	private void registerBtn(MouseEvent event) {
 		loginStage.hide();
 		registerStage = new RegisterStage();
-		//registerStage.getStage();
 
 		//对下一个页面赋值
 		RegisterController.primaryStage = loginStage;
@@ -183,11 +186,9 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 
 
 	//监听键盘回车事件：登录
-
-	public void enterEvent(KeyEvent event) throws IOException {
+	public void enterKeyEvent(KeyEvent event) {
 		if(event.getCode() == KeyCode.ENTER){
-			// do something
-			//loginInBtn(null);
+			signInBtn(null);
 		}
 	}
 

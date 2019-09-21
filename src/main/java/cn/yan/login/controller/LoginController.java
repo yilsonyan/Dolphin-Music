@@ -1,6 +1,5 @@
 package cn.yan.login.controller;
 
-import cn.yan.login.stage.LoginStage;
 import cn.yan.login.stage.MainStage;
 import cn.yan.login.stage.RegisterStage;
 import cn.yan.util.DialogBuilder;
@@ -8,6 +7,7 @@ import cn.yan.validator.LoginValidator;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.JFXToggleButton;
 import de.felixroske.jfxsupport.AbstractFxmlView;
 import de.felixroske.jfxsupport.FXMLController;
 import de.felixroske.jfxsupport.FXMLView;
@@ -26,14 +26,19 @@ import org.kordamp.ikonli.fontawesome5.FontAwesomeSolid;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 import javax.annotation.PostConstruct;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 @FXMLController
 @FXMLView(value = "/fxml/login.fxml")
 public class LoginController extends AbstractFxmlView implements Initializable {
 
+	//根节点
 	@FXML
 	private GridPane root;
 
@@ -43,34 +48,42 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 	@FXML
 	private JFXPasswordField passwordField;
 
-
-    //登录提示信息
+    //记住按钮
     @FXML
-    private Text msg;
+    private JFXToggleButton rememberMe;
 
+    //登录按钮
     @FXML
-    private JFXButton loginIn;
+    private JFXButton signIn;
+
+	//注册按钮
+	@FXML
+	private JFXButton register;
+
+	//登录提示信息
+	@FXML
+	private Text msg;
 
     //登录界面
-	public static LoginStage loginStage ;
+	public static Stage loginStage ;
 	//注册界面
-	public static RegisterStage registerStage;
+	public static Stage registerStage;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		//取到Stage
 		//Stage stage = App.getStage();
-		Stage stage = GUIState.getStage();
-		stage.setTitle("Dolphin Music");
+		loginStage = GUIState.getStage();
+		loginStage.setTitle("Dolphin Music");
 		//去除窗口标题栏
 		//stage.initStyle(StageStyle.TRANSPARENT);
 		//设置不可调整大小
 		//stage.setResizable(false);
-		stage.setResizable(true);
+		loginStage.setResizable(true);
 		//设置窗口最小化
 		//stage.setIconified(true);
 		//设置窗口关闭按钮事件
-		stage.setOnCloseRequest(
+		loginStage.setOnCloseRequest(
 			event -> new DialogBuilder(usernameField).
 				setTitle("Oops!").
 				setMessage("Do you really want to leave me alone?").
@@ -79,13 +92,12 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 				create()
 		);
 
-
-
 	}
 
 
 	@PostConstruct
 	public void init(){
+
 		//加载样式css
 		Parent view = getView();
 
@@ -121,43 +133,40 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 			}
 		});
 
+		//注册按钮事件
+		signIn.setOnMouseClicked(event -> {
+			//校验
+			boolean usernameValidate = usernameField.validate();
+			boolean passwordValidate = passwordField.validate();
+			if (usernameValidate && passwordValidate){
+				//登录验证
+				String userName = usernameField.getCharacters().toString();
+				String password = passwordField.getCharacters().toString();
+				if ("admin".equals(userName) && "admin".equals(password)) {
+					//弹框提示
+					new DialogBuilder(usernameField).
+							setTitle("Message").
+							setMessage("Login success! Waiting to initial...").
+							create();
 
+					//判断是否勾选记住帐号和密码
+					boolean selected = rememberMe.isSelected();
+					if (selected){
+						saveLoginInfo(userName,password);
+					}
+
+					loginStage.close();
+					new MainStage();
+				} else {
+					msg.setFill(Color.FIREBRICK);
+					msg.setText("Authentication failed!");
+				}
+			}
+
+		});
 
 	}
 
-
-	@FXML
-    public void loginInBtn(ActionEvent event) throws IOException {
-        //登录验证
-        CharSequence userName = usernameField.getCharacters();
-        CharSequence password = passwordField.getCharacters();
-	    msg.setFill(Color.FIREBRICK);
-        if (userName.length() == 0){
-            msg.setText("用户名不能为空!");
-            return;
-        }
-        if (password.length() == 0){
-            msg.setText("密码不能为空!");
-	        return;
-        }
-        if ("admin".equals(userName.toString()) && "admin".equals(password.toString())){
-	        /*Alert alert = new Alert(Alert.AlertType.INFORMATION);
-	        alert.setTitle("信息");
-	        alert.setHeaderText("登录成功");
-	        alert.setContentText("帐号密码验证通过");
-	        alert.show();*/
-	        //弹框提示
-	        new DialogBuilder(usernameField).
-					setTitle("Message").
-					setMessage("Login success! Waiting to initial...").
-					create();
-
-	        loginStage.close();
-	        new MainStage();
-        }else {
-	        msg.setText("登录验证失败!");
-        }
-    }
 
 
 
@@ -174,14 +183,36 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 
 
 	//监听键盘回车事件：登录
-	@FXML
+
 	public void enterEvent(KeyEvent event) throws IOException {
 		if(event.getCode() == KeyCode.ENTER){
 			// do something
-			loginInBtn(null);
+			//loginInBtn(null);
 		}
 	}
 
+
+	//序列化登录信息
+	private void saveLoginInfo(String userName,String password) {
+		new Thread(()->{
+			HashMap<String, String> map = new HashMap<>();
+			map.put("userName",userName);
+			map.put("password",password);
+			//序列化
+			URL url = this.getClass().getClassLoader().getResource("config");
+			File serializableFile = new File(url.getPath()+"/Serializable");
+			try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(serializableFile))){
+				if (!serializableFile.exists()){
+					serializableFile.createNewFile();
+				}
+				objectOutputStream.writeObject(map);
+				objectOutputStream.flush();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}).start();
+
+	}
 
 
 }

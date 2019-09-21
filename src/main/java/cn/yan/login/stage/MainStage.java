@@ -17,8 +17,6 @@ import java.net.URL;
 
 public class MainStage extends Stage {
 
-
-
 	//初始化界面
 	{
 		try {

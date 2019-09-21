@@ -1,61 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.paint.*?>
-<?import com.jfoenix.validation.*?>
-<?import com.jfoenix.svg.*?>
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.web.*?>
-<?import javafx.scene.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<GridPane id="root" alignment="TOP_CENTER" onKeyPressed="#enterEvent" prefHeight="600.0" prefWidth="500.0"
-          xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="cn.yan.login.controller.LoginController">
+<GridPane fx:id="root" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.yan.login.controller.LoginController">
     <children>
-        <Pane layoutX="80.0" layoutY="36.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-              minWidth="-Infinity" prefHeight="398.0" prefWidth="372.0" AnchorPane.bottomAnchor="36.0"
-              AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="36.0">
+        <Pane layoutX="80.0" layoutY="36.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="372.0" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="36.0">
             <children>
-                <Text layoutX="42.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wellcome"
-                      textAlignment="CENTER">
+                <Text layoutX="42.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wellcome" textAlignment="CENTER">
                     <font>
-                        <Font name="Tahoma Bold" size="24.0"/>
+                        <Font name="Tahoma Bold" size="24.0" />
                     </font>
                 </Text>
-                <Label layoutX="42.0" layoutY="120.0" text="Account" textAlignment="CENTER"/>
-                <Label layoutX="42.0" layoutY="165.0" text="Password" textAlignment="CENTER"/>
-
-                <Button fx:id="signInBtn" alignment="CENTER" layoutX="231.0" layoutY="329.0" mnemonicParsing="false"
-                        onAction="#loginInBtn" text="Sign in"/>
-                <Text fx:id="msg" layoutX="132.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text=""
-                      wrappingWidth="150.97265625"/>
-                <Button fx:id="registerBtn" alignment="CENTER" layoutX="231.0" layoutY="357.0" mnemonicParsing="false"
-                        onAction="#registerBtn" text="Register"/>
-                <JFXToggleButton alignment="BOTTOM_LEFT" contentDisplay="RIGHT" graphicTextGap="15.0" layoutX="42.0"
-                                 layoutY="191.0" pickOnBounds="false" prefHeight="56.0" prefWidth="173.0"
-                                 text="Remember" toggleColor="#009485">
+                <Label layoutX="42.0" layoutY="75.0" text="Account" textAlignment="CENTER" />
+                <Label layoutX="42.0" layoutY="115.0" text="Password" textAlignment="CENTER" />
+                <Text fx:id="msg" layoutX="132.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="150.97265625" />
+                <JFXToggleButton fx:id="rememberMe" alignment="BOTTOM_LEFT" contentDisplay="RIGHT" graphicTextGap="15.0" layoutX="40.0" layoutY="143.0" pickOnBounds="false" prefHeight="56.0" prefWidth="173.0" text="Remember" toggleColor="#009485">
                     <padding>
-                        <Insets left="0.1"/>
+                        <Insets left="0.1" />
                     </padding>
                 </JFXToggleButton>
-                <JFXTextField fx:id="usernameField" layoutX="132.0" layoutY="107.0"/>
-
-                <JFXPasswordField fx:id="passwordField" layoutX="132.0" layoutY="152.0"/>
-                <JFXButton fx:id="loginIn" defaultButton="true" layoutX="126.0" layoutY="272.0"
-                           ripplerFill="BLACK" text="Sign in"/>
-                <JFXButton layoutX="215.0" layoutY="272.0" ripplerFill="BLACK" text="Register"/>
+                <JFXTextField fx:id="usernameField" layoutX="126.0" layoutY="70.0" />
+                <JFXPasswordField fx:id="passwordField" layoutX="126.0" layoutY="110.0" />
+                <JFXButton fx:id="signIn" defaultButton="true" layoutX="126.0" layoutY="199.0" ripplerFill="BLACK" text="Sign in" underline="true" />
+                <JFXButton fx:id="register" layoutX="207.0" layoutY="199.0" ripplerFill="BLACK" text="Register" underline="true" />
 
             </children>
         </Pane>
     </children>
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
 </GridPane>

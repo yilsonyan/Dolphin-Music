@@ -6,8 +6,15 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import lombok.Data;
 
-public class User {
+import java.io.Serializable;
+
+@Data
+public class User implements Serializable {
+
+	/** use serialVersionUID from JDK 1.0.2 for interoperability */
+	private static final long serialVersionUID = -6849794470754667110L;
 
 	private final static String USERNAME_PROP_NAME = "userName";
 	private final ReadOnlyStringWrapper userName;
@@ -35,6 +42,10 @@ public class User {
 
 	public final String getUserName() {
 		return userName.get();
+	}
+
+	public final void setUserName(String userName) {
+		this.userName.set(userName);
 	}
 
 	public ReadOnlyStringProperty userNameProperty() {

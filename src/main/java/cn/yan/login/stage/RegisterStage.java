@@ -1,6 +1,6 @@
 package cn.yan.login.stage;
 
-import cn.yan.login.config.LonginStageConfig;
+import cn.yan.login.config.SceneConfig;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,7 +20,7 @@ public class RegisterStage extends Stage{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		Scene scene = new Scene(root, LonginStageConfig.width, LonginStageConfig.height);
+		Scene scene = new Scene(root, SceneConfig.width, SceneConfig.height);
 		this.setTitle("注册新用户");
 		//loginStage.setFullScreen(true);
 		this.setScene(scene);

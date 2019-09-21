@@ -16,7 +16,7 @@ import java.util.Random;
 /**
  * 启动动画，等待springboot启动完成
  */
-public class Splash extends SplashScreen {
+public class SplashConfig extends SplashScreen {
 
     @Override
     public String getImagePath() {
@@ -40,7 +40,7 @@ public class Splash extends SplashScreen {
 
     //透明不带进度条
     //@Override
-    public Parent getParent1() {
+    public Parent getParent() {
         Group gp = new Group();
 	    Image image = new Image(this.getImagePath());
 	    ImageView imageView = new ImageView(image);

@@ -1,40 +1,33 @@
 package cn.yan.login.controller;
 
-import cn.yan.App;
-import cn.yan.login.config.LonginStageConfig;
 import cn.yan.login.stage.LoginStage;
 import cn.yan.login.stage.MainStage;
 import cn.yan.login.stage.RegisterStage;
 import cn.yan.util.DialogBuilder;
-import de.felixroske.jfxsupport.*;
-import javafx.collections.ObservableList;
+import cn.yan.validator.LoginValidator;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
+import de.felixroske.jfxsupport.AbstractFxmlView;
+import de.felixroske.jfxsupport.FXMLController;
+import de.felixroske.jfxsupport.FXMLView;
+import de.felixroske.jfxsupport.GUIState;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Cursor;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.stage.Window;
-import javafx.stage.WindowEvent;
-import lombok.experimental.var;
-import org.springframework.context.ConfigurableApplicationContext;
+import org.kordamp.ikonli.fontawesome5.FontAwesomeSolid;
+import org.kordamp.ikonli.javafx.FontIcon;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 @FXMLController
@@ -42,17 +35,21 @@ import java.util.ResourceBundle;
 public class LoginController extends AbstractFxmlView implements Initializable {
 
 	@FXML
-	private AnchorPane root;
+	private GridPane root;
 
     @FXML
-    private TextField usernameTextField;
+    private JFXTextField usernameField;
 
-    @FXML
-    private PasswordField passwordTextField;
+	@FXML
+	private JFXPasswordField passwordField;
+
 
     //登录提示信息
     @FXML
     private Text msg;
+
+    @FXML
+    private JFXButton loginIn;
 
     //登录界面
 	public static LoginStage loginStage ;
@@ -68,24 +65,63 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 		//去除窗口标题栏
 		//stage.initStyle(StageStyle.TRANSPARENT);
 		//设置不可调整大小
-		stage.setResizable(false);
+		//stage.setResizable(false);
+		stage.setResizable(true);
 		//设置窗口最小化
 		//stage.setIconified(true);
 		//设置窗口关闭按钮事件
 		stage.setOnCloseRequest(
-			event -> new DialogBuilder(usernameTextField).
+			event -> new DialogBuilder(usernameField).
 				setTitle("Oops!").
-				setMessage("Are you confirm leave me?").
-				setPositiveBtn("Yep", ()->{}).
+				setMessage("Do you really want to leave me alone?").
+				setPositiveBtn("Sorry for that", ()->{}).
 				setNegativeBtn("Cancel", ()->event.consume()).
 				create()
 		);
+
+
 
 	}
 
 
 	@PostConstruct
 	public void init(){
+		//加载样式css
+		Parent view = getView();
+
+
+		view.getStylesheets().add("css/Login.css");
+		//view.setStyle("-fx-background-image:url(static/entrance-backgroud/entrance_bg1.jpg);-fx-background-size:500px");
+		//loginIn.getStyleClass().add("button-raised");
+
+
+		//用户名输入框验证
+		//usernameField.setPromptText("With Validation..");
+		LoginValidator validator = new LoginValidator();
+		validator.setMessage("Input Required");
+		FontIcon warnIcon = new FontIcon(FontAwesomeSolid.HEART);//验证失败的图标类型
+		validator.setIcon(warnIcon);
+		usernameField.getValidators().add(validator);
+		usernameField.focusedProperty().addListener((o, oldVal, newVal) -> {
+			if (!newVal) {
+				usernameField.validate();
+			}
+		});
+
+		//密码输入框验证
+		//passwordField.setPromptText("Password");
+		validator = new LoginValidator();
+		validator.setMessage("Can't be empty");
+		warnIcon = new FontIcon(FontAwesomeSolid.EXCLAMATION_TRIANGLE);
+		validator.setIcon(warnIcon);
+		passwordField.getValidators().add(validator);
+		passwordField.focusedProperty().addListener((o, oldVal, newVal) -> {
+			if (!newVal) {
+				passwordField.validate();
+			}
+		});
+
+
 
 	}
 
@@ -93,8 +129,8 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 	@FXML
     public void loginInBtn(ActionEvent event) throws IOException {
         //登录验证
-        CharSequence userName = usernameTextField.getCharacters();
-        CharSequence password = passwordTextField.getCharacters();
+        CharSequence userName = usernameField.getCharacters();
+        CharSequence password = passwordField.getCharacters();
 	    msg.setFill(Color.FIREBRICK);
         if (userName.length() == 0){
             msg.setText("用户名不能为空!");
@@ -111,9 +147,9 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 	        alert.setContentText("帐号密码验证通过");
 	        alert.show();*/
 	        //弹框提示
-	        new DialogBuilder(usernameTextField).
-					//setTitle("Message").
-					setMessage("Login success!").
+	        new DialogBuilder(usernameField).
+					setTitle("Message").
+					setMessage("Login success! Waiting to initial...").
 					create();
 
 	        loginStage.close();

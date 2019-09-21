@@ -7,7 +7,7 @@ import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
-public class 用户管理 {
+public class User {
 
 	private final static String USERNAME_PROP_NAME = "userName";
 	private final ReadOnlyStringWrapper userName;
@@ -17,7 +17,7 @@ public class 用户管理 {
 	private StringProperty password;
 
 
-	public 用户管理() {
+	public User() {
 		userName = new ReadOnlyStringWrapper(this, USERNAME_PROP_NAME, "");
 		password = new SimpleStringProperty(this, PASSWORD_PROP_NAME, "");
 
@@ -57,10 +57,11 @@ public class 用户管理 {
 
 	//测试属性更改事件
 	public static void main(String[] args) {
-		用户管理 用户管理 = new 用户管理();
-		用户管理.setPassword("123");
-
-		用户管理.setPassword("456");
-
+		User user = new User();
+		user.setPassword("123");
+		user.setPassword("456");
 	}
+
+
+
 }

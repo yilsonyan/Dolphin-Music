@@ -1,7 +1,6 @@
 package cn.yan.login.stage;
 
-import cn.yan.login.config.LonginStageConfig;
-import javafx.application.Platform;
+import cn.yan.login.config.SceneConfig;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,11 +8,9 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import org.springframework.boot.SpringApplication;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.concurrent.CompletableFuture;
 
 
 public class LoginStage extends Stage {
@@ -28,7 +25,7 @@ public class LoginStage extends Stage {
 		}
 		//添加css
 
-		Scene scene = new Scene(root, LonginStageConfig.width, LonginStageConfig.height);
+		Scene scene = new Scene(root, SceneConfig.width, SceneConfig.height);
 		//scene.getStylesheets().add(this.getClass().getClassLoader().getResource("css/Login.css").toExternalForm());
 		scene.getStylesheets().add("css/Login.css");
 

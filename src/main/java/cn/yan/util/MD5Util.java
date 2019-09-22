@@ -42,20 +42,20 @@ public class MD5Util {
      * @date:     2019年2月13日 上午10:19:17
      *
      * @param origin        加密的源数据
-     * @param charsetname   编码
+     * @param charsetName   编码
      * @return  返回：加密后的数据
      */ 
-    public static String MD5Encode(String origin, String charsetname) {
+    public static String MD5Encode(String origin, String charsetName) {
         String resultString = null;
         try {
             resultString = new String(origin);
             MessageDigest md = MessageDigest.getInstance("MD5");
-            if (charsetname == null || "".equals(charsetname))
+            if (charsetName == null || "".equals(charsetName))
                 resultString = byteArrayToHexString(md.digest(resultString
                         .getBytes()));
             else
                 resultString = byteArrayToHexString(md.digest(resultString
-                        .getBytes(charsetname)));
+                        .getBytes(charsetName)));
         } catch (Exception exception) {
         }
         return resultString;

@@ -85,12 +85,12 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 		//stage.setIconified(true);
 		//设置窗口关闭按钮事件
 		loginStage.setOnCloseRequest(
-				event -> new DialogBuilder(usernameField).
-						setTitle("Oops!").
-						setMessage("Do you really want to leave me alone?").
-						setPositiveBtn("Sorry for that", () -> {}).
-						setNegativeBtn("Cancel", () -> event.consume()).
-						create()
+			event -> new DialogBuilder(usernameField).
+			setTitle("Oops!").
+			setMessage("Do you really want to leave me alone?").
+			setPositiveBtn("Sorry for that", () -> {}).
+			setNegativeBtn("Cancel", () -> event.consume()).
+			create()
 		);
 
 	}
@@ -224,16 +224,18 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 
 	//删除序列化文件
 	public void deleteLoginInfo() {
-		//获取序列化文件
-		URL url = this.getClass().getClassLoader().getResource("");
-		File serializableFile = new File(url.getPath() + "/user.serializable");
-		try {
-			if (serializableFile.exists()) {
-				serializableFile.delete();
+		new Thread(() -> {
+			//获取序列化文件
+			URL url = this.getClass().getClassLoader().getResource("");
+			File serializableFile = new File(url.getPath() + "/user.serializable");
+			try {
+				if (serializableFile.exists()) {
+					serializableFile.delete();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		}).start();
 	}
 
 

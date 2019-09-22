@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import com.jfoenix.controls.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
@@ -15,32 +17,31 @@
 
 <AnchorPane fx:id="anchorPane" prefHeight="355.0" prefWidth="370.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.yan.login.controller.RegisterController">
     <children>
-        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Text layoutX="127.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register">
                <font>
                   <Font name="Tahoma Bold" size="24.0" />
                </font>
             </Text>
-            <Label layoutX="127.0" layoutY="150.0" text="用户名" />
-            <Label layoutX="127.0" layoutY="204.0" text="密码" />
+            <Label layoutX="127.0" layoutY="150.0" text="User Name" />
+            <Label layoutX="127.0" layoutY="205.0" text="Password" />
             <TextField fx:id="usernameTextField" layoutX="220.0" layoutY="145.0" />
-            <TextField fx:id="passwordTextField" layoutX="220.0" layoutY="191.0" />
-            <Button fx:id="registerBtn" layoutX="220.0" layoutY="309.0" mnemonicParsing="false" text="立即注册" />
-            <Label layoutX="127.0" layoutY="249.0" text="验证码" />
-            <ImageView fitHeight="27.0" fitWidth="105.0" layoutX="220.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true" />
+            <TextField fx:id="passwordTextField" layoutX="221.0" layoutY="200.0" />
+            <Label layoutX="127.0" layoutY="258.0" text="Verify Code" />
              <Button fx:id="backBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="&lt;">
                  <tooltip>
                      <Tooltip text="Click this button to return login page." />
                  </tooltip>
              </Button>
-            <TextField fx:id="inputCodeTextField" layoutX="220.0" layoutY="244.0" prefHeight="27.0" prefWidth="70.0" />
-            <ImageView fx:id="codeImage" fitHeight="37.0" fitWidth="111.0" layoutX="294.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
+            <TextField fx:id="inputCodeTextField" layoutX="220.0" layoutY="253.0" prefHeight="27.0" prefWidth="70.0" />
+            <ImageView fx:id="codeImage" fitHeight="37.0" fitWidth="111.0" layoutX="304.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
                <!--<image>
                   <Image backgroundLoading="true" url="verifycode/code.jpeg" />
                </image>-->
             </ImageView>
             <Text fx:id="msg" layoutX="220.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="148.2060546875" />
+            <Button fx:id="registerBtn" layoutX="221.0" layoutY="315.0" mnemonicParsing="false" text="Let's Start" />
          </children>
         </Pane>
     </children>

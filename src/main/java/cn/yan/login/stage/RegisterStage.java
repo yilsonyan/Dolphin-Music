@@ -1,16 +1,17 @@
 package cn.yan.login.stage;
 
 import cn.yan.login.config.SceneConfig;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 
 public class RegisterStage extends Stage{
 
@@ -40,31 +41,26 @@ public class RegisterStage extends Stage{
 
 
 		//关闭事件
-		this.setOnCloseRequest(new EventHandler<WindowEvent>() {
-			@Override
-			public void handle(WindowEvent event) {
-
-				//对话框 Alert Alert.AlertType.CONFIRMATION：反问对话框
-				/*
-			    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-			    //设置对话框标题
-			    alert.setTitle("Exit");
-			    //设置内容
-			    alert.setHeaderText("Are you sure to exit");
-			    //显示对话框
-			    Optional<ButtonType> result = alert.showAndWait();
-			    //如果点击OK
-			    if (result.get() == ButtonType.OK){
-				    // ... user chose OK
-				    System.exit(0);
-				    //否则
-			    } else {
-				    event.consume();
-			    }
-				*/
-			}
+		this.setOnCloseRequest(event -> {
+			//对话框 Alert Alert.AlertType.CONFIRMATION：反问对话框
+		    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+		    //设置对话框标题
+		    alert.setTitle("Exit");
+		    //设置内容
+		    alert.setHeaderText("Are you sure to exit?");
+		    //显示对话框
+		    Optional<ButtonType> result = alert.showAndWait();
+		    //如果点击OK
+		    if (result.get() != ButtonType.OK){
+			    //user chose is not OK
+			    event.consume();
+		    }
 		});
 	}
+
+
+
+
 
 
 }

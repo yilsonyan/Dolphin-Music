@@ -187,6 +187,19 @@
             <version>1.12.1</version>
         </dependency>
 
+        <!--解决打包时程序包com.sun.istack.internal不存在（使用了后面的注解时com.sun.istack.internal.Nullable;）-->
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.2.11</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>13.0</version>
+        </dependency>
+
 
     </dependencies>
 

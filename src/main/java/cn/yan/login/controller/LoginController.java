@@ -105,7 +105,6 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 		//view.setStyle("-fx-background-image:url(static/entrance-backgroud/entrance_bg1.jpg);-fx-background-size:500px");
 		//loginIn.getStyleClass().add("button-raised");
 
-
 		//用户名输入框验证
 		//usernameField.setPromptText("With Validation..");
 		LoginValidator validator = new LoginValidator();

@@ -1,5 +1,6 @@
 package cn.yan.login.controller;
 
+import cn.yan.util.DialogBuilder;
 import cn.yan.util.VerifyCodeUtil;
 import de.felixroske.jfxsupport.AbstractFxmlView;
 import de.felixroske.jfxsupport.FXMLController;
@@ -8,12 +9,9 @@ import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.DialogEvent;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -77,7 +75,8 @@ public class RegisterController extends AbstractFxmlView implements Initializabl
 		registerBtn.setOnAction(e->registerBtn(e));
 		backBtn.setOnAction(e->backBtn(e));
 		codeImage.setOnMouseClicked(e->generateImageCode());
-
+		//验证码生成后再设置注册按钮可以点击，否则后台验证时，后台的验证码还没有生成。
+		registerBtn.setDisable(true);
 
 	}
 
@@ -91,14 +90,14 @@ public class RegisterController extends AbstractFxmlView implements Initializabl
 		Service<Image> service=new Service<Image>() {
 			@Override
 			protected Task<Image> createTask() {
-			return new Task<Image>() {
-				@Override
-				protected Image call() throws Exception {
-					//生成验证码图片，并返回fx包下的ImageView对象
-					Image image = VerifyCodeUtil.generateImageCode();
-					return image;
-				}
-			};
+				return new Task<Image>() {
+					@Override
+					protected Image call() throws Exception {
+						//生成验证码图片，并返回fx包下的ImageView对象
+						Image image = VerifyCodeUtil.generateImageCode();
+						return image;
+					}
+				};
 			}
 		};
 
@@ -106,9 +105,10 @@ public class RegisterController extends AbstractFxmlView implements Initializabl
 		codeImage.imageProperty().bind(service.valueProperty());
 
 		//任务完成时会调用
-		service.setOnSucceeded((WorkerStateEvent stateEvent) -> {
-			//System.out.println("任务处理完成！");
-		});
+		service.setOnSucceeded((WorkerStateEvent stateEvent) ->
+			//验证码生成后再设置注册按钮可以点击，否则后台验证时，后台的验证码还没有生成。
+			registerBtn.setDisable(false)
+		);
 		//启动任务start()一定是最后才调用的
 		service.start();
 	}
@@ -131,25 +131,29 @@ public class RegisterController extends AbstractFxmlView implements Initializabl
 		//与用户输入的做对比
 		String inputCode = inputCodeTextField.getCharacters().toString();
 		if (!text.equalsIgnoreCase(inputCode)){
-			msg.setText("验证码输入错误");
+			msg.setText("Wrong Verify Code!");
 			return;
 		}
+
 		//用户名重复校验
+		if (1==1){
+			//注册成功提示弹窗
+			new DialogBuilder(registerBtn).
+				setTitle("Congratulations!").
+				setMessage("Register success!").
+				setPositiveBtn("Get It", () -> {}).
+				create();
+			//跳转回登陆页面
+			backBtn(null);
+		}else {
+			//注册失败提示弹窗
+			new DialogBuilder(registerBtn).
+				setTitle("Oops!").
+				setMessage("Register failed!").
+				setPositiveBtn("Get It", () -> {}).
+				create();
+		}
 
-		Alert alert = new Alert(Alert.AlertType.INFORMATION);
-		alert.setTitle("信息");
-		alert.setHeaderText("注册成功");
-
-		//注册成功
-		//用户点击确定后，关闭注册窗口，进入登录窗口
-		alert.setOnCloseRequest(new EventHandler<DialogEvent>() {
-			@Override
-			public void handle(DialogEvent event) {
-				registerStage.close();
-				primaryStage.show();
-			}
-		});
-		alert.show();
 	}
 
 

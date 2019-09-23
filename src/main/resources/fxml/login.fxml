@@ -38,9 +38,9 @@
                     </padding>
                 </JFXToggleButton>
                 <JFXTextField fx:id="usernameField" layoutX="126.0" layoutY="71.0" prefHeight="23.0" prefWidth="142.0" />
-                <JFXPasswordField fx:id="passwordField" layoutX="126.0" layoutY="122.0" prefHeight="23.0" prefWidth="142.0" />
-                <JFXButton fx:id="signIn" defaultButton="true" layoutX="126.0" layoutY="237.0" ripplerFill="BLACK" style="-fx-background-color: #cccccc;" text="Sign in" underline="true" />
-                <JFXButton fx:id="register" layoutX="207.0" layoutY="237.0" ripplerFill="BLACK" style="-fx-background-color: #cccccc;" text="Register" underline="true" />
+                <JFXPasswordField fx:id="passwordField" focusTraversable="false" layoutX="126.0" layoutY="122.0" prefHeight="23.0" prefWidth="142.0" />
+                <JFXButton fx:id="signIn" defaultButton="true" focusTraversable="false" layoutX="126.0" layoutY="237.0" ripplerFill="BLACK" style="-fx-background-color: #cccccc;" text="Sign in" underline="true" />
+                <JFXButton fx:id="register" focusTraversable="false" layoutX="207.0" layoutY="237.0" ripplerFill="BLACK" style="-fx-background-color: #cccccc;" text="Register" underline="true" />
 
             </children>
         </Pane>

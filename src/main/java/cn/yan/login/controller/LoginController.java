@@ -79,8 +79,8 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 		//去除窗口标题栏
 		//stage.initStyle(StageStyle.TRANSPARENT);
 		//设置不可调整大小
-		//stage.setResizable(false);
-		loginStage.setResizable(true);
+		loginStage.setResizable(false);
+		//loginStage.setResizable(true);
 		//设置窗口最小化
 		//stage.setIconified(true);
 		//设置窗口关闭按钮事件
@@ -101,7 +101,7 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 
 		//加载样式css
 		Parent view = getView();
-		view.getStylesheets().add("css/Login.css");
+		view.getStylesheets().add("css/login.css");
 		//view.setStyle("-fx-background-image:url(static/entrance-backgroud/entrance_bg1.jpg);-fx-background-size:500px");
 		//loginIn.getStyleClass().add("button-raised");
 

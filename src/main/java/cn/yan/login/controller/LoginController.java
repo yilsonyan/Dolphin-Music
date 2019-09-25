@@ -2,18 +2,13 @@ package cn.yan.login.controller;
 
 import cn.yan.App;
 import cn.yan.entity.User;
-import cn.yan.login.stage.MainStage;
-import cn.yan.login.stage.RegisterStage;
 import cn.yan.mapper.UserMapper;
 import cn.yan.util.DialogBuilder;
 import cn.yan.validator.LoginValidator;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.controls.JFXToggleButton;
+import com.jfoenix.controls.*;
 import de.felixroske.jfxsupport.AbstractFxmlView;
 import de.felixroske.jfxsupport.FXMLController;
 import de.felixroske.jfxsupport.FXMLView;
@@ -72,11 +67,6 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 	@FXML
 	private Text msg;
 
-	//登录界面
-	public static Stage loginStage;
-	//注册界面
-	public static Stage registerStage;
-
 	@Resource
 	private UserMapper userMapper;
 
@@ -84,7 +74,7 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		//取到Stage
 		//Stage stage = App.getStage();
-		loginStage = GUIState.getStage();
+		Stage loginStage = GUIState.getStage();
 		loginStage.setTitle("Dolphin Music");
 		//去除窗口标题栏
 		//stage.initStyle(StageStyle.TRANSPARENT);
@@ -100,7 +90,7 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 			setMessage("Do you really want to leave me alone?").
 			setPositiveBtn("Sorry for that", () -> {}).
 			setNegativeBtn("Cancel", () -> event.consume()).
-			create()
+			createAndWait()
 		);
 
 	}
@@ -113,6 +103,7 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 		view.getStylesheets().add("css/login.css");
 		//view.setStyle("-fx-background-image:url(static/entrance-backgroud/entrance_bg1.jpg);-fx-background-size:500px");
 		//loginIn.getStyleClass().add("button-raised");
+
 
 		//用户名输入框验证
 		//usernameField.setPromptText("With Validation..");
@@ -156,27 +147,22 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 	//登录按钮事件
 	private void signInBtn(MouseEvent event) {
 
-		//启动类的方法切换视图
-		App.showView(MainController.class);
+		new Thread(()->{
+			Page<User> page = new Page<>(1, 3);
+			QueryWrapper<User> wrapper = new QueryWrapper<>();
+			wrapper.lambda().ge(User::getAge, 1).orderByAsc(User::getAge);
+			IPage<User> result = userMapper.selectPage(page, wrapper);
+			User user = new User();
+			user.setName("name---");
 
-		Page<User> page = new Page<>(1, 3);
-		QueryWrapper<User> wrapper = new QueryWrapper<>();
-		wrapper.lambda().ge(User::getAge, 1).orderByAsc(User::getAge);
-		IPage<User> result = userMapper.selectPage(page, wrapper);
-		User user = new User();
-		user.setName("name---");
+			System.out.println("插入前没有id：" + user);
+			userMapper.insert(user);
+			System.out.println("插入后有id：" + user);
+			//user.insert();
 
-		System.out.println("插入前没有id：" + user);
-		userMapper.insert(user);
-
-		System.out.println("插入后有id：" + user);
-
-		//user.insert();
-
-
-		System.out.println(result.getTotal());
-		System.out.println(result.getRecords().size());
-
+			System.out.println(result.getTotal());
+			System.out.println(result.getRecords().size());
+		}).start();
 
 		//校验
 		boolean usernameValidate = usernameField.validate();
@@ -187,10 +173,11 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 			String password = passwordField.getCharacters().toString();
 			if ("admin".equals(userName) && "admin".equals(password)) {
 				//弹框提示
-				new DialogBuilder(usernameField).
+				/*JFXAlert<String> alert = new DialogBuilder(usernameField).
 						setTitle("Message").
 						setMessage("Login success! Waiting to initial...").
 						create();
+				alert.close();*/
 
 				//判断是否勾选记住帐号和密码
 				boolean selected = rememberMe.isSelected();
@@ -201,8 +188,8 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 					deleteLoginInfo();
 				}
 
-				loginStage.close();
-				new MainStage();
+				//启动类的方法切换视图
+				App.showView(MainController.class);
 			} else {
 				msg.setFill(Color.FIREBRICK);
 				msg.setText("Authentication failed!");
@@ -212,12 +199,7 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 
 	//注册按钮事件
 	private void registerBtn(MouseEvent event) {
-		loginStage.hide();
-		registerStage = new RegisterStage();
-
-		//对下一个页面赋值
-		RegisterController.primaryStage = loginStage;
-		RegisterController.registerStage = registerStage;
+		App.showView(RegisterController.class);
 	}
 
 

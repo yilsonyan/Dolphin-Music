@@ -1,16 +1,19 @@
 package cn.yan.login.controller;
 
+import cn.yan.App;
 import cn.yan.util.DialogBuilder;
 import cn.yan.util.VerifyCodeUtil;
 import de.felixroske.jfxsupport.AbstractFxmlView;
 import de.felixroske.jfxsupport.FXMLController;
 import de.felixroske.jfxsupport.FXMLView;
+import de.felixroske.jfxsupport.GUIState;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -26,7 +29,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 @FXMLController
-@FXMLView(value = "fxml/register.fxml",title = "index")
+@FXMLView(value = "/fxml/register.fxml",title = "index")
 public class RegisterController extends AbstractFxmlView implements Initializable {
 
 	//主面板
@@ -58,17 +61,22 @@ public class RegisterController extends AbstractFxmlView implements Initializabl
     @FXML
     private Text msg;
 
-    //登录界面
-	public static Stage primaryStage;
-	//注册界面
-	public static Stage registerStage;
-
 
 	/**
 	 * 初始化时调用的方法
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Stage stage = GUIState.getStage();
+		Scene scene = GUIState.getScene();
+		scene.getStylesheets().add("css/register.css");
+		stage.setScene(scene);
+		stage.setTitle("Dolphin Music");
+		//this.setFullScreen(true);
+		stage.setResizable(false);//设置不可调整大小
+		//设置窗口的图标
+		stage.getIcons().add(new Image("/static/icon.png"));
+
 		generateImageCode();
 		//主面板回车事件
 		anchorPane.setOnKeyPressed(e->enterEvent(e));
@@ -117,8 +125,10 @@ public class RegisterController extends AbstractFxmlView implements Initializabl
 
 	@FXML
 	public void backBtn(ActionEvent event) {
-		registerStage.close();
-		primaryStage.show();
+		/*registerStage.close();
+		primaryStage.show();*/
+
+		App.showView(LoginController.class);
 	}
 
 

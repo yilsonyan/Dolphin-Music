@@ -17,9 +17,9 @@
    <children>
       <MenuBar prefHeight="29.0" prefWidth="600.0">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="System">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem fx:id="exit" mnemonicParsing="false" text="Exit" />
                   <MenuItem mnemonicParsing="false" text="Unspecified Action" />
             </items>
           </Menu>
@@ -31,7 +31,7 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem fx:id="about" mnemonicParsing="false" text="About" />
                   <MenuItem mnemonicParsing="false" text="Unspecified Action" />
             </items>
           </Menu>

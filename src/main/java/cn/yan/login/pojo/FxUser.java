@@ -11,7 +11,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-public class User implements Serializable {
+public class FxUser implements Serializable {
 
 	/** use serialVersionUID from JDK 1.0.2 for interoperability */
 	private static final long serialVersionUID = -6849794470754667110L;
@@ -24,7 +24,7 @@ public class User implements Serializable {
 	private StringProperty password;
 
 
-	public User() {
+	public FxUser() {
 		userName = new ReadOnlyStringWrapper(this, USERNAME_PROP_NAME, "");
 		password = new SimpleStringProperty(this, PASSWORD_PROP_NAME, "");
 
@@ -68,7 +68,7 @@ public class User implements Serializable {
 
 	//测试属性更改事件
 	public static void main(String[] args) {
-		User user = new User();
+		FxUser user = new FxUser();
 		user.setPassword("123");
 		user.setPassword("456");
 	}

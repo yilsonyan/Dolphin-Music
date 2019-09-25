@@ -48,6 +48,12 @@ spring:
       host3: 172.20.1.232
       port3: 26379
 
+  #利用jpa生成表
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
 # mybatis-plus
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**Mapper.xml

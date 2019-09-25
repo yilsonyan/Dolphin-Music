@@ -14,7 +14,7 @@ spring:
     #password: test
 
     #url: jdbc:mysql://192.168.1.73:3306/gdws_cpos_server_3.2?characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
-    url: jdbc:mysql://127.0.0.1:3306/netmusic?characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
+    url: jdbc:mysql://127.0.0.1:3306/dolphinmusic?characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
     username: root
     password: 123456
 
@@ -53,7 +53,9 @@ mybatis-plus:
   mapper-locations: classpath*:/mapper/**Mapper.xml
   #实体扫描，多个package用逗号或者分号分隔
   typeAliasesPackage: com.yan.entity
-
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
   global-config:
     #刷新mapper 调试神器
     refresh: true
@@ -76,6 +78,3 @@ mybatis-plus:
       #logic-delete-value: 0
       #logic-not-delete-value: 1
 
-  configuration:
-    map-underscore-to-camel-case: true
-    cache-enabled: false

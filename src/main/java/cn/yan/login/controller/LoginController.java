@@ -158,26 +158,34 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 			User user = new User();
 			user.setName("name-new");
 
-			System.out.println("mapper插入方式—————————————————————————————————————");
+			System.out.println("mapper插入方式——————————————————————————————————————");
 			System.out.println("插入前没有id：" + user);
 			userMapper.insert(user);
 			System.out.println("插入后有id：" + user);
 
 			user.setName("name_update");
-			System.out.println("实体插入方式—————————————————————————————————————");
+			System.out.println("实体插入方式—————————————————————————————————————————");
 			user.insertOrUpdate();
 
 			System.out.println("service插入方式—————————————————————————————————————");
 			userService.save(new User());
 
-			System.out.println("分页测试—————————————————————————————————————");
+			System.out.println("分页测试————————————————————————————————————————————");
 			Page<User> page = new Page<>(1, 3);
 			QueryWrapper<User> wrapper = new QueryWrapper<>();
 			//wrapper.lambda().ge(User::getAge, 1).orderByAsc(User::getAge);
 			IPage<User> result = userMapper.selectPage(page, wrapper);
-			System.out.println(result.getTotal());
-			System.out.println(result.getRecords().size());
+			System.out.println("总条数："+result.getTotal());
+			System.out.println("当前页："+result.getCurrent());
+			System.out.println("本次总条数："+result.getRecords().size());
 
+
+			User byId = userMapper.getById(user.getId());
+			System.out.println("根据自定义mapper接口方法查询：" + byId);
+
+
+			User byXmlId = userMapper.getXmlById(user.getId());
+			System.out.println("根据自定义Xml mapper接口方法查询：" + byXmlId);
 
 		}).start();
 

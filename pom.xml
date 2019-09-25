@@ -20,15 +20,11 @@
 
     <dependencies>
         <!--起步依赖-->
-
-
-
+        <!--日志-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-logging</artifactId>
         </dependency>
-
-
         <!-- 开启web-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

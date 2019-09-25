@@ -3,12 +3,16 @@ package cn.yan.login.controller;
 import cn.yan.App;
 import cn.yan.entity.User;
 import cn.yan.mapper.UserMapper;
+import cn.yan.service.IUserService;
 import cn.yan.util.DialogBuilder;
 import cn.yan.validator.LoginValidator;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.jfoenix.controls.*;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.JFXToggleButton;
 import de.felixroske.jfxsupport.AbstractFxmlView;
 import de.felixroske.jfxsupport.FXMLController;
 import de.felixroske.jfxsupport.FXMLView;
@@ -69,6 +73,8 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 
 	@Resource
 	private UserMapper userMapper;
+	@Resource
+	private IUserService userService;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -148,20 +154,31 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 	private void signInBtn(MouseEvent event) {
 
 		new Thread(()->{
-			Page<User> page = new Page<>(1, 3);
-			QueryWrapper<User> wrapper = new QueryWrapper<>();
-			wrapper.lambda().ge(User::getAge, 1).orderByAsc(User::getAge);
-			IPage<User> result = userMapper.selectPage(page, wrapper);
-			User user = new User();
-			user.setName("name---");
 
+			User user = new User();
+			user.setName("name-new");
+
+			System.out.println("mapper插入方式—————————————————————————————————————");
 			System.out.println("插入前没有id：" + user);
 			userMapper.insert(user);
 			System.out.println("插入后有id：" + user);
-			//user.insert();
 
+			user.setName("name_update");
+			System.out.println("实体插入方式—————————————————————————————————————");
+			user.insertOrUpdate();
+
+			System.out.println("service插入方式—————————————————————————————————————");
+			userService.save(new User());
+
+			System.out.println("分页测试—————————————————————————————————————");
+			Page<User> page = new Page<>(1, 3);
+			QueryWrapper<User> wrapper = new QueryWrapper<>();
+			//wrapper.lambda().ge(User::getAge, 1).orderByAsc(User::getAge);
+			IPage<User> result = userMapper.selectPage(page, wrapper);
 			System.out.println(result.getTotal());
 			System.out.println(result.getRecords().size());
+
+
 		}).start();
 
 		//校验

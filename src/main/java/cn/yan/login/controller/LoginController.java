@@ -165,7 +165,14 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 		IPage<User> result = userMapper.selectPage(page, wrapper);
 		User user = new User();
 		user.setName("name---");
+
+		System.out.println("插入前没有id：" + user);
 		userMapper.insert(user);
+
+		System.out.println("插入后有id：" + user);
+
+		//user.insert();
+
 
 		System.out.println(result.getTotal());
 		System.out.println(result.getRecords().size());

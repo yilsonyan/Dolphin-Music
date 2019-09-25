@@ -4,7 +4,7 @@ package cn.yan.util;
 import com.jfoenix.controls.JFXAlert;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialogLayout;
-import com.sun.istack.internal.Nullable;
+import de.felixroske.jfxsupport.GUIState;
 import javafx.scene.control.Control;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -15,12 +15,15 @@ import javafx.scene.paint.Paint;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import org.springframework.lang.Nullable;
 
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+
+;
 
 /**
  * @author StarsOne
@@ -45,7 +48,11 @@ public class DialogBuilder {
      */
     public DialogBuilder(Control control) {
         if (control != null){
-            window = control.getScene().getWindow();
+            if (window == null){
+                Stage stage = GUIState.getStage();
+                window = stage;
+            }
+            //window = control.getScene().getWindow();
         }
     }
 

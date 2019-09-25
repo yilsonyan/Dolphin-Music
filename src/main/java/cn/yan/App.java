@@ -24,7 +24,10 @@ public class App extends AbstractJavaFxApplicationSupport {
 		//launch(App.class, LoginController.class, args);//springboot-javafx-support启动方式
 		launch(App.class, LoginController.class, new SplashConfig(), args);//springboot-javafx-support启动方式
 	    logger.info("启动成功");
-    }
+
+
+
+	}
 
     //重写默认icon
     @Override

@@ -1,8 +1,9 @@
 # 服务端口
 server:
   port: 8080
-
 spring:
+  aop:
+    proxy-target-class: true
   # 只需配置 datasource 就可在程序中注入 JdbcTemplate
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
@@ -12,7 +13,8 @@ spring:
     #username: test
     #password: test
 
-    url: jdbc:mysql://192.168.1.73:3306/gdws_cpos_server_3.2?characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
+    #url: jdbc:mysql://192.168.1.73:3306/gdws_cpos_server_3.2?characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
+    url: jdbc:mysql://127.0.0.1:3306/netmusic?characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
     username: root
     password: 123456
 
@@ -45,3 +47,35 @@ spring:
 
       host3: 172.20.1.232
       port3: 26379
+
+# mybatis-plus
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**Mapper.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.yan.entity
+
+  global-config:
+    #刷新mapper 调试神器
+    refresh: true
+    #自定义填充策略接口实现
+    #meta-object-handler: cn.yan.config.MybatisFieldFillHandler.class
+    #自定义SQL注入器
+    #sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
+    db-config:
+      #主键类型
+      id-type: id_worker
+      #驼峰下划线转换
+      table-underline: true
+      #字段策略 0:"忽略判断",1:"非 NULL 判断",2:"非空判断"
+      field-strategy: not_empty
+      #数据库大写下划线转换
+      #capital-mode: true
+      #序列接口实现类配置
+      #key-generator: com.baomidou.springboot.xxx
+      #逻辑删除配置（下面3个配置）
+      #logic-delete-value: 0
+      #logic-not-delete-value: 1
+
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false

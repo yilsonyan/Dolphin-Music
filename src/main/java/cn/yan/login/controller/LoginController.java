@@ -1,9 +1,15 @@
 package cn.yan.login.controller;
 
+import cn.yan.App;
+import cn.yan.entity.User;
 import cn.yan.login.stage.MainStage;
 import cn.yan.login.stage.RegisterStage;
+import cn.yan.mapper.UserMapper;
 import cn.yan.util.DialogBuilder;
 import cn.yan.validator.LoginValidator;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -29,6 +35,7 @@ import org.kordamp.ikonli.fontawesome5.FontAwesomeSolid;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import java.io.*;
 import java.net.URL;
 import java.util.HashMap;
@@ -70,6 +77,9 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 	//注册界面
 	public static Stage registerStage;
 
+	@Resource
+	private UserMapper userMapper;
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		//取到Stage
@@ -98,7 +108,6 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 
 	@PostConstruct
 	public void init() throws Exception {
-
 		//加载样式css
 		Parent view = getView();
 		view.getStylesheets().add("css/login.css");
@@ -146,6 +155,22 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 
 	//登录按钮事件
 	private void signInBtn(MouseEvent event) {
+
+		//启动类的方法切换视图
+		App.showView(MainController.class);
+
+		Page<User> page = new Page<>(1, 3);
+		QueryWrapper<User> wrapper = new QueryWrapper<>();
+		wrapper.lambda().ge(User::getAge, 1).orderByAsc(User::getAge);
+		IPage<User> result = userMapper.selectPage(page, wrapper);
+		User user = new User();
+		user.setName("name---");
+		userMapper.insert(user);
+
+		System.out.println(result.getTotal());
+		System.out.println(result.getRecords().size());
+
+
 		//校验
 		boolean usernameValidate = usernameField.validate();
 		boolean passwordValidate = passwordField.validate();

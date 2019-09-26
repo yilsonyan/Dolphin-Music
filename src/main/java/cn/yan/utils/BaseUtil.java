@@ -11,15 +11,15 @@ public class BaseUtil {
      * @param n
      * @return
      */
-    public static List<Integer> getRandomNumber(int min, int max, int n){
+    public static List<Long> getRandomNumber(int min, int max, int n){
 
         if(n>(max-min+1) || max<min){
             return null;
         }
-        List<Integer> list = new ArrayList<>();
+        List<Long> list = new ArrayList<>();
         int count = 0;
         while(count < n ){
-            int num = (int) ((Math.random()*(max-min))+min);
+            long num = (long) ((Math.random()*(max-min))+min);
 
             if(!list.contains(num)){
                 list.add(num);

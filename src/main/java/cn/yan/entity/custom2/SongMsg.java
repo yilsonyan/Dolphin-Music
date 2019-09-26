@@ -13,6 +13,10 @@ import java.util.List;
  * @author bejson.com (i@bejson.com)
  * @website http://www.bejson.com/java2pojo/
  */
+
+/**
+ * 爬取到的歌曲信息
+ */
 @Data
 public class SongMsg {
 

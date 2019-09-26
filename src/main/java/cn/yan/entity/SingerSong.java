@@ -7,6 +7,9 @@ import lombok.experimental.Accessors;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+/**
+ * 歌手-歌曲中间表
+ */
 @Data
 @Accessors(chain = true)//链式setter
 @EqualsAndHashCode(callSuper = false)//不比较父类属性
@@ -18,12 +21,12 @@ public class SingerSong {
     /**
      * 歌手id
      */
-    private Integer singerId;
+    private Long singerId;
 
     /**
      * 歌曲id
      */
-    private Integer songId;
+    private Long songId;
 
     /**
      * 介绍

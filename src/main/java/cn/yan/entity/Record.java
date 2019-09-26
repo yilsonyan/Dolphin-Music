@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import java.util.Date;
 
 /**
- * 日志
+ * 专辑
  */
 @Data
 @Accessors(chain = true)//链式setter
@@ -47,7 +47,7 @@ public class Record {
     /**
      * 歌手id
      */
-    private Integer singerId;
+    private Long singerId;
 
     /**
      * 发行时间

@@ -96,6 +96,14 @@ public class HttpClientUtil {
                 httpGet.setHeader(header);
             }
 
+            // 随机生成ip
+            /*String ip = HttpClientUtilWithRandomIp.randIP();
+            httpGet.setHeader("X-Forwarded-For", ip);
+            httpGet.setHeader("HTTP_X_FORWARDED_FOR", ip);
+            httpGet.setHeader("HTTP_CLIENT_IP", ip);
+            httpGet.setHeader("REMOTE_ADDR", ip);*/
+
+
             HttpResponse httpResponse = httpClient.execute(httpGet);
             if(httpResponse!=null){
                 HttpEntity httpEntity = httpResponse.getEntity();
@@ -112,6 +120,7 @@ public class HttpClientUtil {
         return result;
 
     }
+
 
 
 

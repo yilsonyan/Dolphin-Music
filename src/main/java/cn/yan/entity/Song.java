@@ -34,7 +34,7 @@ public class Song {
     private String mp3url;
 
     /**
-     * 记录id
+     * 专辑id
      */
     private Integer recordId;
 

@@ -17,7 +17,7 @@ import java.util.List;
 public class Artist {
 
     private String name;
-    private int id;
+    private Long id;
     private int picId;
     private int img1v1Id;
     private String briefDesc;

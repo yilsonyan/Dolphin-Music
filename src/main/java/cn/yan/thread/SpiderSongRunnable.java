@@ -7,92 +7,96 @@ import cn.yan.entity.custom2.SongMsg;
 import cn.yan.service.ISingerSongService;
 import cn.yan.service.ISongService;
 import cn.yan.spider.NetMusicGrab;
+import cn.yan.util.SpringContextUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class SpiderSongRunnable implements Runnable {
-
-    private ISongService songService;
-    private ISingerSongService singerSongService;
-    private List<Integer> listId;
     private final static Logger logger = LoggerFactory.getLogger(SpiderSongRunnable.class);
 
-    public SpiderSongRunnable(ISongService songService, ISingerSongService singerSongService, List<Integer> listId){
-        this.songService = songService;
-        this.singerSongService = singerSongService;
+    private ISongService songService = SpringContextUtil.getBean(ISongService.class);
+    private ISingerSongService singerSongService = SpringContextUtil.getBean(ISingerSongService.class);
+
+    /**
+     * 歌曲id
+     */
+    private List<Integer> listId;
+    public SpiderSongRunnable(List listId) {
         this.listId = listId;
     }
 
-
     @Override
     public void run() {
-        logger.info(new Date()+Thread.currentThread().getName()+":..........线程开启");
-        System.out.println("---------------");
-        //插入音乐
-        insertSong();
-        logger.info(new Date()+Thread.currentThread().getName()+":....。。。..线程结束");
+        logger.info(Thread.currentThread().getName() + "----------线程开启");
+        getSongList();//获取音乐
+        logger.info(Thread.currentThread().getName() + "----------线程结束");
     }
 
 
+
     /**
-     * 保存音乐与其singer_song中间表
+     * 获取音乐信息
      */
-    private void insertSong() {
-        if(listId!=null){
-            for(Integer id:listId){
-                String url = "https://music.163.com/artist?id="+id;
-                String charest = "utf-8";
-                List<SongMsg> list = NetMusicGrab.getSongList(url,charest);
-                if(list!=null && list.size()>0){
-                    for (SongMsg songMsg : list) {
-                        Song song = new Song();
-                        song.setId(songMsg.getId());
-                        song.setName(songMsg.getName());
-                        song.setCommentThreadId(songMsg.getCommentThreadId());
-                        song.setRecordId((int) songMsg.getAlbum().getId());
-                        logger.info(song.toString());
-                        Song song1 = songService.getById(song.getId());
-                        if(song1==null){
-                            songService.save(song);
-                        }
-                        //插入中间表
-                        List<Artists> artistsList = songMsg.getArtists();
-                        List<SingerSong> singerSongList = new ArrayList<>();
-                        String intro = "";
-                        if(artistsList!=null && artistsList.size()>0){
-                            for(Artists artists:artistsList){
-                                SingerSong singerSong = new SingerSong();
-                                singerSong.setSingerId(artists.getId());
-                                singerSong.setSongId((int)songMsg.getId());
-                                intro+=artists.getName()+"/";
-                                SingerSong singerSong1 = singerSongService.getById(singerSong.getId());
-                                if(singerSong1==null){
-                                    singerSongList.add(singerSong);
-//                                singerSongService.insertEntity(singerSong);
-                                }
-                            }
-                        }
-                        if(singerSongList.size()>0){
-                            for(SingerSong singerSong:singerSongList){
-                                singerSong.setIntro(intro);
-                                SingerSong singerSong1 = singerSongService.getById(singerSong.getId());
-                                if(singerSong1==null){
-                                    singerSongService.save(singerSong);
-                                }
-                            }
-                        }
-
-
-
-                    }
-                }
+    private void getSongList() {
+        if (listId != null) {
+            for (Integer id : listId) {
+                String url = "https://music.163.com/artist?id=" + id;
+                List<SongMsg> list = NetMusicGrab.getSongList(url, "utf-8");
+                saveSongAndSingerSong(list);
             }
         }
     }
 
+
+
+    /**
+     * 保存音乐与其SingerSong中间表
+     */
+    private void saveSongAndSingerSong(List<SongMsg> list){
+        if (list == null || list.size() == 0){
+            return;
+        }
+        for (SongMsg songMsg : list) {
+            //保存歌曲
+            Song song = new Song();
+            song.setId(songMsg.getId())
+                .setName(songMsg.getName())
+                .setCommentThreadId(songMsg.getCommentThreadId())
+                .setRecordId((int) songMsg.getAlbum().getId());
+            songService.saveOrUpdate(song);
+
+            //插入中间表
+            //获取歌手列表
+            List<Artists> artistsList = songMsg.getArtists();
+            List<SingerSong> singerSongList = new ArrayList<>();
+
+            //介绍，用于一次查找歌曲的所有歌手
+            String intro = "";
+            //遍历歌手列表
+            if (artistsList != null && artistsList.size() > 0) {
+                for (int i = 0; i < artistsList.size(); i++) {
+                    Artists artists = artistsList.get(i);
+                    SingerSong singerSong = new SingerSong();
+                    singerSong.setSingerId(artists.getId()).setSongId(songMsg.getId());
+
+                    if (i > 0){
+                        //歌手
+                        intro += "/" + artists.getName();
+                    }
+                    singerSongList.add(singerSong);
+                }
+            }
+
+            //添加介绍信息并保存
+            for (SingerSong singerSong : singerSongList) {
+                singerSong.setIntro(intro);
+                singerSongService.saveOrUpdate(singerSong);
+            }
+
+        }
+    }
 
 }

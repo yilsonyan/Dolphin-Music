@@ -16,7 +16,7 @@ import javax.persistence.Id;
 @Entity
 public class Singer {
     @Id
-    private Integer id;
+    private Long id;
 
     /**
      * 名称

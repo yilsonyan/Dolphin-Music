@@ -13,10 +13,14 @@ import java.util.List;
  * @author bejson.com (i@bejson.com)
  * @website http://www.bejson.com/java2pojo/
  */
+
+/**
+ * 歌手列表
+ */
 @Data
 public class Artists {
 
-    private int id;
+    private Long id;
     private String name;
     private List<String> alia;
 

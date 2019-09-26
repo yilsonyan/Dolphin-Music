@@ -2,7 +2,7 @@ package cn.yan.service.impl;
 
 
 import cn.yan.entity.User;
-import cn.yan.mapper.UserMapper;
+import cn.yan.dao.UserMapper;
 import cn.yan.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;

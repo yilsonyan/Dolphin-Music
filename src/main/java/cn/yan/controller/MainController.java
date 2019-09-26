@@ -1,4 +1,4 @@
-package cn.yan.login.controller;
+package cn.yan.controller;
 
 import cn.yan.App;
 import cn.yan.util.DialogBuilder;

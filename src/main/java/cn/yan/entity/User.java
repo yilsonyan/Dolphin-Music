@@ -7,9 +7,10 @@ import lombok.experimental.Accessors;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.function.Function;
 
 @Data
-@Accessors(chain = true)//链式
+@Accessors(chain = true)//链式setter
 @EqualsAndHashCode(callSuper = false)//不比较父类属性
 @Entity
 public class User extends Model<User> {
@@ -18,4 +19,14 @@ public class User extends Model<User> {
     private String name;
     private Integer age;
     private String email;
+
+    public static void main(String[] args) {
+        Function<User, String> name = User::getName;
+        String toString = name.toString();
+        System.out.println(name);
+        System.out.println(toString);
+    }
+
+
+
 }

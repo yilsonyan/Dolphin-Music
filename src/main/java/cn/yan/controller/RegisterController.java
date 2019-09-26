@@ -1,4 +1,4 @@
-package cn.yan.login.controller;
+package cn.yan.controller;
 
 import cn.yan.App;
 import cn.yan.util.DialogBuilder;
@@ -71,11 +71,11 @@ public class RegisterController extends AbstractFxmlView implements Initializabl
 		Scene scene = GUIState.getScene();
 		scene.getStylesheets().add("css/register.css");
 		stage.setScene(scene);
-		stage.setTitle("Dolphin Music");
+		/*stage.setTitle("Dolphin Music");
 		//this.setFullScreen(true);
 		stage.setResizable(false);//设置不可调整大小
 		//设置窗口的图标
-		stage.getIcons().add(new Image("/static/icon.png"));
+		stage.getIcons().add(new Image("/static/icon.png"));*/
 
 		generateImageCode();
 		//主面板回车事件
@@ -148,7 +148,7 @@ public class RegisterController extends AbstractFxmlView implements Initializabl
 		//用户名重复校验
 		if (1==1){
 			//注册成功提示弹窗
-			new DialogBuilder(registerBtn).
+			new DialogBuilder(null).
 				setTitle("Congratulations!").
 				setMessage("Register success!").
 				setPositiveBtn("Get It", () -> {}).
@@ -157,7 +157,7 @@ public class RegisterController extends AbstractFxmlView implements Initializabl
 			backBtn(null);
 		}else {
 			//注册失败提示弹窗
-			new DialogBuilder(registerBtn).
+			new DialogBuilder(null).
 				setTitle("Oops!").
 				setMessage("Register failed!").
 				setPositiveBtn("Get It", () -> {}).

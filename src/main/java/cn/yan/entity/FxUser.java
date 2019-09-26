@@ -1,4 +1,4 @@
-package cn.yan.login.pojo;
+package cn.yan.entity;
 
 import javafx.beans.property.ReadOnlyStringProperty;
 import javafx.beans.property.ReadOnlyStringWrapper;

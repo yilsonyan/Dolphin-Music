@@ -1,16 +1,16 @@
-package cn.yan.config;
+package cn.yan.config.mybatis_plus;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import org.apache.ibatis.reflection.MetaObject;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.Date;
 
 @Configuration
-@MapperScan("cn.yan.mapper")
+//dao接口扫描，不标注此注解则需在每个dao接口标注@Mapper注解
+//@MapperScan("cn.yan.mapper")
 public class MybatisPlusConfig {
 
     /**

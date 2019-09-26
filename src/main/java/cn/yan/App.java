@@ -1,7 +1,7 @@
 package cn.yan;
 
-import cn.yan.login.config.SplashConfig;
-import cn.yan.login.controller.LoginController;
+import cn.yan.config.scene.SplashConfig;
+import cn.yan.controller.LoginController;
 import de.felixroske.jfxsupport.AbstractJavaFxApplicationSupport;
 import javafx.scene.image.Image;
 import org.slf4j.Logger;

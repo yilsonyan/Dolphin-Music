@@ -20,7 +20,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane fx:id="root" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.yan.login.controller.LoginController">
+<GridPane fx:id="root" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.yan.controller.LoginController">
     <children>
         <Pane layoutX="80.0" layoutY="36.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="372.0" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="36.0">
             <children>

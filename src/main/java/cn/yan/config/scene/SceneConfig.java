@@ -1,4 +1,4 @@
-package cn.yan.login.config;
+package cn.yan.config.scene;
 
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;

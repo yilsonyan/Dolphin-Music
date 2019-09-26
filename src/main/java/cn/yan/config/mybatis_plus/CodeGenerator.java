@@ -1,4 +1,4 @@
-package cn.yan.config;
+package cn.yan.config.mybatis_plus;
 
 import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;

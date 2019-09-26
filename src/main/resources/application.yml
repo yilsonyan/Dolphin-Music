@@ -9,11 +9,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     #type: com.alibaba.druid.pool.DruidDataSource
     #mycat分片数据库端口默认为8066
-    #url: jdbc:mysql://127.0.0.1:8066/TESTDB?characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
-    #username: test
-    #password: test
-
-    #url: jdbc:mysql://192.168.1.73:3306/gdws_cpos_server_3.2?characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
+    #url: jdbc:mysql://127.0.0.1:8066/TESTDB
     url: jdbc:mysql://127.0.0.1:3306/dolphinmusic?characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
     username: root
     password: 123456
@@ -53,9 +49,9 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-
 # mybatis-plus
 mybatis-plus:
+  #xml mapper扫描
   mapper-locations: classpath*:/mapper/**Mapper.xml
   #实体扫描，多个package用逗号或者分号分隔
   typeAliasesPackage: com.yan.entity
@@ -83,4 +79,3 @@ mybatis-plus:
       #逻辑删除配置（下面3个配置）
       #logic-delete-value: 0
       #logic-not-delete-value: 1
-

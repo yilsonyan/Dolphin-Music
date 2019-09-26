@@ -1,8 +1,8 @@
-package cn.yan.login.controller;
+package cn.yan.controller;
 
 import cn.yan.App;
 import cn.yan.entity.User;
-import cn.yan.mapper.UserMapper;
+import cn.yan.dao.UserMapper;
 import cn.yan.service.IUserService;
 import cn.yan.util.DialogBuilder;
 import cn.yan.validator.LoginValidator;
@@ -91,7 +91,7 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 		//stage.setIconified(true);
 		//设置窗口关闭按钮事件
 		loginStage.setOnCloseRequest(
-			event -> new DialogBuilder(usernameField).
+			event -> new DialogBuilder(null).
 			setTitle("Oops!").
 			setMessage("Do you really want to leave me alone?").
 			setPositiveBtn("Sorry for that", () -> {}).
@@ -173,7 +173,9 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 			System.out.println("分页测试————————————————————————————————————————————");
 			Page<User> page = new Page<>(1, 3);
 			QueryWrapper<User> wrapper = new QueryWrapper<>();
-			//wrapper.lambda().ge(User::getAge, 1).orderByAsc(User::getAge);
+
+			wrapper.lambda().ge(User::getAge, 1).orderByAsc(User::getAge);
+
 			IPage<User> result = userMapper.selectPage(page, wrapper);
 			System.out.println("总条数："+result.getTotal());
 			System.out.println("当前页："+result.getCurrent());

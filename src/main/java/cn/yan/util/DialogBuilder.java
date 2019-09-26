@@ -47,14 +47,17 @@ public class DialogBuilder {
      * @param control 任意一个控件
      */
     public DialogBuilder(Control control) {
-        /*if (control == null){
+        if (control != null){
             window = control.getScene().getWindow();
-        }*/
-
-        if (window == null){
+        }else {
             Stage stage = GUIState.getStage();
             window = stage;
         }
+
+        /*if (window == null){
+            Stage stage = GUIState.getStage();
+            window = stage;
+        }*/
     }
 
     public DialogBuilder setTitle(String title) {

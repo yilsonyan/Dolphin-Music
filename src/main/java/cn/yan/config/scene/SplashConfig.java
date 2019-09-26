@@ -1,4 +1,4 @@
-package cn.yan.login.config;
+package cn.yan.config.scene;
 
 import de.felixroske.jfxsupport.SplashScreen;
 import javafx.scene.Group;

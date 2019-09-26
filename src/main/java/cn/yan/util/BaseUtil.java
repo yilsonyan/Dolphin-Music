@@ -1,4 +1,4 @@
-package cn.yan.utils;
+package cn.yan.util;
 
 import java.util.ArrayList;
 import java.util.List;

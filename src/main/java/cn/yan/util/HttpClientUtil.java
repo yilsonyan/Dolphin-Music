@@ -1,4 +1,4 @@
-package cn.yan.utils;
+package cn.yan.util;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;

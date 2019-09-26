@@ -1,7 +1,7 @@
 /**
   * Copyright 2018 bejson.com 
   */
-package cn.yan.entity.custom2;
+package cn.yan.entity.netmusic;
 
 import lombok.Data;
 

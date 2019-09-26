@@ -2,10 +2,10 @@ package cn.yan.spider;
 
 import cn.yan.entity.Record;
 import cn.yan.entity.Singer;
-import cn.yan.entity.custom2.SongMsg;
-import cn.yan.utils.BaseUtil;
-import cn.yan.utils.CharacterUtils;
-import cn.yan.utils.HttpClientUtil;
+import cn.yan.entity.netmusic.SongMsg;
+import cn.yan.util.BaseUtil;
+import cn.yan.util.CharacterUtils;
+import cn.yan.util.HttpClientUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.apache.http.Header;
@@ -26,7 +26,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 歌曲爬取类
+ * 网易云音乐爬取类
  */
 public class NetMusicGrab {
 

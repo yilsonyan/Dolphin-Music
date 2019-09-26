@@ -1,4 +1,4 @@
-package cn.yan.spider;
+package cn.yan.util;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -7,7 +7,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Random;
 
-public class HttpUtilTest {
+public class DynamicIpHttpClient {
 
     public static int index = 0;
 
@@ -97,7 +97,7 @@ public class HttpUtilTest {
                         for (int j = 0; j < 100000; j++) {
                             try {
                                 Thread.sleep((new Random()).nextInt(3200) + 1500);
-                                HttpUtilTest tt = new HttpUtilTest();
+                                DynamicIpHttpClient tt = new DynamicIpHttpClient();
                                 tt.sendPost(
                                         "https://www.baidu.com",
                                         Thread.currentThread().getName());

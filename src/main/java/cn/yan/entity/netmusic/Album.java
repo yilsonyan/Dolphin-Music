@@ -1,7 +1,7 @@
 /**
   * Copyright 2018 bejson.com 
   */
-package cn.yan.entity.custom2;
+package cn.yan.entity.netmusic;
 
 import lombok.Data;
 
@@ -13,15 +13,15 @@ import java.util.List;
  * @author bejson.com (i@bejson.com)
  * @website http://www.bejson.com/java2pojo/
  */
-
-/**
- * 歌手列表
- */
 @Data
-public class Artists {
+public class Album {
 
-    private Long id;
+    private long id;
     private String name;
+    private String picUrl;
+    private String pic_str;
+    private long pic;
     private List<String> alia;
+
 
 }

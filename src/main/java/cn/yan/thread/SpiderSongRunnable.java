@@ -2,8 +2,8 @@ package cn.yan.thread;
 
 import cn.yan.entity.SingerSong;
 import cn.yan.entity.Song;
-import cn.yan.entity.custom2.Artists;
-import cn.yan.entity.custom2.SongMsg;
+import cn.yan.entity.netmusic.Artists;
+import cn.yan.entity.netmusic.SongMsg;
 import cn.yan.service.ISingerSongService;
 import cn.yan.service.ISongService;
 import cn.yan.spider.NetMusicGrab;

@@ -13,29 +13,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.yan.controller.MainController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="501.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.yan.controller.MainController">
    <children>
-      <MenuBar prefHeight="29.0" prefWidth="600.0">
+      <MenuBar prefHeight="16.0" prefWidth="500.0">
         <menus>
           <Menu mnemonicParsing="false" text="System">
             <items>
               <MenuItem fx:id="exit" mnemonicParsing="false" text="Exit" />
-                  <MenuItem mnemonicParsing="false" text="Unspecified Action" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
               <MenuItem mnemonicParsing="false" text="Delete" />
-                  <MenuItem mnemonicParsing="false" text="Unspecified Action" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
               <MenuItem fx:id="about" mnemonicParsing="false" text="About" />
-                  <MenuItem mnemonicParsing="false" text="Unspecified Action" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
    </children>
-</AnchorPane>
+</GridPane>

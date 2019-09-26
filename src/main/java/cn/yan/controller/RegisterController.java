@@ -20,7 +20,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -34,7 +34,7 @@ public class RegisterController extends AbstractFxmlView implements Initializabl
 
 	//主面板
     @FXML
-    private AnchorPane anchorPane;
+    private GridPane anchorPane;
 
 	//注册按钮
 	@FXML
@@ -152,7 +152,7 @@ public class RegisterController extends AbstractFxmlView implements Initializabl
 				setTitle("Congratulations!").
 				setMessage("Register success!").
 				setPositiveBtn("Get It", () -> {}).
-				create();
+				createAndWait();
 			//跳转回登陆页面
 			backBtn(null);
 		}else {
@@ -161,7 +161,7 @@ public class RegisterController extends AbstractFxmlView implements Initializabl
 				setTitle("Oops!").
 				setMessage("Register failed!").
 				setPositiveBtn("Get It", () -> {}).
-				create();
+				createAndWait();
 		}
 
 	}

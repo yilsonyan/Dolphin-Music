@@ -39,7 +39,7 @@ public class DialogBuilder {
     private Paint negativeBtnPaint = Paint.valueOf("#747474");//否定按钮文字颜色，默认灰色
     private Paint positiveBtnPaint = Paint.valueOf("#0099ff");
     private Hyperlink hyperlink = null;
-    private JFXAlert<String> alert;
+    private JFXAlert<String> alert = new JFXAlert<String>();
 
     /**
      * 构造方法
@@ -47,17 +47,13 @@ public class DialogBuilder {
      * @param control 任意一个控件
      */
     public DialogBuilder(Control control) {
-        if (control != null){
+        /*if (control != null){
             window = control.getScene().getWindow();
-        }else {
+        }else {*/
             Stage stage = GUIState.getStage();
             window = stage;
-        }
+        //}
 
-        /*if (window == null){
-            Stage stage = GUIState.getStage();
-            window = stage;
-        }*/
     }
 
     public DialogBuilder setTitle(String title) {
@@ -199,42 +195,6 @@ public class DialogBuilder {
         return this;
     }
 
-    /**
-     * 创建对话框并显示
-     *
-     * @return JFXAlert<String>
-     */
-    public JFXAlert<String> create() {
-        alert = new JFXAlert<>((Stage) (window));
-        alert.initModality(Modality.APPLICATION_MODAL);
-        alert.setOverlayClose(false);
-
-        JFXDialogLayout layout = new JFXDialogLayout();
-        layout.setHeading(new Label(title));
-        //添加hyperlink超链接文本
-        if (hyperlink != null) {
-            layout.setBody(new HBox(new Label(this.message), hyperlink));
-        } else {
-            layout.setBody(new VBox(new Label(this.message)));
-        }
-        //添加确定和取消按钮
-        if (negativeBtn != null && positiveBtn != null) {
-            layout.setActions(negativeBtn, positiveBtn);
-        } else {
-            if (negativeBtn != null) {
-                layout.setActions(negativeBtn);
-            } else if (positiveBtn != null) {
-                layout.setActions(positiveBtn);
-            }
-        }
-
-
-        alert.setContent(layout);
-        alert.show();
-
-        return alert;
-    }
-
 
 	/**
 	 * 创建对话框并显示，等待用户反馈
@@ -245,6 +205,7 @@ public class DialogBuilder {
 		alert = new JFXAlert<>((Stage) (window));
 		alert.initModality(Modality.APPLICATION_MODAL);
 		alert.setOverlayClose(false);
+		//alert.setSize(300,200);
 
 		JFXDialogLayout layout = new JFXDialogLayout();
 		layout.setHeading(new Label(title));

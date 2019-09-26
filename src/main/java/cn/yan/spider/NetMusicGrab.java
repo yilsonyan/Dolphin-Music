@@ -198,7 +198,7 @@ public class NetMusicGrab {
 
 
     public static void main(String[] args) throws ParseException {
-        List<Long> listId = BaseUtil.getRandomNumber(1000, 10000, 500);
+        List<Long> listId = BaseUtil.getRandomNumber(1000, 10000, 1);
         //测试获取页面信息
         for (Long id : listId) {
             Document document = getDocument("https://music.163.com/artist?id=" + id,"utf-8");

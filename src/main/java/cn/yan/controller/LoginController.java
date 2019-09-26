@@ -98,7 +98,6 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 			setNegativeBtn("Cancel", () -> event.consume()).
 			createAndWait()
 		);
-
 	}
 
 
@@ -215,6 +214,7 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 					deleteLoginInfo();
 				}
 
+				App.getStage().close();
 				//启动类的方法切换视图
 				App.showView(MainController.class);
 			} else {
@@ -226,6 +226,7 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 
 	//注册按钮事件
 	private void registerBtn(MouseEvent event) {
+		App.getStage().close();
 		App.showView(RegisterController.class);
 	}
 

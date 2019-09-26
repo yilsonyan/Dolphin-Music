@@ -63,7 +63,7 @@ public class MainController extends AbstractFxmlView implements Initializable {
 				.setTitle("About")
 				.setMessage(sb.toString())
 				.setPositiveBtn("Get it", () -> {})
-				.create();
+				.createAndWait();
 	}
 
 

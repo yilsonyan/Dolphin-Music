@@ -29,6 +29,12 @@ public class SpiderSingerRunnable implements Runnable {
     private void insertSinger() {
         if (listId != null) {
             for (Long id : listId) {
+                try {
+                    Thread.sleep(1000 * 5);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
                 String url = "https://music.163.com/artist/desc?id=" + id;
                 Singer singer = NetMusicGrab.getSinger(url, "utf-8");
 

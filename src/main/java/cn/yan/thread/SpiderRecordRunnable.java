@@ -33,6 +33,12 @@ public class SpiderRecordRunnable implements Runnable {
     private void getRecords() {
         if (listId != null) {
             for (Long singerId : listId) {
+                try {
+                    Thread.sleep(1000 * 5);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
                 String url = "https://music.163.com/artist/album?id=" + singerId + "&limit=100&offset=0";
                 List<Record> list = NetMusicGrab.getRecordList(url, "utf-8");
                 saveRecords(singerId, list);

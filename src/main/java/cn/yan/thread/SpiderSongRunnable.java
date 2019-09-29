@@ -43,9 +43,19 @@ public class SpiderSongRunnable implements Runnable {
     private void getSongList() {
         if (listId != null) {
             for (Integer id : listId) {
+                try {
+                    Thread.sleep(1000 * 5);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
                 String url = "https://music.163.com/artist?id=" + id;
                 List<SongMsg> list = NetMusicGrab.getSongList(url, "utf-8");
                 saveSongAndSingerSong(list);
+
+                //界面展示
+
+
             }
         }
     }

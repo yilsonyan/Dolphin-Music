@@ -1,8 +1,8 @@
 package cn.yan.controller;
 
 import cn.yan.App;
-import cn.yan.entity.User;
 import cn.yan.dao.UserMapper;
+import cn.yan.entity.User;
 import cn.yan.service.IUserService;
 import cn.yan.util.DialogBuilder;
 import cn.yan.validator.LoginValidator;
@@ -37,6 +37,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.io.*;
 import java.net.URL;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -245,6 +246,9 @@ public class LoginController extends AbstractFxmlView implements Initializable {
 			HashMap<String, String> map = new HashMap<>();
 			map.put("userName", userName);
 			map.put("password", password);
+			map.put("loginTime", new Date().toString());
+			//登录信息保留时间，24小时
+			map.put("time", "24");
 			//序列化
 			URL url = this.getClass().getClassLoader().getResource("");
 			File serializableFile = new File(url.getPath() + "/user.serializable");

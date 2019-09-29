@@ -29,8 +29,7 @@ public class SpringBootStartUpTask implements CommandLineRunner {
         try {
             //Runtime.getRuntime().exec("cmd   /c   start   http://localhost:8080");
             logger.info("SpringBoot启动成功----------");
-
-            //for (int i = 0; i < 10; i++) {
+           //for (int i = 0; i < 10; i++) {
                 /*List<Long> listId = BaseUtil.getRandomNumber(1000, 10000, 1000);
                 //song线程
                 SpiderSongRunnable spiderSongRunnable = new SpiderSongRunnable(listId);

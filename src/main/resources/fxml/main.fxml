@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
@@ -13,18 +14,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="501.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.yan.controller.MainController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="501.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.yan.controller.MainController">
    <children>
       <MenuBar prefHeight="16.0" prefWidth="500.0">
         <menus>
           <Menu mnemonicParsing="false" text="System">
             <items>
               <MenuItem fx:id="exit" mnemonicParsing="false" text="Exit" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
@@ -34,5 +30,7 @@
           </Menu>
         </menus>
       </MenuBar>
+      <JFXButton layoutX="220.0" layoutY="119.0" text="serach" />
+      <JFXTextField layoutX="147.0" layoutY="64.0" prefHeight="27.0" prefWidth="207.0" promptText="Singer or SongName" />
    </children>
-</GridPane>
+</Pane>

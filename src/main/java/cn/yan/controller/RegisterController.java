@@ -1,8 +1,11 @@
 package cn.yan.controller;
 
 import cn.yan.App;
+import cn.yan.entity.User;
+import cn.yan.service.IUserService;
 import cn.yan.util.DialogBuilder;
 import cn.yan.util.VerifyCodeUtil;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import de.felixroske.jfxsupport.AbstractFxmlView;
 import de.felixroske.jfxsupport.FXMLController;
 import de.felixroske.jfxsupport.FXMLView;
@@ -24,6 +27,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Base64Utils;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -60,6 +65,9 @@ public class RegisterController extends AbstractFxmlView implements Initializabl
     //注册提示信息
     @FXML
     private Text msg;
+
+    @Autowired
+	private IUserService userService;
 
 
 	/**
@@ -141,12 +149,33 @@ public class RegisterController extends AbstractFxmlView implements Initializabl
 		//与用户输入的做对比
 		String inputCode = inputCodeTextField.getCharacters().toString();
 		if (!text.equalsIgnoreCase(inputCode)){
-			msg.setText("Wrong Verify Code!");
+
+		}
+
+		String username = usernameTextField.getCharacters().toString();
+		String password = passwordTextField.getCharacters().toString();
+		if (username.length() == 0){
+			msg.setText("empty username!");
+			return;
+		}
+		if (password.length() == 0){
+			msg.setText("empty password!");
 			return;
 		}
 
+		QueryWrapper<User> wrapper = new QueryWrapper<User>();
+		wrapper.lambda().eq(User::getName,username);
+		User one = userService.getOne(wrapper);
+
 		//用户名重复校验
-		if (1==1){
+		if (!"admin".equals(username) && one == null){
+			String pwdEncode = Base64Utils.encodeToString(password.getBytes());
+			//保存用户实体
+			new User()
+					.setName(username)
+					.setPassword(pwdEncode)
+					.insert();
+
 			//注册成功提示弹窗
 			new DialogBuilder(null).
 				setTitle("Congratulations!").
@@ -159,7 +188,7 @@ public class RegisterController extends AbstractFxmlView implements Initializabl
 			//注册失败提示弹窗
 			new DialogBuilder(null).
 				setTitle("Oops!").
-				setMessage("Register failed!").
+				setMessage("Register failed! Username repeat!").
 				setPositiveBtn("Get It", () -> {}).
 				createAndWait();
 		}

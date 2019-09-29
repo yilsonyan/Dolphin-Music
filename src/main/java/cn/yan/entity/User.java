@@ -19,6 +19,8 @@ public class User extends Model<User> {
     private String name;
     private Integer age;
     private String email;
+    private String password;
+
 
     public static void main(String[] args) {
         Function<User, String> name = User::getName;

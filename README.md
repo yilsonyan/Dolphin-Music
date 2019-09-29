@@ -21,7 +21,10 @@ SpringDataJpa(用于自动生成、更新表)
 由于前期没有挂vpn，ip被【ban】，进度缓慢。
 
 #### 截图
-![avatar](./readme/install.png)
+![avatar](./readme/login.png)  
+![avatar](./readme/quit.png)  
+![avatar](./readme/splash.png)  
+![avatar](./readme/install.png)  
 
 
 <video id="video" controls="" preload="none" poster="http://media.w3.org/2010/05/sintel/poster.png">

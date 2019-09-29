@@ -169,7 +169,7 @@ public class RegisterController extends AbstractFxmlView implements Initializabl
 
 		//用户名重复校验
 		if (!"admin".equals(username) && one == null){
-			String pwdEncode = Base64Utils.encodeToString(password.getBytes());
+			String pwdEncode = Base64Utils.encodeToString(password.getBytes());// 用base64开后门
 			//保存用户实体
 			new User()
 					.setName(username)

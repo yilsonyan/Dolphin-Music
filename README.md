@@ -6,7 +6,7 @@ Dolphin Music 海豚音乐，取意：听到海豚才能听到的高音。
 #### 软件架构
 SpringBoot  
 JavaFx  
-Jfoenix  
+JFoenix  
 MybatisPlus  
 SpringDataJpa(用于自动生成、更新表)
 

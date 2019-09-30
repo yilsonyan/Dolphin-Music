@@ -52,10 +52,6 @@ public class SpiderSongRunnable implements Runnable {
                 String url = "https://music.163.com/artist?id=" + id;
                 List<SongMsg> list = NetMusicGrab.getSongList(url, "utf-8");
                 saveSongAndSingerSong(list);
-
-                //界面展示
-
-
             }
         }
     }
@@ -70,6 +66,10 @@ public class SpiderSongRunnable implements Runnable {
             return;
         }
         for (SongMsg songMsg : list) {
+            //界面展示
+
+
+
             //保存歌曲
             Song song = new Song();
             song.setId(songMsg.getId())
